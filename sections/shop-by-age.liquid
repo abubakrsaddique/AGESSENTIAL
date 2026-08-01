@@ -1,0 +1,485 @@
+<section class="shop-age-section">
+
+  <div class="shop-age-container">
+
+    <h2 class="shop-age-title">
+      Shop by Little One
+    </h2>
+
+    <p class="shop-age-subtitle">
+      Find the perfect toys for every little star ⭐
+    </p>
+
+
+    <div class="shop-age-grid">
+
+
+      <a href="/collections/0-18-months-babies-toys" class="age-card">
+
+        <img src="{{ 'baby.png' | asset_url }}" alt="Babies">
+
+        <div class="age-content">
+
+          <div>
+            <h3>👶 Babies</h3>
+            <p>Toys for little explorers</p>
+          </div>
+
+          <span class="arrow">›</span>
+
+        </div>
+
+      </a>
+
+
+
+      <a href="/collections/boys" class="age-card">
+
+        <img src="{{ 'boy.png' | asset_url }}" alt="Boys">
+
+        <div class="age-content">
+
+          <div>
+            <h3>👦 Boys</h3>
+            <p>Toys for every adventure</p>
+          </div>
+
+          <span class="arrow">›</span>
+
+        </div>
+
+      </a>
+
+
+
+
+      <a href="/collections/girls" class="age-card">
+
+        <img src="{{ 'girl.png' | asset_url }}" alt="Girls">
+
+        <div class="age-content">
+
+          <div>
+            <h3>👧 Girls</h3>
+            <p>Toys for bright and bold dreams</p>
+          </div>
+
+          <span class="arrow">›</span>
+
+        </div>
+
+      </a>
+
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+{% stylesheet %}
+
+
+.shop-age-section {
+
+  background:#eafcff;
+
+  width: 99.4vw; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; position: relative;
+
+}
+
+
+
+.shop-age-container {
+
+  max-width:1250px;
+
+  margin:auto;
+
+  padding:45px 25px;
+
+}
+
+
+
+.shop-age-title {
+
+  text-align:center;
+
+  margin:0;
+
+  font-size:52px;
+
+  font-weight:800;
+
+  color:#10245b;
+
+}
+
+
+
+.shop-age-subtitle {
+
+  text-align:center;
+
+  font-size:24px;
+
+  color:#273b6b;
+
+  margin:10px 0 45px;
+
+}
+
+
+
+.shop-age-grid {
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:28px;
+
+}
+
+
+
+.age-card {
+
+  text-decoration:none;
+
+  position:relative;
+
+}
+
+
+
+.age-card img {
+
+  width:100%;
+
+  height:420px;
+
+  object-fit:cover;
+
+  border-radius:35px;
+
+  display:block;
+
+}
+
+
+
+.age-content {
+
+  position:absolute;
+
+  bottom:20px;
+
+  left:20px;
+
+  right:20px;
+
+  background:white;
+
+  border-radius:25px;
+
+  padding:18px 20px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  box-shadow:0 5px 15px rgba(0,0,0,.12);
+
+}
+
+
+
+.age-content h3 {
+
+  margin:0;
+
+  font-size:32px;
+
+  font-weight:800;
+
+}
+
+
+
+.age-content p {
+
+  margin:4px 0 0;
+
+  color:#40527d;
+
+  font-size:16px;
+
+}
+
+
+
+.arrow {
+
+  width:55px;
+
+  height:55px;
+
+  border-radius:50%;
+
+  background:#ff3b87;
+
+  color:white;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  font-size:40px;
+
+  line-height:1;
+
+}
+
+
+
+/* Different colors */
+
+.age-card:nth-child(1) h3 {
+
+  color:#0abf53;
+
+}
+
+
+.age-card:nth-child(2) h3 {
+
+  color:#1684ff;
+
+}
+
+
+.age-card:nth-child(2) .arrow {
+
+  background:#1684ff;
+
+}
+
+
+.age-card:nth-child(3) h3 {
+
+  color:#ff4c91;
+
+}
+
+
+
+
+.age-card:hover img {
+
+  transform:scale(1.03);
+
+}
+
+
+
+.age-card img {
+
+ transition:.3s ease;
+
+}
+
+
+
+
+
+/* Tablet */
+
+@media(max-width:992px){
+
+
+.shop-age-title {
+
+ font-size:40px;
+
+}
+
+
+.shop-age-grid {
+
+ grid-template-columns:repeat(2,1fr);
+
+}
+
+
+.age-card img {
+
+ height:350px;
+
+}
+
+
+}
+
+
+
+
+
+/* Mobile */
+
+@media(max-width:768px){
+
+
+.shop-age-container {
+
+ padding:30px 15px;
+
+}
+
+
+.shop-age-title {
+
+ font-size:30px;
+
+}
+
+
+.shop-age-subtitle {
+
+ font-size:16px;
+
+ margin-bottom:25px;
+
+}
+
+
+
+.shop-age-grid {
+
+ display:flex;
+
+ overflow-x:auto;
+
+ gap:18px;
+
+ scrollbar-width:none;
+
+}
+
+
+
+.shop-age-grid::-webkit-scrollbar {
+
+ display:none;
+
+}
+
+
+
+.age-card {
+
+ min-width:85%;
+
+}
+
+
+
+.age-card img {
+
+ height:360px;
+
+ border-radius:25px;
+
+}
+
+
+
+.age-content {
+
+ left:12px;
+
+ right:12px;
+
+ bottom:12px;
+
+ padding:14px;
+
+}
+
+
+
+.age-content h3 {
+
+ font-size:24px;
+
+}
+
+
+.age-content p {
+
+ font-size:13px;
+
+}
+
+
+
+.arrow {
+
+ width:45px;
+
+ height:45px;
+
+ font-size:32px;
+
+}
+
+
+}
+
+
+
+@media(max-width:480px){
+
+
+.age-card {
+
+ min-width:90%;
+
+}
+
+
+.age-card img {
+
+ height:300px;
+
+}
+
+
+
+}
+
+{% endstylesheet %}
+
+
+
+
+{% schema %}
+{
+  "name": "Shop By Age",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Shop By Age"
+    }
+  ]
+}
+{% endschema %}

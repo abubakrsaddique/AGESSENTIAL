@@ -1,0 +1,157 @@
+<div class="announcement-bar">
+  <div class="announcement-bar__marquee">
+
+    <span>
+      🚚 Free Shipping on Orders Over 5000PKR &nbsp;&nbsp;&nbsp;
+      | &nbsp;&nbsp;&nbsp;
+      Welcome to AGESSENTIALS &nbsp;&nbsp;&nbsp;
+      | &nbsp;&nbsp;&nbsp;
+      🔥 New Collection Available  &nbsp;&nbsp;&nbsp;
+      | &nbsp;&nbsp;&nbsp;
+      Shop Now!
+    </span>
+
+    <span>
+      🚚 Free Shipping on Orders Over 5000PKR &nbsp;&nbsp;&nbsp;
+      | &nbsp;&nbsp;&nbsp;
+      Welcome to AGESSENTIALS &nbsp;&nbsp;&nbsp;
+      | &nbsp;&nbsp;&nbsp;
+      🔥 New Collection Available  &nbsp;&nbsp;&nbsp;
+      | &nbsp;&nbsp;&nbsp;
+      Shop Now!
+    </span>
+
+  </div>
+</div>
+
+
+{% stylesheet %}
+
+.announcement-bar {
+
+  width: 99.4vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+    background: rgb(36 171 234);
+  color: #000;
+
+  overflow: hidden;
+  white-space: nowrap;
+
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+
+}
+
+
+.announcement-bar__marquee {
+
+  display: flex;
+  width: max-content;
+
+  animation: marquee 20s linear infinite;
+
+}
+
+
+.announcement-bar__marquee span {
+
+  display: inline-block;
+
+  padding-right: 80px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  letter-spacing: .3px;
+
+}
+
+
+@keyframes marquee {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+
+}
+
+
+
+/* Mobile Responsive */
+
+@media screen and (max-width:768px){
+
+  .announcement-bar {
+
+    height: 36px;
+
+  }
+
+
+  .announcement-bar__marquee span {
+
+    font-size: 12px;
+
+    padding-right: 50px;
+
+  }
+
+
+  .announcement-bar__marquee {
+
+    animation-duration: 15s;
+
+  }
+
+}
+
+
+
+@media screen and (max-width:480px){
+
+  .announcement-bar {
+
+    height: 34px;
+
+  }
+
+
+  .announcement-bar__marquee span {
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+  }
+
+}
+
+
+{% endstylesheet %}
+
+
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "tag": "section",
+  "class": "section-announcement",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Announcement Bar"
+    }
+  ]
+}
+{% endschema %}

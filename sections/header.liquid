@@ -1,0 +1,618 @@
+<header  class="header">
+
+  <div class="header-main">
+
+
+    <!-- LOGO -->
+
+    <div class="header__logo">
+
+      <a href="{{ routes.root_url }}">
+
+        <img 
+          src="{{ 'logo.png' | asset_url }}"
+          alt="{{ shop.name }}"
+        >
+
+      </a>
+
+    </div>
+
+
+
+
+    <!-- DESKTOP MENU -->
+
+    <nav class="desktop-menu">
+
+      <ul>
+
+        <li><a href="/">Home</a></li>
+
+        <li><a href="/collections">Collections</a></li>
+
+        <li><<a href="/collections/best-sellers">Best Sellers</a></li>
+
+        <li><a href="/collections/girls">Girls</a></li>
+
+        <li><a href="/collections/boys">Boys</a></li>
+
+        <li><a href="/pages/about-us">About Us</a></li>
+
+        <li><a href="/pages/contact-us">Contact Us</a></li>
+
+      </ul>
+
+    </nav>
+
+
+
+
+
+    <!-- DESKTOP ICONS -->
+
+    <div class="header__icons">
+
+
+      {% if shop.customer_accounts_enabled %}
+
+      <a class="header-action" href="{{ routes.account_url }}">
+
+        {{ 'icon-account.svg' | inline_asset_content }}
+
+        <span>
+          Login
+        </span>
+
+      </a>
+
+      {% endif %}
+
+
+
+
+
+      <a class="header-action" href="{{ routes.cart_url }}">
+
+
+        {{ 'icon-cart.svg' | inline_asset_content }}
+
+
+        <span>
+          Cart
+        </span>
+
+
+        {% if cart.item_count > 0 %}
+
+        <sup>
+          {{ cart.item_count }}
+        </sup>
+
+        {% endif %}
+
+
+      </a>
+
+
+
+    </div>
+
+
+
+
+
+    <!-- MOBILE TOGGLE -->
+
+
+    <button class="menu-toggle" onclick="toggleMenu()">
+
+      ☰
+
+    </button>
+
+
+
+  </div>
+
+
+
+
+
+  <!-- MOBILE MENU -->
+
+
+  <nav class="mobile-menu">
+
+
+    <ul>
+
+
+      <li>
+        <a href="/">Home</a>
+      </li>
+
+
+      <li>
+        <a href="/collections">Collections</a>
+      </li>
+
+
+      <li>
+        <a href="/collections/all">All Products</a>
+      </li>
+
+
+      <li>
+        <a href="/collections/best-sellers">Best Sellers</a>
+      </li>
+
+
+      <li>
+        <a href="/collections/girls">Girls</a>
+      </li>
+
+
+      <li>
+        <a href="/collections/boys">Boys</a>
+      </li>
+
+
+      <li>
+        <a href="/pages/about-us">About Us</a>
+      </li>
+
+
+      <li>
+        <a href="/pages/contact-us">Contact Us</a>
+      </li>
+
+
+
+
+      {% if shop.customer_accounts_enabled %}
+
+      <li>
+        <a href="{{ routes.account_url }}">
+          👤 Login
+        </a>
+      </li>
+
+      {% endif %}
+
+
+
+
+      <li>
+
+        <a href="{{ routes.cart_url }}">
+
+          🛒 Shopping Cart
+
+          {% if cart.item_count > 0 %}
+            ({{ cart.item_count }})
+          {% endif %}
+
+        </a>
+
+      </li>
+
+
+
+    </ul>
+
+
+  </nav>
+
+
+
+</header>
+
+
+
+
+
+
+<script>
+
+function toggleMenu(){
+
+  document
+  .querySelector('.mobile-menu')
+  .classList.toggle('active');
+
+}
+
+</script>
+
+
+
+
+
+
+
+{% stylesheet %}
+
+
+
+.header {
+ 
+   
+   
+
+}
+.header-main {
+height:5rem;
+background: #80fbfb !important;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 60px;
+width: 99.4vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+}
+
+
+
+
+/* LOGO */
+
+
+.header__logo img {
+
+width:250px;
+
+height:auto;
+
+display:block;
+
+}
+
+
+
+
+
+
+/* DESKTOP MENU */
+
+
+.desktop-menu ul {
+
+
+display:flex;
+
+align-items:center;
+
+gap:25px;
+
+list-style:none;
+
+margin:0;
+
+padding:0;
+
+
+}
+
+
+
+.desktop-menu a {
+
+
+text-decoration:none;
+
+color:#000;
+
+font-size:15px;
+
+font-weight:500;
+
+
+}
+
+
+
+
+
+/* ICONS */
+
+
+.header__icons {
+
+
+display:flex;
+
+gap:20px;
+
+
+}
+
+
+
+.header-action {
+
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+color:#000;
+
+text-decoration:none;
+
+
+}
+
+
+
+.header-action svg {
+
+
+width:22px;
+
+
+}
+
+
+
+.header-action span {
+
+
+font-size:14px;
+
+font-weight:600;
+
+
+}
+
+
+
+
+.header-action sup {
+
+
+background:red;
+
+color:white;
+
+border-radius:50%;
+
+font-size:11px;
+
+padding:2px 6px;
+
+position:absolute;
+
+
+}
+
+
+
+
+
+
+
+/* MOBILE BUTTON */
+
+
+.menu-toggle {
+
+
+display:none;
+
+background:none;
+
+border:none;
+
+font-size:30px;
+
+color:white;
+
+cursor:pointer;
+
+
+}
+
+
+
+
+
+
+/* MOBILE MENU */
+
+
+.mobile-menu {
+
+
+display:none;
+
+background:white;
+
+
+}
+
+
+.mobile-menu ul {
+
+
+margin:0;
+
+padding:20px;
+
+list-style:none;
+
+
+}
+
+
+
+.mobile-menu li {
+
+
+padding:12px 0;
+
+border-bottom:1px solid #eee;
+
+
+}
+
+
+
+.mobile-menu a {
+
+
+text-decoration:none;
+
+color:#000;
+
+font-size:16px;
+
+
+}
+
+
+
+
+
+
+
+/* MOBILE VIEW */
+
+
+@media(max-width:768px){
+
+
+
+.header-main {
+
+
+height:4.5rem;
+
+padding:0 20px;
+
+
+}
+
+
+
+
+.header__logo img {
+
+
+width:150px;
+
+
+}
+
+
+
+
+.desktop-menu,
+
+.header__icons {
+
+
+display:none;
+
+
+}
+
+
+
+
+.menu-toggle {
+
+
+display:block;
+
+
+}
+
+
+
+
+.mobile-menu.active {
+
+
+display:block;
+
+
+}
+
+
+
+}
+
+.desktop-menu a,
+.header-action {
+  position: relative;
+  transition: 0.3s ease;
+}
+
+
+/* Color change on hover */
+
+.desktop-menu a:hover,
+.header-action:hover {
+  color: #0000ff;
+}
+
+
+/* Underline animation */
+
+.desktop-menu a::after,
+.header-action::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -6px;
+
+  width: 0;
+  height: 2px;
+
+  background: #2305e6;
+
+  transition: width 0.3s ease;
+
+}
+
+
+
+.desktop-menu a:hover::after,
+.header-action:hover::after {
+
+  width: 100%;
+
+}
+
+
+
+{% endstylesheet %}
+
+
+
+
+
+
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Header"
+    }
+  ]
+}
+{% endschema %}

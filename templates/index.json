@@ -1,0 +1,56 @@
+{
+  "sections": {
+    "main": {
+      "type": "hello-world",
+      "settings": {}
+    },
+
+    "shop_by_age": {
+      "type": "shop-by-age",
+      "settings": {}
+    },
+
+    "popular_categories": {
+      "type": "popular-categories",
+      "settings": {}
+    },
+
+    "why_parents_love": {
+      "type": "why-parents-love-us",
+      "settings": {}
+    },
+
+    "best_seller": {
+      "type": "best-seller",
+      "settings": {
+        "heading": "Best Sellers"
+      }
+    },
+
+    "top_picks": {
+      "type": "top-picks",
+      "settings": {
+        "heading": "Top Pick",
+        "title_1": "Dinos & Dragon",
+        "title_2": "Toy Cars",
+        "title_3": "Makeup Sets",
+        "title_4": "Outdoor Toys"
+      }
+    },
+
+    "contact_us": {
+      "type": "contact-us",
+      "settings": {}
+    }
+  },
+
+  "order": [
+    "main",
+    "shop_by_age",
+    "popular_categories",
+    "why_parents_love",
+    "best_seller",
+    "top_picks",
+    "contact_us"
+  ]
+}

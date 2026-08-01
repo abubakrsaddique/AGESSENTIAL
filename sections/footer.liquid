@@ -1,0 +1,475 @@
+<footer class="custom-footer">
+
+<div class="page-width">
+
+<div class="footer-grid">
+
+
+<!-- Categories -->
+
+<div class="footer-column">
+
+<h3>Categories</h3>
+
+<ul>
+<li><a href="/collections/type-of-toy">Type of Toy</a></li>
+<li><a href="/pages/brands">Brands</a></li>
+<li><a href="/collections/kids-toys-sale-special-offers">Sale</a></li>
+</ul>
+
+</div>
+
+
+
+<!-- Information -->
+
+<div class="footer-column">
+
+<h3>Information</h3>
+
+<ul>
+
+<li><a href="/pages/about-us">About Us</a></li>
+
+<li><a href="/pages/contact-us-page">Contact Us</a></li>
+
+<li><a href="/pages/delivery-information">Delivery Info</a></li>
+
+<li><a href="/pages/faq">FAQ'S</a></li>
+
+<li><a href="/pages/privacy-policy">Privacy Policy</a></li>
+
+<li><a href="/pages/privacy">Terms of Use</a></li>
+
+</ul>
+
+</div>
+
+
+
+<!-- My Account -->
+
+<div class="footer-column">
+
+<h3>My Account</h3>
+
+<ul>
+
+<li><a href="/account">Account Information</a></li>
+
+<li><a href="/account/orders">My Orders</a></li>
+
+<li><a href="/pages/login">Newsletter Subscription</a></li>
+
+</ul>
+
+</div>
+
+
+
+<!-- Other Information -->
+
+<div class="footer-column">
+
+
+
+<div class="footer-social">
+
+<h3>Follow Us On</h3>
+
+
+<div class="social-icons">
+
+
+<a href="">
+<img src="{{ 'Facebook-Logo.png' | asset_url }}">
+</a>
+
+
+<a href="">
+<img src="{{ 'Instagram-Logo.png' | asset_url }}">
+</a>
+
+
+<a href="">
+<img src="{{ 'TIKTOK-social-1.png' | asset_url }}">
+</a>
+
+
+<a href="">
+<img src="{{ 'YouTube-Logo.png' | asset_url }}">
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="footer-bottom">
+
+
+<div class="copyright">
+
+    © {{ 'now' | date:'%Y' }}  | AGESSENTIALS
+
+  </div>
+
+
+
+<div class="payment-icons">
+
+{% if section.settings.show_payment_icons %}
+
+{% for type in shop.enabled_payment_types %}
+
+{{ type | payment_type_svg_tag }}
+
+{% endfor %}
+
+{% endif %}
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</footer>
+
+{% stylesheet %}
+
+.custom-footer{
+    background:#eafcff;
+    color:#000;
+       padding: 50px 100px 0px;
+    width: 99.4vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;
+}
+
+
+.custom-footer a{
+    color:#000;
+    text-decoration:none;
+    transition:.3s ease;
+}
+
+
+.custom-footer a:hover{
+    color:#1206b3;
+}
+
+
+
+/* Desktop Layout */
+
+.footer-grid{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:45px;
+
+}
+
+
+.footer-column h3{
+
+    font-size:20px;
+    font-weight:700;
+    margin:0 0 22px;
+    position:relative;
+    padding-bottom:12px;
+
+}
+
+
+.footer-column h3:after{
+
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:45px;
+    height:3px;
+    background:#ffd54a;
+
+}
+
+
+.footer-column ul{
+
+    list-style:none;
+    padding:0;
+    margin:0;
+
+}
+
+
+.footer-column ul li{
+
+    margin-bottom:12px;
+
+}
+
+
+.footer-column ul li a{
+
+    font-size:15px;
+    opacity:.9;
+
+}
+
+
+
+.footer-column ul li a:hover{
+
+    padding-left:8px;
+    opacity:1;
+
+}
+
+
+
+/* Social */
+
+.footer-social{
+
+    margin-top:30px;
+
+}
+
+
+.social-icons{
+
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+
+}
+
+
+.social-icons a{
+
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    padding:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+}
+
+
+.social-icons img{
+
+    width:100%;
+    height:100%;
+    object-fit:contain;
+
+}
+
+
+
+/* Bottom */
+
+.footer-bottom{
+
+     margin-top: 0px;
+     padding-top: 10px;
+     border-top:1px solid rgba(255,255,255,.25);
+     display:flex;
+     justify-content:center;
+     align-items:center;
+     text-align:center;
+
+}
+
+
+.payment-icons{
+
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+
+}
+
+
+.payment-icons svg{
+
+    width:45px;
+
+}
+
+
+
+/* Large Tablet */
+
+@media(max-width:1100px){
+
+.footer-grid{
+
+    grid-template-columns:repeat(2,1fr);
+    gap:40px;
+
+}
+
+}
+
+
+
+/* Tablet */
+
+@media (max-width:768px){
+
+.custom-footer{
+    padding:30px 20px;
+}
+
+.footer-grid{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+
+}
+
+.footer-column{
+
+    border:none;
+    padding:0;
+
+}
+
+.footer-column h3{
+
+    font-size:17px;
+    margin-bottom:15px;
+
+}
+
+.footer-column ul li{
+
+    margin-bottom:8px;
+
+}
+
+.footer-column ul li a{
+
+    font-size:14px;
+
+}
+
+.footer-social{
+
+    margin-top:0;
+
+}
+
+.social-icons{
+
+    gap:10px;
+
+}
+
+.social-icons a{
+
+    width:35px;
+    height:35px;
+
+}
+
+.footer-bottom{
+
+    margin-top:25px;
+    padding-top:20px;
+    display:flex;
+    justify-content:center;
+    text-align:center;
+
+}
+
+}
+
+
+
+/* Mobile */
+
+@media (max-width:480px){
+
+.footer-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.custom-footer{
+
+    padding:25px 15px;
+
+}
+
+}
+
+
+
+.social-icons a{
+
+    width:35px;
+    height:35px;
+    padding:7px;
+
+}
+
+
+
+.payment-icons svg{
+
+    width:35px;
+
+}
+
+
+
+.copyright{
+
+    font-size:13px;
+
+}
+
+
+}
+
+{% endstylesheet %}
+
+
+
+{% schema %}
+
+{
+"name":"Custom Footer",
+
+"settings":[
+
+{
+"type":"checkbox",
+"id":"show_payment_icons",
+"label":"Show Payment Icons",
+"default":true
+}
+
+]
+
+}
+
+{% endschema %}
