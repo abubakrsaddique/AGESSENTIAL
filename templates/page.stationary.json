@@ -1,0 +1,8 @@
+{
+  "sections": {
+    "main": {
+      "type": "stationary"
+    }
+  },
+  "order": ["main"]
+}

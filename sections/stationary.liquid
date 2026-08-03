@@ -1,4 +1,4 @@
-<section class="boys-products">
+<section class="stationary-products">
 
 <div class="page-width">
 
@@ -6,35 +6,28 @@
   &#8592;
 </a>
 
-<h1 class="boys-heading">
+<h1 class="stationary-heading">
 {{ page.title }}
 </h1>
 
-
 <div class="product-grid">
 
+{% assign names = "Notebook|School Pencil|Color Box|Geometry Box|Marker Set|Ball Pen Pack|Sketch Book|Glue Stick|Eraser Pack|School Diary" | split:"|" %}
 
-{% assign names = "Remote Car|Super Hero Toy|Building Blocks|Kids Watch|Football Set|Robot Toy|Action Figure|School Bag|Puzzle Game|Toy Helicopter" | split:"|" %}
-
-{% assign prices = "1500 PKR|2000 PKR|1200 PKR|800 PKR|1800 PKR|2500 PKR|1100 PKR|1400 PKR|700 PKR|3000 PKR" | split:"|" %}
-
-
+{% assign prices = "500 PKR|200 PKR|900 PKR|650 PKR|800 PKR|450 PKR|700 PKR|250 PKR|150 PKR|600 PKR" | split:"|" %}
 
 {% for i in (1..10) %}
 
 <div class="product-card">
 
-
 <div class="product-image">
 
-<img 
-src="{{ 'boys-' | append:i | append:'.jpg' | asset_url }}"
+<img
+src="{{ 'stationary-' | append:i | append:'.jpg' | asset_url }}"
 alt="{{ names[forloop.index0] }}"
 loading="lazy">
 
 </div>
-
-
 
 <div class="product-info">
 
@@ -42,24 +35,19 @@ loading="lazy">
 {{ names[forloop.index0] }}
 </h3>
 
-
 <div class="price">
 {{ prices[forloop.index0] }}
 </div>
-
 
 <a href="#" class="details-btn">
 More Details
 </a>
 
-
 </div>
-
 
 </div>
 
 {% endfor %}
-
 
 </div>
 
@@ -67,40 +55,31 @@ More Details
 
 </section>
 
-
-
 <style>
 
 *{
 box-sizing:border-box;
 }
 
+.stationary-products{
 
-.boys-products{
-
-width: 99.4vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;
+width:99.4vw;
+position:relative;
+left:50%;
+right:50%;
+margin-left:-50vw;
+margin-right:-50vw;
 padding:40px 0;
 background:#eef7ff;
 overflow:hidden;
 
 }
 
-
-
-.boys-products .page-width{
-
-max-width:1200px;
-margin:auto;
-padding:0 20px;
-
-}
-
 .back-btn{
-
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 15px 24px 15px;
+padding: 10px 15px 24px 15px;
     width: 60px;
     height: 30px;
     font-size: 50px;
@@ -108,7 +87,6 @@ padding:0 20px;
     color: #fff;
     text-decoration: none;
     border-radius: 50px;
-   
     font-weight: 900;
     transition: .3s;
     margin-bottom: 10px;
@@ -117,8 +95,15 @@ padding:0 20px;
 .back-btn:hover{
 background:#0b3c72;
 }
+.stationary-products .page-width{
 
-.boys-heading{
+max-width:1200px;
+margin:auto;
+padding:0 20px;
+
+}
+
+.stationary-heading{
 
 text-align:center;
 font-size:42px;
@@ -128,10 +113,6 @@ margin-bottom:40px;
 
 }
 
-
-
-/* Cards Grid */
-
 .product-grid{
 
 display:grid;
@@ -139,8 +120,6 @@ grid-template-columns:repeat(4,1fr);
 gap:25px;
 
 }
-
-
 
 .product-card{
 
@@ -153,15 +132,11 @@ transition:.3s;
 
 }
 
-
-
 .product-card:hover{
 
 transform:translateY(-5px);
 
 }
-
-
 
 .product-image{
 
@@ -173,8 +148,6 @@ padding:20px;
 
 }
 
-
-
 .product-image img{
 
 width:100%;
@@ -184,15 +157,11 @@ object-fit:contain;
 
 }
 
-
-
 .product-info{
 
 padding:20px;
 
 }
-
-
 
 .product-info h3{
 
@@ -201,8 +170,6 @@ margin:0 0 12px;
 color:#222;
 
 }
-
-
 
 .price{
 
@@ -213,13 +180,11 @@ margin-bottom:20px;
 
 }
 
-
-
 .details-btn{
 
 display:inline-block;
 background:#1256a0;
-color:white;
+color:#fff;
 padding:12px 30px;
 border-radius:8px;
 text-decoration:none;
@@ -227,17 +192,11 @@ font-weight:600;
 
 }
 
-
-
 .details-btn:hover{
 
 background:#0b3c72;
 
 }
-
-
-
-/* Laptop */
 
 @media(max-width:1200px){
 
@@ -249,18 +208,13 @@ grid-template-columns:repeat(3,1fr);
 
 }
 
-
-
-/* Tablet */
-
 @media(max-width:900px){
 
-.boys-heading{
+.stationary-heading{
 
 font-size:34px;
 
 }
-
 
 .product-grid{
 
@@ -268,7 +222,6 @@ grid-template-columns:repeat(2,1fr);
 gap:20px;
 
 }
-
 
 .product-image{
 
@@ -278,32 +231,25 @@ height:230px;
 
 }
 
-
-
-/* Mobile */
-
 @media(max-width:600px){
 
-.boys-products{
+.stationary-products{
 
 padding:25px 0;
 
 }
 
-
-.boys-products .page-width{
+.stationary-products .page-width{
 
 padding:0 15px;
 
 }
 
-
-.boys-heading{
+.stationary-heading{
 
 font-size:28px;
 
 }
-
 
 .product-grid{
 
@@ -312,13 +258,11 @@ gap:18px;
 
 }
 
-
 .product-image{
 
 height:240px;
 
 }
-
 
 .product-info h3{
 
@@ -326,13 +270,11 @@ font-size:18px;
 
 }
 
-
 .price{
 
 font-size:20px;
 
 }
-
 
 .details-btn{
 
@@ -344,15 +286,13 @@ padding:10px 25px;
 
 </style>
 
-
-
 {% schema %}
 {
-"name":"Boys Product",
+"name":"Stationary Product",
 "settings":[],
 "presets":[
 {
-"name":"Boys Product"
+"name":"Stationary Product"
 }
 ]
 }
