@@ -1,37 +1,145 @@
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
-  <head>
-    {% # Inlined CSS Variables %}
-    {% render 'css-variables' %}
-    {{ 'theme.css' | asset_url | stylesheet_tag }}
 
-    {% comment %}
-      Font preloading:
-      1. Preconnect to font CDN for faster connection
-      2. Preload only the critical font variant (base weight)
-      3. Additional variants load on-demand via @font-face
-    {% endcomment %}
-    {% unless settings.type_primary_font.system? %}
-      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+<head>
 
-      {% comment %} Preload the base font variant for initial page render {% endcomment %}
-      {{ settings.type_primary_font | font_url | preload_tag: as: 'font', crossorigin: 'anonymous' }}
-    {% endunless %}
+  {% render 'css-variables' %}
 
-    {% # Load and preload the critical CSS %}
-    {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
 
-    {% # Social, title, etc. %}
-    {% render 'meta-tags' %}
 
-    {{ content_for_header }}
-  </head>
 
-  <body>
-    {% sections 'header-group' %}
+  {% unless settings.type_primary_font.system? %}
+
+    <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+
+    {{ settings.type_primary_font | font_url | preload_tag: as: 'font', crossorigin: 'anonymous' }}
+
+  {% endunless %}
+
+
+
+  {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
+
+
+
+  <!-- TITLE -->
+
+  {% if template.name == 'index' %}
+
+    <title>
+      AGESSENTIAL
+    </title>
+
+  {% else %}
+
+    <title>
+      {{ page_title }} | AGESSENTIAL
+    </title>
+
+  {% endif %}
+
+
+
+  <!-- DESCRIPTION -->
+
+  {% if page_description %}
+
+    <meta name="description" content="{{ page_description | escape }}">
+
+  {% else %}
+
+    <meta name="description" content="AGESSENTIAL offers quality toys, stationery, kids products, educational items and gifts.">
+
+  {% endif %}
+
+
+
+  <meta name="keywords" content="AGESSENTIAL, toys, stationery, kids toys, baby products, school supplies, gifts">
+
+
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+
+  <!-- LOGO AS FAVICON -->
+
+  <link rel="icon" type="image/png" href="{{ 'mylogo.png' | asset_url }}">
+
+
+
+  <!-- CANONICAL -->
+
+  <link rel="canonical" href="{{ canonical_url }}">
+
+
+
+  <!-- SOCIAL META -->
+
+  <meta property="og:site_name" content="AGESSENTIAL">
+
+
+  {% if template.name == 'index' %}
+
+    <meta property="og:title" content="AGESSENTIAL">
+
+  {% else %}
+
+    <meta property="og:title" content="{{ page_title }} | AGESSENTIAL">
+
+  {% endif %}
+
+
+
+  <meta property="og:description" content="Shop quality toys, stationery, baby products and gifts at AGESSENTIAL.">
+
+
+
+  <meta property="og:image" content="{{ 'mylogo.png' | asset_url }}">
+
+
+
+  <meta property="og:type" content="website">
+
+
+  <meta property="og:url" content="{{ canonical_url }}">
+
+
+
+  <!-- SHOPIFY DEFAULT META -->
+
+  {% render 'meta-tags' %}
+
+
+
+  {{ content_for_header }}
+
+
+</head>
+
+
+
+<body>
+
+
+  {% sections 'header-group' %}
+
+
+
+  <main id="MainContent">
 
     {{ content_for_layout }}
 
-    {% sections 'footer-group' %}
-  </body>
+  </main>
+
+
+
+  {% sections 'footer-group' %}
+
+
+
+</body>
+
+
 </html>

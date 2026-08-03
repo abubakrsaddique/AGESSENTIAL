@@ -1,0 +1,334 @@
+<section class="boys-products">
+
+<div class="page-width">
+
+<h1 class="boys-heading">
+{{ page.title }}
+</h1>
+
+
+<div class="product-grid">
+
+
+{% assign names = "Remote Car|Super Hero Toy|Building Blocks|Kids Watch|Football Set|Robot Toy|Action Figure|School Bag|Puzzle Game|Toy Helicopter" | split:"|" %}
+
+{% assign prices = "1500 PKR|2000 PKR|1200 PKR|800 PKR|1800 PKR|2500 PKR|1100 PKR|1400 PKR|700 PKR|3000 PKR" | split:"|" %}
+
+
+
+{% for i in (1..10) %}
+
+<div class="product-card">
+
+
+<div class="product-image">
+
+<img 
+src="{{ 'boys-' | append:i | append:'.jpg' | asset_url }}"
+alt="{{ names[forloop.index0] }}"
+loading="lazy">
+
+</div>
+
+
+
+<div class="product-info">
+
+<h3>
+{{ names[forloop.index0] }}
+</h3>
+
+
+<div class="price">
+{{ prices[forloop.index0] }}
+</div>
+
+
+<a href="#" class="details-btn">
+More Details
+</a>
+
+
+</div>
+
+
+</div>
+
+{% endfor %}
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+
+.boys-products{
+
+width: 99.4vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;
+padding:40px 0;
+background:#eef7ff;
+overflow:hidden;
+
+}
+
+
+
+.boys-products .page-width{
+
+max-width:1200px;
+margin:auto;
+padding:0 20px;
+
+}
+
+
+
+.boys-heading{
+
+text-align:center;
+font-size:42px;
+font-weight:700;
+color:#1256a0;
+margin-bottom:40px;
+
+}
+
+
+
+/* Cards Grid */
+
+.product-grid{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+
+}
+
+
+
+.product-card{
+
+background:#fff;
+border-radius:16px;
+overflow:hidden;
+box-shadow:0 5px 18px rgba(0,0,0,.12);
+text-align:center;
+transition:.3s;
+
+}
+
+
+
+.product-card:hover{
+
+transform:translateY(-5px);
+
+}
+
+
+
+.product-image{
+
+height:260px;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+
+}
+
+
+
+.product-image img{
+
+width:100%;
+height:100%;
+max-width:220px;
+object-fit:contain;
+
+}
+
+
+
+.product-info{
+
+padding:20px;
+
+}
+
+
+
+.product-info h3{
+
+font-size:20px;
+margin:0 0 12px;
+color:#222;
+
+}
+
+
+
+.price{
+
+font-size:24px;
+font-weight:700;
+color:red;
+margin-bottom:20px;
+
+}
+
+
+
+.details-btn{
+
+display:inline-block;
+background:#1256a0;
+color:white;
+padding:12px 30px;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+
+}
+
+
+
+.details-btn:hover{
+
+background:#0b3c72;
+
+}
+
+
+
+/* Laptop */
+
+@media(max-width:1200px){
+
+.product-grid{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+}
+
+
+
+/* Tablet */
+
+@media(max-width:900px){
+
+.boys-heading{
+
+font-size:34px;
+
+}
+
+
+.product-grid{
+
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+
+}
+
+
+.product-image{
+
+height:230px;
+
+}
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+.boys-products{
+
+padding:25px 0;
+
+}
+
+
+.boys-products .page-width{
+
+padding:0 15px;
+
+}
+
+
+.boys-heading{
+
+font-size:28px;
+
+}
+
+
+.product-grid{
+
+grid-template-columns:1fr;
+gap:18px;
+
+}
+
+
+.product-image{
+
+height:240px;
+
+}
+
+
+.product-info h3{
+
+font-size:18px;
+
+}
+
+
+.price{
+
+font-size:20px;
+
+}
+
+
+.details-btn{
+
+padding:10px 25px;
+
+}
+
+}
+
+</style>
+
+
+
+{% schema %}
+{
+"name":"Boys Product",
+"settings":[],
+"presets":[
+{
+"name":"Boys Product"
+}
+]
+}
+{% endschema %}

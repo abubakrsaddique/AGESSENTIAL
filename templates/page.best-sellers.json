@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "best-sellers",
+      "settings": {
+        "heading": "Best Sellers"
+      }
+    }
+  },
+  "order": ["main"]
+}

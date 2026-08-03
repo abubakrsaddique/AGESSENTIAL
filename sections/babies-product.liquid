@@ -1,0 +1,353 @@
+<section class="babies-products">
+
+<div class="page-width">
+
+<h1 class="babies-heading">
+{{ page.title }}
+</h1>
+
+
+<div class="product-grid">
+
+
+{% assign names = "Baby Walker|Soft Teddy Bear|Baby Dress|Baby Shoes|Baby Blanket|Baby Feeding Set|Baby Toy Rattle|Baby Pillow|Baby Care Kit|Baby Musical Toy" | split:"|" %}
+
+{% assign prices = "3500 PKR|1200 PKR|1800 PKR|900 PKR|2500 PKR|700 PKR|600 PKR|1500 PKR|2000 PKR|1300 PKR" | split:"|" %}
+
+
+
+{% for i in (1..10) %}
+
+
+<div class="product-card">
+
+
+<div class="product-image">
+
+<img
+src="{{ 'babies-' | append:i | append:'.jpg' | asset_url }}"
+alt="{{ names[forloop.index0] }}"
+loading="lazy">
+
+</div>
+
+
+
+<div class="product-info">
+
+
+<h3>
+{{ names[forloop.index0] }}
+</h3>
+
+
+<div class="price">
+{{ prices[forloop.index0] }}
+</div>
+
+
+<a href="#" class="details-btn">
+More Details
+</a>
+
+
+</div>
+
+
+</div>
+
+
+{% endfor %}
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+
+.babies-products{
+
+width: 99.4vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;
+padding:40px 0;
+background:#fff8ef;
+overflow:hidden;
+
+}
+
+
+
+.babies-products .page-width{
+
+max-width:1200px;
+margin:auto;
+padding:0 20px;
+
+}
+
+
+
+.babies-heading{
+
+text-align:center;
+font-size:42px;
+font-weight:700;
+color:#e67e22;
+margin-bottom:40px;
+
+}
+
+
+
+
+.product-grid{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+
+}
+
+
+
+
+.product-card{
+
+background:#fff;
+border-radius:16px;
+overflow:hidden;
+box-shadow:0 5px 18px rgba(0,0,0,.12);
+text-align:center;
+transition:.3s ease;
+
+}
+
+
+
+.product-card:hover{
+
+transform:translateY(-5px);
+
+}
+
+
+
+
+.product-image{
+
+height:260px;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+
+}
+
+
+
+.product-image img{
+
+width:100%;
+height:100%;
+max-width:220px;
+object-fit:contain;
+
+}
+
+
+
+
+
+.product-info{
+
+padding:20px;
+
+}
+
+
+
+.product-info h3{
+
+font-size:20px;
+margin:0 0 12px;
+color:#222;
+
+}
+
+
+
+.price{
+
+font-size:24px;
+font-weight:700;
+color:red;
+margin-bottom:20px;
+
+}
+
+
+
+.details-btn{
+
+display:inline-block;
+background:#e67e22;
+color:white;
+padding:12px 30px;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+
+}
+
+
+
+.details-btn:hover{
+
+background:#c65d00;
+
+}
+
+
+
+
+
+/* Laptop */
+
+@media(max-width:1200px){
+
+.product-grid{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+}
+
+
+
+
+/* Tablet */
+
+@media(max-width:900px){
+
+.babies-heading{
+
+font-size:34px;
+
+}
+
+
+.product-grid{
+
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+
+}
+
+
+.product-image{
+
+height:230px;
+
+}
+
+}
+
+
+
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+.babies-products{
+
+padding:25px 0;
+
+}
+
+
+
+.babies-products .page-width{
+
+padding:0 15px;
+
+}
+
+
+
+.babies-heading{
+
+font-size:28px;
+
+}
+
+
+
+.product-grid{
+
+grid-template-columns:1fr;
+gap:18px;
+
+}
+
+
+
+.product-image{
+
+height:240px;
+
+}
+
+
+
+.product-info h3{
+
+font-size:18px;
+
+}
+
+
+
+.price{
+
+font-size:20px;
+
+}
+
+
+
+.details-btn{
+
+padding:10px 25px;
+
+}
+
+}
+
+
+</style>
+
+
+
+{% schema %}
+{
+"name":"Babies Product",
+"settings":[],
+"presets":[
+{
+"name":"Babies Product"
+}
+]
+}
+{% endschema %}
