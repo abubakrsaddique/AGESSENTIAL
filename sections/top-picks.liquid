@@ -8,45 +8,61 @@
 
     <div class="top-picks-grid">
 
-      <!-- Card 1 -->
-      <a href="{{ section.settings.link_1 }}" class="top-pick-card">
+      <!-- Doll Collection -->
+      <a href="/collections/dolls" class="top-pick-card">
+
         <div class="top-pick-image">
-          <img src="{{ 'pick-1.png' | asset_url }}" alt="Toy 1">
+          <img src="{{ 'pick-1.png' | asset_url }}" alt="Doll">
         </div>
+
         <div class="top-pick-title">
-       Doll
+          Doll
         </div>
+
       </a>
 
-      <!-- Card 2 -->
-      <a href="{{ section.settings.link_2 }}" class="top-pick-card">
+
+      <!-- Toy Cars Collection -->
+      <a href="/collections/vehicles" class="top-pick-card">
+
         <div class="top-pick-image">
-          <img src="{{ 'pick-2.jpg' | asset_url }}" alt="Toy 2">
+          <img src="{{ 'pick-2.jpg' | asset_url }}" alt="Toy Cars">
         </div>
+
         <div class="top-pick-title">
-          {{ section.settings.title_2 }}
+          Toy Cars
         </div>
+
       </a>
 
-      <!-- Card 3 -->
-      <a href="{{ section.settings.link_3 }}" class="top-pick-card">
+
+      <!-- Makeup Sets Collection -->
+      <a href="/collections/girls" class="top-pick-card">
+
         <div class="top-pick-image">
-          <img src="{{ 'pick-3.jpg' | asset_url }}" alt="Toy 3">
+          <img src="{{ 'pick-3.jpg' | asset_url }}" alt="Makeup Sets">
         </div>
+
         <div class="top-pick-title">
-          {{ section.settings.title_3 }}
+          Makeup Sets
         </div>
+
       </a>
 
-      <!-- Card 4 -->
-      <a href="{{ section.settings.link_4 }}" class="top-pick-card">
+
+      <!-- Outdoor Toys Collection -->
+      <a href="/collections/boys" class="top-pick-card">
+
         <div class="top-pick-image">
-          <img src="{{ 'pick-4.jpg' | asset_url }}" alt="Toy 4">
+          <img src="{{ 'pick-4.jpg' | asset_url }}" alt="Outdoor Toys">
         </div>
+
         <div class="top-pick-title">
-          {{ section.settings.title_4 }}
+          Outdoor Toys
         </div>
+
       </a>
+
 
     </div>
 
@@ -54,102 +70,163 @@
 
 </section>
 
+
 <style>
 
 .top-picks-section{
-  width: 99.4vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;
-    padding:20px 0;
+    width:99.4vw;
+    position:relative;
+    left:50%;
+    right:50%;
+    margin-left:-50vw;
+    margin-right:-50vw;
+    padding:40px 0;
     background:linear-gradient(180deg,#eafcff,#eafcff);
 }
+
 
 .top-picks-heading{
     text-align:center;
     font-size:48px;
     font-weight:700;
-   color:#13205c;
+    color:#13205c;
     margin-bottom:45px;
 }
 
+
 .top-picks-grid{
-      padding: 20px;
+    padding:20px;
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:30px;
 }
 
+
 .top-pick-card{
+
     text-decoration:none;
     border-radius:20px;
     overflow:hidden;
     background:#fff;
     box-shadow:0 10px 25px rgba(0,0,0,.08);
-    transition:.35s;
+    transition:.35s ease;
+    display:block;
+
 }
+
 
 .top-pick-card:hover{
+
     transform:translateY(-8px);
     box-shadow:0 18px 35px rgba(0,0,0,.15);
+
 }
+
 
 .top-pick-image{
-    background:#fff;
+
+    width:100%;
+    overflow:hidden;
 }
+
 
 .top-pick-image img{
+
     width:100%;
+    height:300px;
+    object-fit:cover;
     display:block;
+    transition:.4s;
+
 }
 
+
+.top-pick-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+
 .top-pick-title{
+
     background:#1773b0;
-    color:#fff;
+    color:white;
     text-align:center;
     padding:18px;
     font-size:22px;
     font-weight:600;
+
 }
+
+
+
+/* Tablet */
 
 @media(max-width:990px){
 
-.top-picks-heading{
-    font-size:38px;
+    .top-picks-heading{
+        font-size:38px;
+    }
+
+
+    .top-picks-grid{
+
+        grid-template-columns:repeat(2,1fr);
+        gap:20px;
+
+    }
+
+
 }
 
-.top-picks-grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
-}
 
-.top-pick-title{
-    font-size:20px;
-}
 
-}
+/* Mobile */
 
 @media(max-width:767px){
 
-.top-picks-section{
-    padding:50px 0;
-}
+    .top-picks-section{
 
-.top-picks-heading{
-    font-size:30px;
-    margin-bottom:30px;
-}
+        padding:30px 0;
 
-.top-picks-grid{
-    grid-template-columns:1fr;
-    gap:18px;
-}
+    }
 
-.top-pick-title{
-    font-size:18px;
-    padding:15px;
-}
+
+    .top-picks-heading{
+
+        font-size:30px;
+        margin-bottom:30px;
+
+    }
+
+
+    .top-picks-grid{
+
+        grid-template-columns:1fr;
+        gap:18px;
+
+    }
+
+
+    .top-pick-image img{
+
+        height:230px;
+
+    }
+
+
+    .top-pick-title{
+
+        font-size:18px;
+        padding:15px;
+
+    }
 
 }
 
 </style>
+
 
 {% schema %}
 {
@@ -161,58 +238,9 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Top Pick"
-    },
-
-    {
-      "type": "text",
-      "id": "title_1",
-      "label": "Card 1 Title",
-      "default": "Doll"
-    },
-    {
-      "type": "url",
-      "id": "link_1",
-      "label": "Card 1 Link"
-    },
-
-    {
-      "type": "text",
-      "id": "title_2",
-      "label": "Card 2 Title",
-      "default": "Toy Cars"
-    },
-    {
-      "type": "url",
-      "id": "link_2",
-      "label": "Card 2 Link"
-    },
-
-    {
-      "type": "text",
-      "id": "title_3",
-      "label": "Card 3 Title",
-      "default": "Makeup Sets"
-    },
-    {
-      "type": "url",
-      "id": "link_3",
-      "label": "Card 3 Link"
-    },
-
-    {
-      "type": "text",
-      "id": "title_4",
-      "label": "Card 4 Title",
-      "default": "Outdoor Toys"
-    },
-    {
-      "type": "url",
-      "id": "link_4",
-      "label": "Card 4 Link"
+      "default": "Top Picks"
     }
   ],
-
   "presets": [
     {
       "name": "Top Picks"

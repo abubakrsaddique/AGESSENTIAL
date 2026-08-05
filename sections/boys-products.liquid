@@ -2,92 +2,145 @@
 
 <div class="page-width">
 
+
 <a href="/" class="back-btn">
-  &#8592;
+&#8592;
 </a>
+
 
 <h1 class="boys-heading">
 {{ page.title }}
 </h1>
 
 
+
 <div class="product-grid">
 
 
-{% assign names = "Remote Car|Super Hero Toy|Building Blocks|Kids Watch|Football Set|Robot Toy|Action Figure|School Bag|Puzzle Game|Toy Helicopter" | split:"|" %}
-
-{% assign prices = "1500 PKR|2000 PKR|1200 PKR|800 PKR|1800 PKR|2500 PKR|1100 PKR|1400 PKR|700 PKR|3000 PKR" | split:"|" %}
+{% assign boys_collection = collections['boys'] %}
 
 
 
-{% for i in (1..10) %}
+{% for product in boys_collection.products %}
+
 
 <div class="product-card">
 
 
 <div class="product-image">
 
+
 <img 
-src="{{ 'boys-' | append:i | append:'.jpg' | asset_url }}"
-alt="{{ names[forloop.index0] }}"
+src="{{ product.featured_image | image_url: width:500 }}"
+alt="{{ product.title }}"
 loading="lazy">
 
+
 </div>
+
 
 
 
 <div class="product-info">
 
+
 <h3>
-{{ names[forloop.index0] }}
+{{ product.title }}
 </h3>
 
 
+
 <div class="price">
-{{ prices[forloop.index0] }}
+
+{{ product.price | money }}
+
 </div>
 
 
-<a href="#" class="details-btn">
+
+
+<a href="{{ product.url }}" class="details-btn">
 More Details
 </a>
 
 
+
+
+
+<form method="post" action="/cart/add">
+
+
+<input 
+type="hidden"
+name="id"
+value="{{ product.selected_or_first_available_variant.id }}">
+
+
+
+<button class="cart-btn">
+
+Add To Cart
+
+</button>
+
+
+</form>
+
+
+
 </div>
 
 
 </div>
+
+
 
 {% endfor %}
 
 
-</div>
 
 </div>
+
+
+</div>
+
 
 </section>
 
 
 
+
+
 <style>
+
 
 *{
 box-sizing:border-box;
 }
 
 
+
 .boys-products{
 
-width: 99.4vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;
+width:99.4vw;
+position:relative;
+left:50%;
+right:50%;
+margin-left:-50vw;
+margin-right:-50vw;
+
 padding:40px 0;
+
 background:#eef7ff;
+
 overflow:hidden;
 
 }
 
 
 
-.boys-products .page-width{
+
+.page-width{
 
 max-width:1200px;
 margin:auto;
@@ -95,63 +148,67 @@ padding:0 20px;
 
 }
 
-.back-btn{
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 15px 24px 15px;
-    width: 60px;
-    height: 30px;
-    font-size: 50px;
-    background: #1256a0;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 50px;
-   
-    font-weight: 900;
-    transition: .3s;
-    margin-bottom: 10px;
+
+.back-btn{
+    display: flex; align-items: center; justify-content: center; padding: 10px 15px 24px 15px; width: 60px; height: 30px; font-size: 50px; background: #1256a0; color: #fff; text-decoration: none; border-radius: 50px; font-weight: 900; transition: .3s; margin-bottom: 10px;
+
 }
+
+
 
 .back-btn:hover{
 background:#0b3c72;
 }
 
+
+
 .boys-heading{
 
 text-align:center;
+
 font-size:42px;
+
 font-weight:700;
+
 color:#1256a0;
+
 margin-bottom:40px;
 
 }
 
 
 
-/* Cards Grid */
 
 .product-grid{
 
 display:grid;
+
 grid-template-columns:repeat(4,1fr);
+
 gap:25px;
 
 }
 
 
 
+
 .product-card{
 
 background:#fff;
+
 border-radius:16px;
+
 overflow:hidden;
+
 box-shadow:0 5px 18px rgba(0,0,0,.12);
+
 text-align:center;
+
 transition:.3s;
 
 }
+
 
 
 
@@ -163,26 +220,37 @@ transform:translateY(-5px);
 
 
 
+
+
 .product-image{
 
 height:260px;
+
 display:flex;
+
 align-items:center;
+
 justify-content:center;
+
 padding:20px;
 
 }
 
 
 
+
+
 .product-image img{
 
 width:100%;
+
 height:100%;
-max-width:220px;
+
 object-fit:contain;
 
 }
+
+
 
 
 
@@ -194,36 +262,55 @@ padding:20px;
 
 
 
+
+
 .product-info h3{
 
 font-size:20px;
+
 margin:0 0 12px;
+
 color:#222;
 
 }
 
 
 
+
+
 .price{
 
 font-size:24px;
+
 font-weight:700;
+
 color:red;
+
 margin-bottom:20px;
 
 }
 
 
 
+
+
 .details-btn{
 
-display:inline-block;
+display:block;
+
 background:#1256a0;
+
 color:white;
-padding:12px 30px;
+
+padding:12px;
+
 border-radius:8px;
+
 text-decoration:none;
+
 font-weight:600;
+
+margin-bottom:12px;
 
 }
 
@@ -237,9 +324,47 @@ background:#0b3c72;
 
 
 
+
+
+.cart-btn{
+
+width:100%;
+
+background:#28a745;
+
+color:white;
+
+padding:12px;
+
+border:none;
+
+border-radius:8px;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+}
+
+
+
+.cart-btn:hover{
+
+background:#218838;
+
+}
+
+
+
+
+
 /* Laptop */
 
+
 @media(max-width:1200px){
+
 
 .product-grid{
 
@@ -247,13 +372,18 @@ grid-template-columns:repeat(3,1fr);
 
 }
 
+
 }
+
+
 
 
 
 /* Tablet */
 
+
 @media(max-width:900px){
+
 
 .boys-heading{
 
@@ -262,12 +392,15 @@ font-size:34px;
 }
 
 
+
 .product-grid{
 
 grid-template-columns:repeat(2,1fr);
+
 gap:20px;
 
 }
+
 
 
 .product-image{
@@ -276,13 +409,18 @@ height:230px;
 
 }
 
+
 }
+
+
 
 
 
 /* Mobile */
 
+
 @media(max-width:600px){
+
 
 .boys-products{
 
@@ -291,26 +429,45 @@ padding:25px 0;
 }
 
 
-.boys-products .page-width{
+
+.page-width{
 
 padding:0 15px;
 
 }
 
 
+
+.back-btn{
+
+width:50px;
+
+height:40px;
+
+font-size:32px;
+
+}
+
+
+
 .boys-heading{
 
 font-size:28px;
 
+margin-bottom:25px;
+
 }
+
 
 
 .product-grid{
 
 grid-template-columns:1fr;
+
 gap:18px;
 
 }
+
 
 
 .product-image{
@@ -320,11 +477,21 @@ height:240px;
 }
 
 
+
+.product-info{
+
+padding:18px;
+
+}
+
+
+
 .product-info h3{
 
 font-size:18px;
 
 }
+
 
 
 .price{
@@ -334,25 +501,23 @@ font-size:20px;
 }
 
 
-.details-btn{
-
-padding:10px 25px;
-
 }
 
-}
+
 
 </style>
 
 
 
+
+
 {% schema %}
 {
-"name":"Boys Product",
+"name":"Boys Products",
 "settings":[],
 "presets":[
 {
-"name":"Boys Product"
+"name":"Boys Products"
 }
 ]
 }

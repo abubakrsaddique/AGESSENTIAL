@@ -20,18 +20,11 @@
       "settings": {}
     },
 
-    "best_seller": {
-      "type": "best-seller",
-      "settings": {
-        "heading": "Best Sellers"
-      }
-    },
-
     "top_picks": {
       "type": "top-picks",
       "settings": {
         "heading": "Top Pick",
-        "title_1": "Dinos & Dragon",
+        "title_1": "Doll",
         "title_2": "Toy Cars",
         "title_3": "Makeup Sets",
         "title_4": "Outdoor Toys"
@@ -49,7 +42,7 @@
     "shop_by_age",
     "popular_categories",
     "why_parents_love",
-    "best_seller",
+
     "top_picks",
     "contact_us"
   ]

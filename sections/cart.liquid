@@ -1,37 +1,920 @@
 {% comment %}
-  This section is used in the cart template to render /cart page with an
-  overview of the items in customer's cart.
-
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/cart
+Modern AJAX Cart
 {% endcomment %}
 
-<h1>{{ 'cart.title' | t }}</h1>
 
-<form action="{{ routes.cart_url }}" method="post">
-  <table>
-    {% for item in cart.items %}
-      <tr>
-        <td>
-          {% render 'image', image: item.image, url: item.url %}
-        </td>
-        <td>
-          <p>{{ item.product.title }}</p>
-          {{ 'cart.remove' | t | link_to: item.url_to_remove }}
-        </td>
-        <td>
-          <input type="text" name="updates[]" value="{{ item.quantity }}">
-          <input type="submit" value="{{ 'cart.update' | t }}">
-        </td>
-      </tr>
-    {% endfor %}
-  </table>
+<section class="cart-section">
 
-  <input type="submit" name="checkout" value="{{ 'cart.checkout' | t }}">
-</form>
+
+<div class="page-width">
+
+
+<h1 class="cart-heading">
+Your Cart
+</h1>
+
+
+
+{% if cart.empty? %}
+
+
+<div class="empty-cart">
+
+<h2>
+Your cart is empty
+</h2>
+
+
+<a href="/" class="continue-btn">
+Continue Shopping
+</a>
+
+
+</div>
+
+
+
+{% else %}
+
+
+
+
+
+<div class="cart-layout">
+
+
+
+
+
+<div class="cart-items">
+
+
+
+{% for item in cart.items %}
+
+
+
+<div class="cart-card">
+
+
+
+
+
+<div class="cart-image">
+
+
+<img
+src="{{ item.image | image_url: width:300 }}"
+alt="{{ item.product.title }}">
+
+
+</div>
+
+
+
+
+
+
+<div class="cart-info">
+
+
+<h3>
+{{ item.product.title }}
+</h3>
+
+
+
+
+<div class="cart-price">
+
+{{ item.final_price | money }}
+
+</div>
+
+
+
+
+
+
+<div class="quantity-box">
+
+
+<button 
+type="button"
+class="qty-minus">
+
+−
+
+</button>
+
+
+
+
+
+<input
+
+class="cart-quantity"
+
+type="number"
+
+value="{{ item.quantity }}"
+
+min="1"
+
+data-key="{{ item.key }}"
+
+>
+
+
+
+
+
+<button 
+type="button"
+class="qty-plus">
+
++
+
+</button>
+
+
+
+
+</div>
+
+
+
+
+
+<a href="{{ item.url_to_remove }}" class="remove-btn">
+
+Remove
+
+</a>
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+{% endfor %}
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="cart-summary">
+
+
+<h2>
+Order Summary
+</h2>
+
+
+
+
+
+<div class="summary-row">
+
+
+<span>
+Subtotal
+</span>
+
+
+<strong id="cart-total">
+
+{{ cart.total_price | money }}
+
+</strong>
+
+
+</div>
+
+
+
+
+
+
+
+<a href="/checkout" class="checkout-btn">
+
+Checkout
+
+</a>
+
+
+
+
+
+<a href="/" class="shopping-btn">
+
+Continue Shopping
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+{% endif %}
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<style>
+
+.cart-section{
+
+width:100%;
+
+padding:50px 0;
+
+background:#f5f9ff;
+
+}
+
+
+.cart-section .page-width{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:0 20px;
+
+}
+
+
+
+.cart-section .cart-heading{
+
+text-align:center;
+
+font-size:42px;
+
+font-weight:700;
+
+color:#1256a0;
+
+margin:0 0 40px;
+
+}
+
+
+
+
+.cart-section .cart-layout{
+
+display:grid;
+
+grid-template-columns:minmax(0,2fr) minmax(300px,1fr);
+
+gap:30px;
+
+align-items:start;
+
+}
+
+
+
+
+
+.cart-section .cart-card{
+
+background:#fff;
+
+border-radius:18px;
+
+padding:20px;
+
+display:flex;
+
+align-items:center;
+
+gap:25px;
+
+margin-bottom:20px;
+
+box-shadow:0 5px 18px rgba(0,0,0,.10);
+
+}
+
+
+
+
+
+.cart-section .cart-image{
+
+width:160px;
+
+height:160px;
+
+flex-shrink:0;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+
+
+
+
+.cart-section .cart-image img{
+
+width:100%;
+
+height:100%;
+
+object-fit:contain;
+
+}
+
+
+
+
+.cart-section .cart-info{
+
+flex:1;
+
+}
+
+
+
+.cart-section .cart-info h3{
+
+font-size:22px;
+
+font-weight:600;
+
+margin:0 0 15px;
+
+color:#222;
+
+}
+
+
+
+
+
+.cart-section .cart-price{
+
+font-size:22px;
+
+font-weight:700;
+
+color:#e00000;
+
+margin-bottom:20px;
+
+}
+
+
+
+
+
+.cart-section .quantity-box{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+margin-bottom:18px;
+
+}
+
+
+
+
+
+.cart-section .quantity-box button{
+
+width:40px;
+
+height:40px;
+
+border:0;
+
+background:#1256a0;
+
+color:white;
+
+font-size:24px;
+
+font-weight:700;
+
+border-radius:8px;
+
+cursor:pointer;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+
+
+
+
+.cart-section .quantity-box button:hover{
+
+background:#0b3c72;
+
+}
+
+
+
+
+
+.cart-section .cart-quantity{
+
+width:65px;
+
+height:40px;
+
+text-align:center;
+
+border:1px solid #ddd;
+
+border-radius:8px;
+
+font-size:18px;
+
+}
+
+
+
+
+
+.cart-section .remove-btn{
+
+color:#e00000;
+
+font-weight:600;
+
+text-decoration:none;
+
+}
+
+
+
+
+.cart-section .cart-summary{
+
+background:#fff;
+
+padding:30px;
+
+border-radius:18px;
+
+box-shadow:0 5px 18px rgba(0,0,0,.10);
+
+}
+
+
+
+
+
+.cart-section .cart-summary h2{
+
+margin:0 0 25px;
+
+color:#1256a0;
+
+font-size:26px;
+
+}
+
+
+
+
+
+.cart-section .summary-row{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+font-size:20px;
+
+padding-bottom:25px;
+
+margin-bottom:25px;
+
+border-bottom:1px solid #eee;
+
+}
+
+
+
+
+
+.cart-section .checkout-btn{
+
+display:block;
+
+width:100%;
+
+text-align:center;
+
+background:#1256a0;
+
+color:white;
+
+padding:15px;
+
+border-radius:10px;
+
+font-size:18px;
+
+font-weight:700;
+
+text-decoration:none;
+
+}
+
+
+
+
+
+.cart-section .checkout-btn:hover{
+
+background:#0b3c72;
+
+}
+
+
+
+
+
+.cart-section .shopping-btn{
+
+display:block;
+
+text-align:center;
+
+margin-top:15px;
+
+padding:14px;
+
+background:#eee;
+
+border-radius:10px;
+
+text-decoration:none;
+
+color:#222;
+
+font-weight:600;
+
+}
+
+
+
+
+
+.cart-section .empty-cart{
+
+background:white;
+
+padding:50px;
+
+text-align:center;
+
+border-radius:20px;
+
+}
+
+
+
+
+.cart-section .continue-btn{
+
+display:inline-block;
+
+background:#1256a0;
+
+color:white;
+
+padding:14px 30px;
+
+border-radius:10px;
+
+text-decoration:none;
+
+margin-top:20px;
+
+}
+
+
+
+
+/* Tablet */
+
+@media(max-width:900px){
+
+
+.cart-section .cart-layout{
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.cart-section .cart-summary{
+
+order:-1;
+
+}
+
+
+}
+
+
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+
+.cart-section{
+
+padding:30px 0;
+
+}
+
+
+
+.cart-section .page-width{
+
+padding:0 15px;
+
+}
+
+
+
+
+.cart-section .cart-heading{
+
+font-size:30px;
+
+}
+
+
+
+
+
+.cart-section .cart-card{
+
+flex-direction:column;
+
+text-align:center;
+
+padding:20px;
+
+}
+
+
+
+
+.cart-section .cart-image{
+
+width:180px;
+
+height:180px;
+
+}
+
+
+
+
+.cart-section .cart-info h3{
+
+font-size:19px;
+
+}
+
+
+
+.cart-section .cart-summary{
+
+padding:20px;
+
+}
+
+
+
+.cart-section .summary-row{
+
+font-size:18px;
+
+}
+
+
+}
+
+</style>
+
+<script>
+
+document.addEventListener("click", function(e){
+
+
+if(e.target.closest(".qty-plus")){
+
+
+let button = e.target.closest(".qty-plus");
+
+let input = button.parentElement.querySelector(".cart-quantity");
+
+
+input.value = Number(input.value) + 1;
+
+
+updateCart(button);
+
+
+}
+
+
+
+
+
+if(e.target.closest(".qty-minus")){
+
+
+let button = e.target.closest(".qty-minus");
+
+let input = button.parentElement.querySelector(".cart-quantity");
+
+
+if(Number(input.value) > 1){
+
+
+input.value = Number(input.value) - 1;
+
+
+updateCart(button);
+
+
+}
+
+
+}
+
+
+});
+
+
+
+
+
+function updateCart(){
+
+
+let updates = {};
+
+
+
+document.querySelectorAll(".cart-quantity").forEach(function(input){
+
+
+updates[input.dataset.key] = Number(input.value);
+
+
+});
+
+
+
+
+
+fetch('/cart/update.js', {
+
+
+method: 'POST',
+
+
+headers:{
+
+
+'Content-Type':'application/json',
+
+
+'Accept':'application/json'
+
+
+},
+
+
+body: JSON.stringify({
+
+updates: updates
+
+})
+
+
+})
+
+
+.then(res => res.json())
+
+
+.then(cart => {
+
+
+
+let total = document.querySelector("#cart-total");
+
+
+
+if(total){
+
+
+let money = (cart.total_price / 100).toFixed(2);
+
+
+total.innerHTML = "Rs. " + money;
+
+
+}
+
+
+
+})
+
+
+.catch(error=>{
+
+
+console.log(error);
+
+
+});
+
+
+}
+
+
+
+</script>
 
 {% schema %}
 {
-  "name": "t:general.cart",
-  "settings": []
+"name":"Cart",
+"settings":[]
 }
 {% endschema %}

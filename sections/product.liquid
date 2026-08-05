@@ -1,49 +1,812 @@
-{% comment %}
-  This section is used in the product template to render product page with
-  media, content, and add-to-cart form.
+<section class="modern-product">
 
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/product
-{% endcomment %}
+<div class="product-container">
 
-<div class="product-images">
-  {% for image in product.images %}
-    {% render 'image', class: 'product-image', image: image %}
-  {% endfor %}
+
+<div class="product-gallery">
+
+
+{% for image in product.images %}
+
+<div class="product-image-card">
+
+<img 
+src="{{ image | image_url: width:800 }}"
+alt="{{ product.title }}"
+loading="lazy">
+
 </div>
 
-<div class="product-info">
-  <h1>{{ product.title }}</h1>
-  <p>{{ product.price | money }}</p>
-  <p>{{ product.description }}</p>
+{% endfor %}
+
+
 </div>
 
-<div class="product-form">
-  {% form 'product', product %}
-    {% assign current_variant = product.selected_or_first_available_variant %}
 
-    <select name="id">
-      {% for variant in product.variants %}
-        <option
-          value="{{ variant.id }}"
-          {% if variant == current_variant %}
-            selected="selected"
-          {% endif %}
-        >
-          {{ variant.title }} - {{ variant.price | money }}
-        </option>
-      {% endfor %}
-    </select>
 
-    <input type="text" name="quantity" min="1" value="1">
 
-    <input type="submit" value="Add to cart">
-    {{ form | payment_button }}
-  {% endform %}
+
+<div class="product-details">
+
+
+
+<h1 class="product-title">
+{{ product.title }}
+</h1>
+
+
+
+
+<div class="product-price">
+
+{{ product.price | money }}
+
 </div>
+
+
+
+
+
+{% if product.available %}
+
+<div class="stock-badge">
+✓ In Stock
+</div>
+
+{% else %}
+
+<div class="out-stock">
+Out of Stock
+</div>
+
+{% endif %}
+
+
+
+
+
+
+
+<div class="product-description">
+
+{{ product.description }}
+
+</div>
+
+
+
+
+
+
+
+
+{% form 'product', product %}
+
+
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+
+
+
+{% unless product.has_only_default_variant %}
+
+<div class="variant-box">
+
+<label>
+Select Option
+</label>
+
+
+<select name="id" class="variant-select">
+
+{% for variant in product.variants %}
+
+<option 
+value="{{ variant.id }}"
+{% if variant == current_variant %}
+selected
+{% endif %}
+>
+
+{{ variant.title }} - {{ variant.price | money }}
+
+</option>
+
+
+{% endfor %}
+
+</select>
+
+
+</div>
+
+
+{% else %}
+
+
+<input type="hidden" name="id" value="{{ current_variant.id }}">
+
+
+{% endunless %}
+
+
+
+
+
+
+
+
+<div class="quantity-area">
+
+
+<label>
+Quantity
+</label>
+
+
+<div class="quantity-box">
+
+
+<button 
+type="button"
+class="qty-minus">
+−
+</button>
+
+
+
+<input 
+type="number"
+name="quantity"
+value="1"
+min="1"
+class="qty-input">
+
+
+
+<button 
+type="button"
+class="qty-plus">
++
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<button 
+type="submit"
+class="add-cart-btn"
+{% unless product.available %}
+disabled
+{% endunless %}
+>
+
+Add To Cart
+
+</button>
+
+
+
+
+
+{{ form | payment_button }}
+
+
+
+{% endform %}
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+
+.modern-product{
+
+width:100%;
+background:#f5f9ff;
+padding:60px 0;
+
+}
+
+
+
+.product-container{
+
+max-width:1200px;
+margin:auto;
+padding:0 20px;
+
+display:grid;
+grid-template-columns:1.2fr 1fr;
+gap:45px;
+align-items:start;
+
+}
+
+
+
+
+
+/* IMAGE SECTION */
+
+
+.product-gallery{
+
+display:grid;
+grid-template-columns:1fr;
+gap:25px;
+
+}
+
+
+
+.product-image-card{
+
+width:100%;
+height:600px;
+
+background:#fff;
+
+border-radius:25px;
+
+padding:40px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+box-shadow:0 10px 35px rgba(0,0,0,.10);
+
+overflow:hidden;
+
+}
+
+
+
+.product-image-card img{
+
+width:100%;
+height:100%;
+
+max-width:550px;
+
+object-fit:contain;
+
+}
+
+
+
+
+
+
+
+/* PRODUCT DETAILS */
+
+
+.product-details{
+
+background:#fff;
+
+padding:40px;
+
+border-radius:25px;
+
+box-shadow:0 10px 35px rgba(0,0,0,.10);
+
+}
+
+
+
+
+
+.product-title{
+
+font-size:40px;
+
+line-height:1.2;
+
+font-weight:800;
+
+color:#13205c;
+
+margin:0 0 20px;
+
+}
+
+
+
+
+
+.product-price{
+
+font-size:32px;
+
+font-weight:800;
+
+color:#e63946;
+
+margin-bottom:20px;
+
+}
+
+
+
+
+
+.stock-badge{
+
+display:inline-block;
+
+background:#dcfce7;
+
+color:#15803d;
+
+padding:9px 20px;
+
+border-radius:30px;
+
+font-size:15px;
+
+font-weight:700;
+
+margin-bottom:25px;
+
+}
+
+
+
+
+.out-stock{
+
+display:inline-block;
+
+background:#fee2e2;
+
+color:#dc2626;
+
+padding:9px 20px;
+
+border-radius:30px;
+
+font-weight:700;
+
+margin-bottom:25px;
+
+}
+
+
+
+
+
+
+
+.product-description{
+
+font-size:17px;
+
+line-height:1.8;
+
+color:#555;
+
+margin-bottom:30px;
+
+}
+
+
+
+
+
+
+
+/* VARIANT */
+
+
+.variant-box label,
+.quantity-area label{
+
+display:block;
+
+font-size:16px;
+
+font-weight:700;
+
+color:#13205c;
+
+margin-bottom:10px;
+
+}
+
+
+
+.variant-select{
+
+width:100%;
+
+height:50px;
+
+padding:0 15px;
+
+border:1px solid #ddd;
+
+border-radius:12px;
+
+font-size:16px;
+
+background:white;
+
+margin-bottom:25px;
+
+}
+
+
+
+
+
+
+
+
+/* QUANTITY */
+
+
+.quantity-box{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+margin-bottom:30px;
+
+}
+
+
+
+.quantity-box button{
+
+width:48px;
+
+height:48px;
+
+border:none;
+
+border-radius:12px;
+
+background:#1256a0;
+
+color:white;
+
+font-size:28px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+
+
+.quantity-box button:hover{
+
+background:#0b3c72;
+
+}
+
+
+
+
+.qty-input{
+
+width:80px;
+
+height:48px;
+
+border:1px solid #ddd;
+
+border-radius:12px;
+
+text-align:center;
+
+font-size:20px;
+
+}
+
+
+
+
+
+
+
+/* ADD CART */
+
+
+.add-cart-btn{
+
+width:100%;
+
+height:58px;
+
+background:#1256a0;
+
+color:white;
+
+border:none;
+
+border-radius:14px;
+
+font-size:20px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.3s;
+
+margin-bottom:15px;
+
+}
+
+
+
+.add-cart-btn:hover{
+
+background:#0b3c72;
+
+}
+
+
+
+
+
+
+.shopify-payment-button button{
+
+width:100%!important;
+
+height:58px!important;
+
+border-radius:14px!important;
+
+font-size:18px!important;
+
+}
+
+
+
+
+
+
+
+
+/* TABLET */
+
+
+@media(max-width:900px){
+
+
+.product-container{
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.product-image-card{
+
+height:500px;
+
+}
+
+
+
+.product-title{
+
+font-size:34px;
+
+}
+
+
+}
+
+
+
+
+
+
+
+
+/* MOBILE */
+
+
+@media(max-width:600px){
+
+
+.modern-product{
+
+padding:30px 0;
+
+}
+
+
+
+.product-container{
+
+padding:0 15px;
+
+gap:25px;
+
+}
+
+
+
+.product-image-card{
+
+height:380px;
+
+padding:25px;
+
+border-radius:18px;
+
+}
+
+
+
+.product-image-card img{
+
+max-width:330px;
+
+}
+
+
+
+.product-details{
+
+padding:25px;
+
+border-radius:18px;
+
+}
+
+
+
+.product-title{
+
+font-size:28px;
+
+}
+
+
+
+.product-price{
+
+font-size:26px;
+
+}
+
+
+
+.product-description{
+
+font-size:15px;
+
+}
+
+
+
+.quantity-box button{
+
+width:42px;
+
+height:42px;
+
+}
+
+
+
+.qty-input{
+
+width:65px;
+
+height:42px;
+
+}
+
+
+
+.add-cart-btn{
+
+height:52px;
+
+font-size:17px;
+
+}
+
+
+}
+
+
+
+</style>
+
+<script>
+
+document.addEventListener("click", function(e){
+
+
+/* PLUS */
+
+if(e.target.classList.contains("qty-plus")){
+
+
+let input = e.target
+.closest(".quantity-box")
+.querySelector(".qty-input");
+
+
+input.value = Number(input.value) + 1;
+
+
+}
+
+
+
+/* MINUS */
+
+if(e.target.classList.contains("qty-minus")){
+
+
+let input = e.target
+.closest(".quantity-box")
+.querySelector(".qty-input");
+
+
+if(Number(input.value) > 1){
+
+input.value = Number(input.value) - 1;
+
+}
+
+
+}
+
+
+});
+
+</script>
+
+
+
+
 
 {% schema %}
 {
-  "name": "t:general.product",
+  "name": "Modern Product",
   "settings": [],
   "disabled_on": {
     "groups": ["header", "footer"]

@@ -1,75 +1,111 @@
 <section class="girls-products">
 
-  <div class="page-width">
+<div class="page-width">
 
-  <a href="/" class="back-btn">
-  &#8592;
+
+<a href="/" class="back-btn">
+&#8592;
 </a>
 
-    <h1 class="girls-heading">
-      {{ page.title }}
-    </h1>
 
-
-    <div class="product-grid">
-
-
-      {% assign names = "Barbie Doll|Princess Dress|Cute Doll|Girls Bag|Hair Accessories|Toy Kitchen Set|Baby Doll|Jewelry Set|Pink Teddy|Makeup Toy Set" | split:"|" %}
-
-      {% assign prices = "2500 PKR|1800 PKR|1200 PKR|900 PKR|500 PKR|3000 PKR|2000 PKR|700 PKR|1500 PKR|1000 PKR" | split:"|" %}
+<h1 class="girls-heading">
+{{ page.title }}
+</h1>
 
 
 
-      {% for i in (1..10) %}
+<div class="product-grid">
 
 
-        <div class="product-card">
-
-
-          <div class="product-image">
-
-            <img 
-            src="{{ 'girls-' | append:i | append:'.jpg' | asset_url }}"
-            alt="{{ names[forloop.index0] }}"
-            loading="lazy">
-
-          </div>
+{% assign girls_collection = collections['girls'] %}
 
 
 
-          <div class="product-info">
+{% for product in girls_collection.products %}
 
 
-            <h3>
-              {{ names[forloop.index0] }}
-            </h3>
+<div class="product-card">
 
 
-            <div class="price">
-              {{ prices[forloop.index0] }}
-            </div>
+<div class="product-image">
 
 
-            <a href="#" class="details-btn">
-              More Details
-            </a>
+<img 
+src="{{ product.featured_image | image_url: width:500 }}"
+alt="{{ product.title }}"
+loading="lazy">
 
 
-          </div>
+</div>
 
 
-        </div>
+
+<div class="product-info">
 
 
-      {% endfor %}
+<h3>
+{{ product.title }}
+</h3>
 
 
-    </div>
+
+<div class="price">
+
+{{ product.price | money }}
+
+</div>
 
 
-  </div>
+
+
+<a href="{{ product.url }}" class="details-btn">
+More Details
+</a>
+
+
+
+
+<form method="post" action="/cart/add">
+
+
+<input 
+type="hidden"
+name="id"
+value="{{ product.selected_or_first_available_variant.id }}">
+
+
+<button class="cart-btn">
+
+Add To Cart
+
+</button>
+
+
+</form>
+
+
+
+</div>
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+
+</div>
+
 
 </section>
+
+
 
 
 
@@ -82,68 +118,70 @@ box-sizing:border-box;
 
 
 
+
 .girls-products{
 
- width: 99.4vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;
+width:99.4vw;
+position:relative;
+left:50%;
+right:50%;
+margin-left:-50vw;
+margin-right:-50vw;
+
 padding:40px 0;
+
 background:#fff5fb;
+
 overflow:hidden;
 
 }
 
-.back-btn{
-padding: 10px 15px 24px 15px;
-    width: 60px;
-    height: 30px;
-    font-size: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   
-    
-    background: #1256a0;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 50px;
-    
-    font-weight: 900;
-    transition: .3s;
-    margin-bottom: 10px;
+
+
+
+
+.page-width{
+
+max-width:1200px;
+margin:auto;
+padding:0 20px;
+
 }
+
+.back-btn{
+    display: flex; align-items: center; justify-content: center; padding: 10px 15px 24px 15px; width: 60px; height: 30px; font-size: 50px; background: #1256a0; color: #fff; text-decoration: none; border-radius: 50px; font-weight: 900; transition: .3s; margin-bottom: 10px;
+
+}
+
+
 
 .back-btn:hover{
 background:#0b3c72;
 }
 
-.girls-products .page-width{
-
-max-width:1200px;
-margin:0 auto;
-padding:0 20px;
-
-}
-
-
-
 .girls-heading{
 
 text-align:center;
+
 font-size:42px;
+
 font-weight:700;
+
 color:#d63384;
-margin:0 0 40px;
+
+margin-bottom:40px;
 
 }
 
 
 
-
-/* GRID */
 
 .product-grid{
 
 display:grid;
+
 grid-template-columns:repeat(4,1fr);
+
 gap:25px;
 
 }
@@ -151,19 +189,25 @@ gap:25px;
 
 
 
-/* CARD */
-
 
 .product-card{
 
-background:#ffffff;
+
+background:white;
+
 border-radius:16px;
+
 overflow:hidden;
-box-shadow:0 5px 18px rgba(0,0,0,0.12);
-transition:.3s ease;
+
+box-shadow:0 5px 18px rgba(0,0,0,.12);
+
+transition:.3s;
+
 text-align:center;
 
 }
+
+
 
 
 
@@ -176,36 +220,40 @@ transform:translateY(-6px);
 
 
 
-/* IMAGE */
-
 
 .product-image{
 
-width:100%;
+
 height:260px;
-display:flex;
-align-items:center;
-justify-content:center;
+
 padding:20px;
-background:#fff;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
 
 }
 
 
 
+
+
 .product-image img{
 
+
 width:100%;
+
 height:100%;
-max-width:220px;
+
 object-fit:contain;
 
 }
 
 
 
-
-/* INFO */
 
 
 .product-info{
@@ -216,40 +264,62 @@ padding:20px;
 
 
 
+
+
 .product-info h3{
 
+
 font-size:20px;
-color:#222;
-margin:0 0 12px;
+
 font-weight:600;
 
+color:#222;
+
+margin-bottom:12px;
+
 }
+
 
 
 
 
 .price{
 
+
 font-size:24px;
+
 font-weight:700;
+
 color:red;
+
 margin-bottom:20px;
+
 
 }
 
 
 
 
+
 .details-btn{
 
-display:inline-block;
+
+display:block;
+
 background:#d63384;
+
 color:white;
-padding:12px 30px;
+
+padding:12px;
+
 border-radius:8px;
+
 text-decoration:none;
+
 font-weight:600;
-transition:.3s;
+
+margin-bottom:12px;
+
 
 }
 
@@ -265,7 +335,44 @@ background:#b4236b;
 
 
 
-/* LARGE LAPTOP */
+.cart-btn{
+
+
+width:100%;
+
+background:#28a745;
+
+color:white;
+
+border:none;
+
+padding:12px;
+
+border-radius:8px;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+}
+
+
+
+.cart-btn:hover{
+
+background:#218838;
+
+}
+
+
+
+
+
+
+
+/* Laptop */
 
 
 @media(max-width:1200px){
@@ -283,7 +390,9 @@ grid-template-columns:repeat(3,1fr);
 
 
 
-/* TABLET */
+
+
+/* Tablet */
 
 
 @media(max-width:900px){
@@ -300,6 +409,7 @@ font-size:34px;
 .product-grid{
 
 grid-template-columns:repeat(2,1fr);
+
 gap:20px;
 
 }
@@ -319,7 +429,10 @@ height:230px;
 
 
 
-/* MOBILE */
+
+
+
+/* Mobile */
 
 
 @media(max-width:600px){
@@ -333,9 +446,21 @@ padding:25px 0;
 
 
 
-.girls-products .page-width{
+.page-width{
 
 padding:0 15px;
+
+}
+
+
+
+.back-btn{
+
+width:50px;
+
+height:40px;
+
+font-size:32px;
 
 }
 
@@ -344,6 +469,7 @@ padding:0 15px;
 .girls-heading{
 
 font-size:28px;
+
 margin-bottom:25px;
 
 }
@@ -353,6 +479,7 @@ margin-bottom:25px;
 .product-grid{
 
 grid-template-columns:1fr;
+
 gap:18px;
 
 }
@@ -362,6 +489,14 @@ gap:18px;
 .product-image{
 
 height:240px;
+
+}
+
+
+
+.product-info{
+
+padding:18px;
 
 }
 
@@ -383,18 +518,13 @@ font-size:21px;
 
 
 
-.details-btn{
-
-padding:10px 25px;
-
 }
 
-
-}
 
 
 
 </style>
+
 
 
 

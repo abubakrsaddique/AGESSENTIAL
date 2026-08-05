@@ -23,22 +23,29 @@
 
 
 
-  <!-- TITLE -->
+ <!-- TITLE -->
 
-  {% if template.name == 'index' %}
+{% if template.name == 'index' %}
 
-    <title>
-      AGESSENTIAL
-    </title>
+  <title>
+    AGESSENTIAL
+  </title>
 
-  {% else %}
 
-    <title>
-      {{ page_title }} | AGESSENTIAL
-    </title>
+{% elsif template.name == 'cart' %}
 
-  {% endif %}
+  <title>
+    Cart | AGESSENTIAL
+  </title>
 
+
+{% else %}
+
+  <title>
+    {{ page_title }} | AGESSENTIAL
+  </title>
+
+{% endif %}
 
 
   <!-- DESCRIPTION -->

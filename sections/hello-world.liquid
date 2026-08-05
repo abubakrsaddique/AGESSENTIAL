@@ -1,19 +1,47 @@
 <div class="hero-slider">
 
+
   <div class="slide active">
-    <img 
-      src="{{ 'banner-2.png' | asset_url }}"
-      alt="Banner 2"
-    >
+
+    <picture>
+
+      <source 
+        media="(max-width:768px)"
+        srcset="{{ 'banner-mobile-2.png' | asset_url }}"
+      >
+
+      <img 
+        src="{{ 'banner-2.png' | asset_url }}"
+        alt="Banner 2"
+      >
+
+    </picture>
+
   </div>
+
+
 
 
   <div class="slide">
-    <img 
-      src="{{ 'banner-1.png' | asset_url }}"
-      alt="Banner 1"
-    >
+
+    <picture>
+
+      <source 
+        media="(max-width:768px)"
+        srcset="{{ 'banner-mobile-1.png' | asset_url }}"
+      >
+
+      <img 
+        src="{{ 'banner-1.png' | asset_url }}"
+        alt="Banner 1"
+      >
+
+    </picture>
+
   </div>
+
+
+
 
 
   <button class="slider-btn prev" onclick="changeSlide(-1)">
@@ -26,7 +54,10 @@
   </button>
 
 
+
 </div>
+
+
 
 
 
@@ -40,15 +71,13 @@ function changeSlide(direction){
   const slides = document.querySelectorAll(".slide");
 
 
-  // Current image hide
   slides[currentSlide].classList.remove("active");
 
 
-  // Next / Previous
   currentSlide = currentSlide + direction;
 
 
-  // Last ke baad first
+
   if(currentSlide >= slides.length){
 
     currentSlide = 0;
@@ -56,7 +85,7 @@ function changeSlide(direction){
   }
 
 
-  // First se pehle last
+
   if(currentSlide < 0){
 
     currentSlide = slides.length - 1;
@@ -64,7 +93,7 @@ function changeSlide(direction){
   }
 
 
-  // New image show
+
   slides[currentSlide].classList.add("active");
 
 }
@@ -75,26 +104,26 @@ function changeSlide(direction){
 
 
 
+
 {% stylesheet %}
 
 
 .hero-slider {
-width: 99.4vw; 
-left: 50%;
-right: 50%; 
-margin-left: -50vw; 
-margin-right: -50vw;
 
+width:99.4vw;
+left:50%;
+right:50%;
+margin-left:-50vw;
+margin-right:-50vw;
 
 overflow:hidden;
-
 position:relative;
 
 }
 
 
 
-.slide {
+.slide{
 
 display:none;
 
@@ -102,7 +131,7 @@ display:none;
 
 
 
-.slide.active {
+.slide.active{
 
 display:block;
 
@@ -110,23 +139,27 @@ display:block;
 
 
 
-.slide img {
+.slide picture{
 
+display:block;
 width:100%;
 
+}
+
+
+
+.slide img{
+
+width:100%;
 height:auto;
-
 display:block;
-
-object-fit:cover;
 
 }
 
 
 
 
-
-.slider-btn {
+.slider-btn{
 
 position:absolute;
 
@@ -154,7 +187,7 @@ cursor:pointer;
 
 
 
-.prev {
+.prev{
 
 left:20px;
 
@@ -162,7 +195,7 @@ left:20px;
 
 
 
-.next {
+.next{
 
 right:20px;
 
@@ -174,13 +207,23 @@ right:20px;
 
 @media(max-width:768px){
 
+
+.hero-slider{
+
+width:99.4vw;
+
+}
+
+
+
 .slide img{
 
 width:100%;
 height:auto;
-object-fit:contain;
 
 }
+
+
 
 .slider-btn{
 
@@ -190,17 +233,24 @@ font-size:20px;
 
 }
 
+
 }
+
+
+
+
 
 @media(max-width:480px){
 
-.slide img{
 
-width:100%;
-height:auto;
-object-fit:contain;
+.slider-btn{
+
+width:32px;
+height:32px;
+font-size:18px;
 
 }
+
 
 }
 
