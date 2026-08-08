@@ -1,0 +1,8 @@
+{
+  "sections": {
+    "main": {
+      "type": "delivery-information"
+    }
+  },
+  "order": ["main"]
+}

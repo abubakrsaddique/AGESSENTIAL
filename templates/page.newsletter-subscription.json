@@ -1,0 +1,4 @@
+{
+  "sections": { "main": { "type": "newsletter-subscription" } },
+  "order": ["main"]
+}

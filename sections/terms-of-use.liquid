@@ -1,0 +1,982 @@
+<style>
+  .terms-page {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 60px 20px 80px;
+    color: #222;
+    font-family: inherit;
+  }
+
+  .terms-page__header {
+    max-width: 760px;
+    margin: 0 auto 55px;
+    text-align: center;
+  }
+
+  .terms-page__eyebrow {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #777;
+  }
+
+  .terms-page__title {
+    margin: 0 0 16px;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -1px;
+  }
+
+  .terms-page__intro {
+    margin: 0;
+    color: #666;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .terms-page__updated {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    padding: 8px 13px;
+    border-radius: 50px;
+    background: #f5f5f5;
+    color: #666;
+    font-size: 13px;
+  }
+
+  .terms-page__section {
+    margin-bottom: 42px;
+  }
+
+  .terms-page__section:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .terms-page__section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 17px;
+    margin-bottom: 17px;
+  }
+
+  .terms-page__icon {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f5f5f5;
+    color: #222;
+  }
+
+  .terms-page__icon svg {
+    width: 21px;
+    height: 21px;
+    stroke: currentColor;
+  }
+
+  .terms-page__section h2 {
+    margin: 0;
+    padding-top: 7px;
+    font-size: 23px;
+    line-height: 1.3;
+    font-weight: 650;
+  }
+
+  .terms-page__content {
+    padding-left: 61px;
+  }
+
+  .terms-page__content p {
+    margin: 0 0 15px;
+    color: #5f5f5f;
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  .terms-page__content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .terms-page__content a {
+    color: #222;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .terms-page__list {
+    margin: 0 0 17px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .terms-page__list li {
+    position: relative;
+    margin-bottom: 12px;
+    padding-left: 25px;
+    color: #5f5f5f;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .terms-page__list li::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 10px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #222;
+  }
+
+  .terms-page__notice {
+    margin: 0 0 45px;
+    padding: 25px 28px;
+    border: 1px solid #e8e8e8;
+    border-radius: 14px;
+    background: #fafafa;
+  }
+
+  .terms-page__notice p {
+    margin: 0;
+    color: #555;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .terms-page__contact {
+    margin-top: 50px;
+    padding: 35px;
+    text-align: center;
+    border-radius: 16px;
+    background: #222;
+    color: #fff;
+  }
+
+  .terms-page__contact .terms-page__icon {
+    margin: 0 auto 17px;
+    background: rgba(255,255,255,.1);
+    color: #fff;
+  }
+
+  .terms-page__contact h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+  }
+
+  .terms-page__contact p {
+    margin: 0 0 9px;
+    color: rgba(255,255,255,.75);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .terms-page__contact a {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .terms-page__address {
+    margin-top: 14px !important;
+  }
+
+  .terms-page__phone {
+    margin-bottom: 0 !important;
+  }
+
+  @media screen and (max-width: 749px) {
+    .terms-page {
+      padding: 40px 16px 55px;
+    }
+
+    .terms-page__header {
+      margin-bottom: 38px;
+    }
+
+    .terms-page__section {
+      margin-bottom: 35px;
+    }
+
+    .terms-page__section-header {
+      gap: 13px;
+    }
+
+    .terms-page__icon {
+      flex: 0 0 38px;
+      width: 38px;
+      height: 38px;
+    }
+
+    .terms-page__icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .terms-page__section h2 {
+      padding-top: 4px;
+      font-size: 20px;
+    }
+
+    .terms-page__content {
+      padding-left: 51px;
+    }
+
+    .terms-page__content p,
+    .terms-page__list li {
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .terms-page__notice {
+      padding: 21px;
+      margin-bottom: 35px;
+    }
+
+    .terms-page__contact {
+      padding: 28px 20px;
+    }
+  }
+</style>
+
+
+<div class="terms-page">
+
+  <!-- Header -->
+  <header class="terms-page__header">
+
+    <span class="terms-page__eyebrow">
+      AGESSENTAILS
+    </span>
+
+    <h1 class="terms-page__title">
+      Terms of Service
+    </h1>
+
+    <p class="terms-page__intro">
+      Please read these Terms of Service carefully before using our website,
+      browsing our products, or placing an order.
+    </p>
+
+  </header>
+
+
+  <!-- Overview -->
+  <section class="terms-page__section">
+
+    <div class="terms-page__section-header">
+
+      <div class="terms-page__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M4 4h16v16H4z"></path>
+          <path d="M8 9h8M8 13h8M8 17h5"></path>
+        </svg>
+      </div>
+
+      <h2>Overview</h2>
+
+    </div>
+
+    <div class="terms-page__content">
+
+      <p>
+        Welcome to AGESSENTAILS.
+      </p>
+
+      <p>
+        The terms "we", "us", and "our" refer to AGESSENTAILS.
+        AGESSENTAILS operates this online store and website, including
+        all related information, content, features, tools, products,
+        and services provided to our customers.
+      </p>
+
+      <p>
+        Our online store is powered by Shopify, which provides the
+        technology that allows us to operate our online store and
+        provide our Services.
+      </p>
+
+      <p>
+        By accessing or using our website, browsing our products, or
+        placing an order, you agree to be bound by these Terms of Service
+        and the policies referenced in them, including our
+        <a href="/pages/privacy-policy">Privacy Policy</a>
+        and
+        <a href="/pages/return-refund-policy">
+          Return &amp; Refund Policy
+        </a>.
+      </p>
+
+      <p>
+        Please read these Terms carefully before using our website or
+        placing an order.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Section 1 -->
+  <section class="terms-page__section">
+
+    <div class="terms-page__section-header">
+
+      <div class="terms-page__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M4 5h16v14H4z"></path>
+          <path d="M8 9h8M8 13h6"></path>
+        </svg>
+      </div>
+
+      <h2>Section 1 - Use of Our Website</h2>
+
+    </div>
+
+    <div class="terms-page__content">
+
+      <p>
+        You agree to use our website only for lawful purposes.
+      </p>
+
+      <p>
+        You must not use our website to:
+      </p>
+
+      <ul class="terms-page__list">
+        <li>Violate any applicable law or regulation.</li>
+        <li>Provide false or misleading information.</li>
+        <li>Attempt to gain unauthorized access to our website or systems.</li>
+        <li>Interfere with the operation or security of our website.</li>
+        <li>Copy, reproduce, or misuse our content without permission.</li>
+        <li>Engage in fraudulent or abusive activity.</li>
+      </ul>
+
+      <p>
+        We reserve the right to restrict or terminate access to our website
+        if we believe these Terms have been violated.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Section 2 -->
+  <section class="terms-page__section">
+
+    <div class="terms-page__section-header">
+
+      <div class="terms-page__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+          <path d="M8 8h8M8 12h8M8 16h5"></path>
+        </svg>
+      </div>
+
+      <h2>Section 2 - Products</h2>
+
+    </div>
+
+    <div class="terms-page__content">
+
+      <p>
+        We make reasonable efforts to ensure that product descriptions,
+        images, prices, and other information displayed on our website
+        are accurate.
+      </p>
+
+      <p>
+        However, product colors and appearance may vary depending on your
+        device, screen settings, lighting, or other factors.
+      </p>
+
+      <p>
+        We reserve the right to:
+      </p>
+
+      <ul class="terms-page__list">
+        <li>Change product information.</li>
+        <li>Update prices.</li>
+        <li>Modify product availability.</li>
+        <li>Discontinue products.</li>
+        <li>Limit quantities available for purchase.</li>
+      </ul>
+
+      <p>
+        Product availability is not guaranteed until your order has been
+        confirmed by AGESSENTAILS.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Section 3 -->
+  <section class="terms-page__section">
+
+    <div class="terms-page__section-header">
+
+      <div class="terms-page__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M3 6h18v14H3z"></path>
+          <path d="M7 6V4h10v2"></path>
+          <path d="M7 11h10M7 15h6"></path>
+        </svg>
+      </div>
+
+      <h2>Section 3 - Orders</h2>
+
+    </div>
+
+    <div class="terms-page__content">
+
+      <p>
+        When you place an order through our website, you are submitting
+        a request to purchase the selected products.
+      </p>
+
+      <p>
+        AGESSENTAILS reserves the right to accept, decline, cancel, or
+        modify an order where reasonably necessary, including in cases
+        involving:
+      </p>
+
+      <ul class="terms-page__list">
+        <li>Incorrect or incomplete customer information.</li>
+        <li>Product availability issues.</li>
+        <li>Pricing or listing errors.</li>
+        <li>Suspicious or fraudulent activity.</li>
+        <li>Delivery limitations.</li>
+        <li>Other circumstances that prevent us from fulfilling the order.</li>
+      </ul>
+
+      <p>
+        Where possible, we will contact you using the phone number,
+        email address, or other contact information provided with your order.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Section 4 -->
+  <section class="terms-page__section">
+
+    <div class="terms-page__section-header">
+
+      <div class="terms-page__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M20 6L9 17l-5-5"></path>
+          <circle cx="12" cy="12" r="9"></circle>
+        </svg>
+      </div>
+
+      <h2>Section 4 - Order Confirmation</h2>
+
+    </div>
+
+    <div class="terms-page__content">
+
+      <p>
+        For certain orders, including Cash on Delivery orders, we may
+        contact you to confirm your order and delivery details.
+      </p>
+
+      <p>
+        An order may be cancelled if we are unable to confirm the order
+        or if the information provided is inaccurate or incomplete.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Section 5 -->
+  <section class="terms-page__section">
+
+    <div class="terms-page__section-header">
+
+      <div class="terms-page__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+          <path d="M3 10h18"></path>
+          <path d="M7 15h4"></path>
+        </svg>
+      </div>
+
+      <h2>Section 5 - Prices and Payments</h2>
+
+    </div>
+
+    <div class="terms-page__content">
+
+      <p>
+        Product prices displayed on our website are subject to change
+        without prior notice.
+      </p>
+
+      <p>
+        The price applicable to your order will generally be the price
+        displayed at the time the order is placed, subject to any
+        applicable pricing or listing errors.
+      </p>
+
+      <p>
+        You agree to provide accurate and complete billing, payment,
+        and contact information.
+      </p>
+
+      <p>
+        Available payment methods may include Cash on Delivery and
+        other payment methods offered on our website.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Section 6 -->
+  <section class="terms-page__section">
+
+    <div class="terms-page__section-header">
+
+      <div class="terms-page__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M3 6h11v11H3z"></path>
+          <path d="M14 9h4l3 3v5h-7z"></path>
+          <circle cx="7" cy="19" r="2"></circle>
+          <circle cx="18" cy="19" r="2"></circle>
+        </svg>
+      </div>
+
+      <h2>Section 6 - Shipping and Delivery</h2>
+
+    </div>
+
+    <div class="terms-page__content">
+
+      <p>
+        AGESSENTAILS offers delivery within Pakistan, subject to courier
+        availability and delivery coverage.
+      </p>
+
+      <p>
+        Delivery times are estimates and may vary depending on location,
+        courier services, weather, public holidays, and circumstances
+        beyond our control.
+      </p>
+
+      <p>
+        Customers are responsible for providing accurate delivery information.
+      </p>
+
+      <p>
+        For complete information about delivery, please refer to our
+        <a href="/pages/delivery-information">
+          Shipping Policy
+        </a>.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Section 7 -->
+  <section class="terms-page__section">
+
+    <div class="terms-page__section-header">
+
+      <div class="terms-page__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M4 4h16v16H4z"></path>
+          <path d="M8 9h8M8 13h8M8 17h5"></path>
+          <path d="M7 3v3M17 3v3"></path>
+        </svg>
+      </div>
+
+      <h2>Section 7 - Returns, Exchanges and Refunds</h2>
+
+    </div>
+
+    <div class="terms-page__content">
+
+      <p>
+        Our purchases are subject to our
+        <a href="/pages/return-refund-policy">
+          Return &amp; Refund Policy
+        </a>.
+      </p>
+
+      <p>
+        Customers may request a return within 7 days of receiving the
+        item, provided the item meets the return conditions.
+      </p>
+
+      <p>
+        Returned items must be:
+      </p>
+
+      <ul class="terms-page__list">
+        <li>Unused and unworn.</li>
+        <li>In their original condition.</li>
+        <li>Undamaged.</li>
+        <li>In their original packaging.</li>
+        <li>Returned with original tags and accessories where applicable.</li>
+      </ul>
+
+      <p>
+        Return shipping charges are generally the responsibility of
+        the customer.
+      </p>
+
+      <p>
+        For complete information regarding returns, exchanges, and
+        refunds, please refer to our
+        <a href="/pages/return-refund-policy">
+          Return &amp; Refund Policy
+        </a>.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Section 8 -->
+  <section class="terms-page__section">
+
+    <div class="terms-page__section-header">
+
+      <div class="terms-page__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"></path>
+          <path d="M9 12l2 2 4-4"></path>
+        </svg>
+      </div>
+
+      <h2>Section 8 - Intellectual Property</h2>
+
+    </div>
+
+    <div class="terms-page__content">
+
+      <p>
+        All content available on the AGESSENTAILS website, including
+        but not limited to:
+      </p>
+
+      <ul class="terms-page__list">
+        <li>Logos.</li>
+        <li>Brand names.</li>
+        <li>Product images.</li>
+        <li>Graphics.</li>
+        <li>Text.</li>
+        <li>Product descriptions.</li>
+        <li>Website design.</li>
+        <li>Videos.</li>
+        <li>Other materials.</li>
+      </ul>
+
+      <p>
+        is owned by or licensed to AGESSENTAILS and may be protected
+        by applicable intellectual property laws.
+      </p>
+
+      <p>
+        You may not reproduce, copy, modify, distribute, sell, or use
+        our content for commercial purposes without our prior written
+        permission.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Section 9 -->
+  <section class="terms-page__section">
+
+    <div class="terms-page__section-header">
+
+      <div class="terms-page__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M10 13a5 5 0 0 0 7.5.5l2-2a5 5 0 0 0-7-7l-1.2 1.2"></path>
+          <path d="M14 11a5 5 0 0 0-7.5-.5l-2 2a5 5 0 0 0 7 7l1.2-1.2"></path>
+        </svg>
+      </div>
+
+      <h2>Section 9 - Third-Party Services</h2>
+
+    </div>
+
+    <div class="terms-page__content">
+
+      <p>
+        Our website may use third-party services and tools, including
+        Shopify, payment providers, courier companies, analytics services,
+        and other service providers.
+      </p>
+
+      <p>
+        Third-party services may have their own terms and privacy policies.
+      </p>
+
+      <p>
+        AGESSENTAILS is not responsible for the independent policies or
+        practices of third-party services.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Section 10 -->
+  <section class="terms-page__section">
+
+    <div class="terms-page__section-header">
+
+      <div class="terms-page__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M12 3L2.5 20h19L12 3z"></path>
+          <path d="M12 9v5"></path>
+          <path d="M12 17h.01"></path>
+        </svg>
+      </div>
+
+      <h2>Section 10 - Accuracy of Information</h2>
+
+    </div>
+
+    <div class="terms-page__content">
+
+      <p>
+        Occasionally, information on our website may contain typographical
+        errors, inaccuracies, or omissions relating to product descriptions,
+        prices, availability, promotions, or shipping information.
+      </p>
+
+      <p>
+        We reserve the right to correct such errors and update information
+        at any time.
+      </p>
+
+      <p>
+        Where necessary, we may cancel an order affected by a significant
+        error and notify the customer.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Section 11 -->
+  <section class="terms-page__section">
+
+    <div class="terms-page__section-header">
+
+      <div class="terms-page__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M12 3L2.5 20h19L12 3z"></path>
+          <path d="M12 9v5"></path>
+          <path d="M12 17h.01"></path>
+        </svg>
+      </div>
+
+      <h2>Section 11 - Limitation of Liability</h2>
+
+    </div>
+
+    <div class="terms-page__content">
+
+      <p>
+        To the extent permitted by applicable law, AGESSENTAILS will not
+        be responsible for losses or damages arising from circumstances
+        beyond our reasonable control, including website interruptions,
+        courier delays, delivery issues, technical problems, or events
+        outside our control.
+      </p>
+
+      <p>
+        Nothing in these Terms is intended to exclude or limit any rights
+        or protections that cannot legally be excluded or limited under
+        applicable law.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Section 12 -->
+  <section class="terms-page__section">
+
+    <div class="terms-page__section-header">
+
+      <div class="terms-page__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"></path>
+          <path d="M9 12l2 2 4-4"></path>
+        </svg>
+      </div>
+
+      <h2>Section 12 - Privacy</h2>
+
+    </div>
+
+    <div class="terms-page__content">
+
+      <p>
+        Your use of our website and the information you provide to us
+        are subject to our
+        <a href="/pages/privacy-policy">
+          Privacy Policy
+        </a>.
+      </p>
+
+      <p>
+        Please review our Privacy Policy to understand how we collect,
+        use, and protect your information.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Section 13 -->
+  <section class="terms-page__section">
+
+    <div class="terms-page__section-header">
+
+      <div class="terms-page__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M20 11a8 8 0 0 0-14.8-4"></path>
+          <path d="M4 4v5h5"></path>
+          <path d="M4 13a8 8 0 0 0 14.8 4"></path>
+          <path d="M20 20v-5h-5"></path>
+        </svg>
+      </div>
+
+      <h2>Section 13 - Changes to These Terms</h2>
+
+    </div>
+
+    <div class="terms-page__content">
+
+      <p>
+        We may update or modify these Terms of Service from time to time.
+      </p>
+
+      <p>
+        The updated version will be posted on this page.
+      </p>
+
+      <p>
+        Your continued use of our website after changes are posted means
+        that you accept the updated Terms.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Section 14 -->
+  <section class="terms-page__section">
+
+    <div class="terms-page__section-header">
+
+      <div class="terms-page__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M12 3v18"></path>
+          <path d="M5 7h14"></path>
+          <path d="M7 7l-4 6h8L7 7z"></path>
+          <path d="M17 7l-4 6h8l-4-6z"></path>
+        </svg>
+      </div>
+
+      <h2>Section 14 - Governing Law</h2>
+
+    </div>
+
+    <div class="terms-page__content">
+
+      <p>
+        These Terms of Service shall be governed by and interpreted in
+        accordance with the applicable laws of Pakistan.
+      </p>
+
+      <p>
+        Any disputes arising in connection with these Terms or your use
+        of our Services shall be subject to the jurisdiction of the
+        appropriate courts in Pakistan, subject to applicable law.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Contact -->
+  <section class="terms-page__contact">
+
+    <div class="terms-page__icon">
+
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+        <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+        <path d="M3 7l9 6 9-6"></path>
+      </svg>
+
+    </div>
+
+    <h2>Section 15 - Contact Information</h2>
+
+    <p>
+      If you have any questions about these Terms of Service,
+      please contact us:
+    </p>
+
+    <p>
+      <strong>AGESSENTAILS</strong>
+    </p>
+
+    <p>
+      Email:
+      <a href="mailto:agessentials.pk@gmail.com">
+        agessentials.pk@gmail.com
+      </a>
+    </p>
+
+    <p class="terms-page__address">
+      Business Address: 65-A Brandreth Road, 54000, Pakistan
+    </p>
+
+    <p class="terms-page__phone">
+      Phone:
+      <a href="tel:+923255556102">
+        +92 325 5556102
+      </a>
+    </p>
+
+  </section>
+
+</div>

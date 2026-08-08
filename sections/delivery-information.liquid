@@ -1,0 +1,528 @@
+<style>
+  .shipping-policy {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px 80px;
+    color: #222;
+    font-family: inherit;
+  }
+
+  .shipping-policy__header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 55px;
+  }
+
+  .shipping-policy__eyebrow {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #777;
+  }
+
+  .shipping-policy__title {
+    margin: 0 0 16px;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -1px;
+  }
+
+  .shipping-policy__intro {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #666;
+  }
+
+  .shipping-policy__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 45px;
+  }
+
+  .shipping-policy__card {
+    padding: 28px;
+    border: 1px solid #e9e9e9;
+    border-radius: 14px;
+    background: #fff;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+
+  .shipping-policy__card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .06);
+  }
+
+  .shipping-policy__icon {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    color: #222;
+  }
+
+  .shipping-policy__icon svg {
+    width: 23px;
+    height: 23px;
+    stroke: currentColor;
+  }
+
+  .shipping-policy__card h2 {
+    margin: 0 0 12px;
+    font-size: 21px;
+    line-height: 1.3;
+    font-weight: 650;
+  }
+
+  .shipping-policy__card p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.75;
+    color: #666;
+  }
+
+  .shipping-policy__card p + p {
+    margin-top: 12px;
+  }
+
+  .shipping-policy__list {
+    margin: 15px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .shipping-policy__list li {
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 25px;
+    color: #666;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .shipping-policy__list li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 9px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #222;
+  }
+
+  .shipping-policy__highlight {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: start;
+    margin: 0 0 45px;
+    padding: 28px;
+    border-radius: 14px;
+    background: #f7f7f7;
+  }
+
+  .shipping-policy__highlight .shipping-policy__icon {
+    margin: 0;
+    background: #fff;
+  }
+
+  .shipping-policy__highlight h2 {
+    margin: 0 0 8px;
+    font-size: 21px;
+  }
+
+  .shipping-policy__highlight p {
+    margin: 0;
+    color: #666;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .shipping-policy__contact {
+    margin-top: 10px;
+    padding: 35px;
+    text-align: center;
+    border-radius: 16px;
+    background: #222;
+    color: #fff;
+  }
+
+  .shipping-policy__contact .shipping-policy__icon {
+    margin: 0 auto 16px;
+    background: rgba(255, 255, 255, .1);
+    color: #fff;
+  }
+
+  .shipping-policy__contact h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+  }
+
+  .shipping-policy__contact p {
+    margin: 0 0 18px;
+    color: rgba(255, 255, 255, .75);
+    line-height: 1.7;
+  }
+
+  .shipping-policy__email {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    word-break: break-word;
+  }
+
+  .shipping-policy__email:hover {
+    text-decoration: underline;
+  }
+
+  .shipping-policy__footer-note {
+    margin-top: 35px;
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    line-height: 1.6;
+  }
+
+  @media screen and (max-width: 749px) {
+    .shipping-policy {
+      padding: 40px 16px 55px;
+    }
+
+    .shipping-policy__header {
+      margin-bottom: 35px;
+    }
+
+    .shipping-policy__grid {
+      grid-template-columns: 1fr;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .shipping-policy__card {
+      padding: 23px;
+    }
+
+    .shipping-policy__highlight {
+      padding: 23px;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .shipping-policy__contact {
+      padding: 28px 20px;
+    }
+  }
+</style>
+
+<div class="shipping-policy">
+
+  <!-- Header -->
+  <header class="shipping-policy__header">
+    <span class="shipping-policy__eyebrow">AGESSENTAILS</span>
+
+    <h1 class="shipping-policy__title">
+      Shipping Policy
+    </h1>
+
+    <p class="shipping-policy__intro">
+      At AGESSENTAILS, we aim to process and deliver your orders as quickly
+      as possible. This policy explains how your order is processed,
+      shipped, and delivered within Pakistan.
+    </p>
+  </header>
+
+
+  <!-- Main Information Cards -->
+  <div class="shipping-policy__grid">
+
+    <!-- Order Processing -->
+    <section class="shipping-policy__card">
+      <div class="shipping-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <rect x="3" y="4" width="18" height="17" rx="2"></rect>
+          <path d="M8 2v4M16 2v4M3 10h18"></path>
+          <path d="M8 14h3M8 17h6"></path>
+        </svg>
+      </div>
+
+      <h2>Order Processing</h2>
+
+      <p>
+        Orders are generally processed after the order has been successfully
+        placed and confirmed.
+      </p>
+
+      <p>
+        Processing time may vary depending on product availability, order
+        volume, and other circumstances.
+      </p>
+
+      <p>
+        We may contact you by phone, WhatsApp, or email if additional
+        information is required to process your order.
+      </p>
+
+      <p>
+        Please make sure your name, phone number, and delivery address are
+        accurate and complete when placing your order.
+      </p>
+    </section>
+
+
+    <!-- Delivery -->
+    <section class="shipping-policy__card">
+      <div class="shipping-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M3 6h11v11H3z"></path>
+          <path d="M14 9h4l3 3v5h-7z"></path>
+          <circle cx="7" cy="19" r="2"></circle>
+          <circle cx="18" cy="19" r="2"></circle>
+        </svg>
+      </div>
+
+      <h2>Delivery Within Pakistan</h2>
+
+      <p>
+        We currently offer delivery within Pakistan.
+      </p>
+
+      <p>
+        Delivery times may vary depending on your location, courier
+        availability, weather conditions, public holidays, and other
+        circumstances beyond our control.
+      </p>
+
+      <p>
+        Estimated delivery times will be communicated through the available
+        order or shipping information. Delivery times are estimates and are
+        not guaranteed.
+      </p>
+    </section>
+
+
+    <!-- Shipping Charges -->
+    <section class="shipping-policy__card">
+      <div class="shipping-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+          <path d="M3 10h18"></path>
+          <path d="M7 15h4"></path>
+        </svg>
+      </div>
+
+      <h2>Shipping Charges</h2>
+
+      <p>
+        Shipping charges, if applicable, will be displayed during the checkout
+        process or communicated before the order is confirmed.
+      </p>
+
+      <p>
+        Shipping charges may vary depending on the delivery location, order
+        size, weight, or applicable courier charges.
+      </p>
+    </section>
+
+
+    <!-- Order Confirmation -->
+    <section class="shipping-policy__card">
+      <div class="shipping-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M20 6L9 17l-5-5"></path>
+          <circle cx="12" cy="12" r="9"></circle>
+        </svg>
+      </div>
+
+      <h2>Order Confirmation</h2>
+
+      <p>
+        After placing an order, AGESSENTAILS may contact you to confirm your
+        order and delivery details.
+      </p>
+
+      <p>
+        We reserve the right to cancel or decline an order if the provided
+        information is incomplete, inaccurate, or if the order cannot be
+        fulfilled.
+      </p>
+    </section>
+
+  </div>
+
+
+  <!-- COD Highlight -->
+  <section class="shipping-policy__highlight">
+
+    <div class="shipping-policy__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+        <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+        <path d="M7 9h10M7 13h6"></path>
+        <path d="M17 16h.01"></path>
+      </svg>
+    </div>
+
+    <div>
+      <h2>Cash on Delivery</h2>
+
+      <p>
+        Where Cash on Delivery (COD) is available, customers may pay the
+        applicable order amount to the courier at the time of delivery.
+        COD availability may depend on the customer's location and courier
+        service.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- Delivery Delays + Incorrect Information -->
+  <div class="shipping-policy__grid">
+
+    <!-- Delivery Delays -->
+    <section class="shipping-policy__card">
+      <div class="shipping-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M12 7v5l3 2"></path>
+        </svg>
+      </div>
+
+      <h2>Delivery Delays</h2>
+
+      <p>
+        AGESSENTAILS is not responsible for delivery delays caused by
+        circumstances outside our reasonable control, including:
+      </p>
+
+      <ul class="shipping-policy__list">
+        <li>Courier delays</li>
+        <li>Weather conditions</li>
+        <li>Public holidays</li>
+        <li>Natural disasters</li>
+        <li>Road closures</li>
+        <li>Incorrect or incomplete customer information</li>
+        <li>Security or other unforeseen circumstances</li>
+      </ul>
+
+      <p>
+        If your order is delayed, we will make reasonable efforts to assist
+        you and provide available tracking or delivery information.
+      </p>
+    </section>
+
+
+    <!-- Incorrect Information -->
+    <section class="shipping-policy__card">
+      <div class="shipping-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M12 3L2.5 20h19L12 3z"></path>
+          <path d="M12 9v5"></path>
+          <path d="M12 17h.01"></path>
+        </svg>
+      </div>
+
+      <h2>Incorrect Delivery Information</h2>
+
+      <p>
+        Customers are responsible for providing accurate delivery
+        information.
+      </p>
+
+      <p>
+        If an order cannot be delivered because of an incorrect, incomplete,
+        or inaccurate address or contact information provided by the
+        customer, additional delivery charges may apply if the order needs
+        to be re-shipped.
+      </p>
+    </section>
+
+
+    <!-- Receiving Order -->
+    <section class="shipping-policy__card">
+      <div class="shipping-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M3 7l9-4 9 4v10l-9 4-9-4V7z"></path>
+          <path d="M3 7l9 4 9-4M12 11v10"></path>
+        </svg>
+      </div>
+
+      <h2>Receiving Your Order</h2>
+
+      <p>
+        Please inspect your package when you receive it.
+      </p>
+
+      <p>
+        If the package appears damaged or you receive an incorrect or
+        defective item, please contact us as soon as possible.
+      </p>
+
+      <p>
+        Please provide your order number along with clear photos or videos
+        of the issue.
+      </p>
+
+      <p>
+        For information about returning an item, please refer to our
+        <a href="/pages/return-refund-policy">
+          Return &amp; Refund Policy
+        </a>.
+      </p>
+    </section>
+
+  </div>
+
+
+  <!-- Contact -->
+  <section class="shipping-policy__contact">
+
+    <div class="shipping-policy__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+        <path d="M4 4h16v12H8l-4 4V4z"></path>
+        <path d="M8 9h8M8 12h5"></path>
+      </svg>
+    </div>
+
+    <h2>Need Help With Your Delivery?</h2>
+
+    <p>
+      If you have any questions about shipping or delivery, our team is
+      here to help.
+    </p>
+
+    <a
+      class="shipping-policy__email"
+      href="mailto:agessentials.pk@gmail.com"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1.8">
+        <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+        <path d="M3 7l9 6 9-6"></path>
+      </svg>
+
+      agessentials.pk@gmail.com
+    </a>
+
+  </section>
+
+
+  <p class="shipping-policy__footer-note">
+    Thank you for shopping with AGESSENTAILS.
+  </p>
+
+</div>
+

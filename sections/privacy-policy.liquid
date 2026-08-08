@@ -1,0 +1,1080 @@
+<style>
+  .privacy-policy {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 60px 20px 80px;
+    color: #222;
+    font-family: inherit;
+  }
+
+  .privacy-policy__header {
+    max-width: 760px;
+    margin: 0 auto 55px;
+    text-align: center;
+  }
+
+  .privacy-policy__eyebrow {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #777;
+  }
+
+  .privacy-policy__title {
+    margin: 0 0 16px;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -1px;
+  }
+
+  .privacy-policy__intro {
+    margin: 0;
+    color: #666;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .privacy-policy__updated {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    padding: 8px 13px;
+    border-radius: 50px;
+    background: #f5f5f5;
+    color: #666;
+    font-size: 13px;
+  }
+
+  .privacy-policy__section {
+    margin-bottom: 42px;
+  }
+
+  .privacy-policy__section:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .privacy-policy__section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 17px;
+    margin-bottom: 17px;
+  }
+
+  .privacy-policy__icon {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f5f5f5;
+    color: #222;
+  }
+
+  .privacy-policy__icon svg {
+    width: 21px;
+    height: 21px;
+    stroke: currentColor;
+  }
+
+  .privacy-policy__section h2 {
+    margin: 0;
+    padding-top: 7px;
+    font-size: 23px;
+    line-height: 1.3;
+    font-weight: 650;
+  }
+
+  .privacy-policy__content {
+    padding-left: 61px;
+  }
+
+  .privacy-policy__content p {
+    margin: 0 0 15px;
+    color: #5f5f5f;
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  .privacy-policy__content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .privacy-policy__content a {
+    color: #222;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .privacy-policy__list {
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .privacy-policy__list li {
+    position: relative;
+    margin-bottom: 13px;
+    padding-left: 25px;
+    color: #5f5f5f;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .privacy-policy__list li::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 10px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #222;
+  }
+
+  .privacy-policy__notice {
+    margin: 0 0 45px;
+    padding: 25px 28px;
+    border: 1px solid #e8e8e8;
+    border-radius: 14px;
+    background: #fafafa;
+  }
+
+  .privacy-policy__notice p {
+    margin: 0;
+    color: #555;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .privacy-policy__contact {
+    margin-top: 50px;
+    padding: 35px;
+    text-align: center;
+    border-radius: 16px;
+    background: #222;
+    color: #fff;
+  }
+
+  .privacy-policy__contact .privacy-policy__icon {
+    margin: 0 auto 17px;
+    background: rgba(255,255,255,.1);
+    color: #fff;
+  }
+
+  .privacy-policy__contact h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+  }
+
+  .privacy-policy__contact p {
+    max-width: 650px;
+    margin: 0 auto 18px;
+    color: rgba(255,255,255,.75);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .privacy-policy__contact a {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .privacy-policy__address {
+    margin-top: 10px !important;
+    margin-bottom: 0 !important;
+  }
+
+  @media screen and (max-width: 749px) {
+    .privacy-policy {
+      padding: 40px 16px 55px;
+    }
+
+    .privacy-policy__header {
+      margin-bottom: 38px;
+    }
+
+    .privacy-policy__section {
+      margin-bottom: 35px;
+    }
+
+    .privacy-policy__section-header {
+      gap: 13px;
+    }
+
+    .privacy-policy__icon {
+      flex: 0 0 38px;
+      width: 38px;
+      height: 38px;
+    }
+
+    .privacy-policy__icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .privacy-policy__section h2 {
+      padding-top: 4px;
+      font-size: 20px;
+    }
+
+    .privacy-policy__content {
+      padding-left: 51px;
+    }
+
+    .privacy-policy__content p,
+    .privacy-policy__list li {
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .privacy-policy__notice {
+      padding: 21px;
+      margin-bottom: 35px;
+    }
+
+    .privacy-policy__contact {
+      padding: 28px 20px;
+    }
+  }
+</style>
+
+
+<div class="privacy-policy">
+
+  <!-- Header -->
+  <header class="privacy-policy__header">
+
+    <span class="privacy-policy__eyebrow">
+      AGESSENTAILS
+    </span>
+
+    <h1 class="privacy-policy__title">
+      Privacy Policy
+    </h1>
+
+    <p class="privacy-policy__intro">
+      Your privacy matters to us. This Privacy Policy explains how
+      AGESSENTAILS collects, uses, protects, and discloses your
+      personal information when you use our website and services.
+    </p>
+
+  </header>
+
+
+  <!-- Introduction -->
+  <section class="privacy-policy__section">
+
+    <div class="privacy-policy__section-header">
+
+      <div class="privacy-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M4 4h16v16H4z"></path>
+          <path d="M8 9h8M8 13h8M8 17h5"></path>
+        </svg>
+      </div>
+
+      <h2>About This Privacy Policy</h2>
+
+    </div>
+
+    <div class="privacy-policy__content">
+
+      <p>
+        AGESSENTAILS operates this store and website, including all
+        related information, content, features, tools, products and
+        services, in order to provide you, the customer, with a curated
+        shopping experience (the "Services").
+      </p>
+
+      <p>
+        AGESSENTAILS is powered by Shopify, which enables us to provide
+        the Services to you.
+      </p>
+
+      <p>
+        This Privacy Policy describes how we collect, use, and disclose
+        your personal information when you visit, use, or make a purchase
+        or other transaction using the Services or otherwise communicate
+        with us.
+      </p>
+
+      <p>
+        If there is a conflict between our Terms of Service and this
+        Privacy Policy, this Privacy Policy controls with respect to the
+        collection, processing, and disclosure of your personal information.
+      </p>
+
+      <p>
+        Please read this Privacy Policy carefully. By using and accessing
+        any of the Services, you acknowledge that you have read this
+        Privacy Policy and understand the collection, use, and disclosure
+        of your information as described in this Privacy Policy.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Personal Information -->
+  <section class="privacy-policy__section">
+
+    <div class="privacy-policy__section-header">
+
+      <div class="privacy-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <circle cx="12" cy="8" r="3"></circle>
+          <path d="M5 21c0-4 3-6 7-6s7 2 7 6"></path>
+        </svg>
+      </div>
+
+      <h2>Personal Information We Collect or Process</h2>
+
+    </div>
+
+    <div class="privacy-policy__content">
+
+      <p>
+        When we use the term "personal information," we are referring to
+        information that identifies or can reasonably be linked to you
+        or another person.
+      </p>
+
+      <p>
+        Personal information does not include information that is
+        collected anonymously or that has been de-identified, so that it
+        cannot identify or be reasonably linked to you.
+      </p>
+
+      <p>
+        We may collect or process the following categories of personal
+        information, including inferences drawn from this personal
+        information, depending on how you interact with the Services,
+        where you live, and as permitted or required by applicable law:
+      </p>
+
+      <ul class="privacy-policy__list">
+
+        <li>
+          <strong>Contact details:</strong>
+          including your name, address, billing address, shipping address,
+          phone number, and email address.
+        </li>
+
+        <li>
+          <strong>Financial information:</strong>
+          including credit card, debit card, and financial account numbers,
+          payment card information, financial account information,
+          transaction details, form of payment, payment confirmation and
+          other payment details.
+        </li>
+
+        <li>
+          <strong>Account information:</strong>
+          including your username, password, security questions,
+          preferences and settings.
+        </li>
+
+        <li>
+          <strong>Transaction information:</strong>
+          including the items you view, put in your cart, add to your
+          wishlist, or purchase, return, exchange or cancel and your past
+          transactions.
+        </li>
+
+        <li>
+          <strong>Communications with us:</strong>
+          including the information you include in communications with us,
+          for example, when sending a customer support inquiry.
+        </li>
+
+        <li>
+          <strong>Device information:</strong>
+          including information about your device, browser, or network
+          connection, your IP address, and other unique identifiers.
+        </li>
+
+        <li>
+          <strong>Usage information:</strong>
+          including information regarding your interaction with the
+          Services, including how and when you interact with or navigate
+          the Services.
+        </li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+
+  <!-- Sources -->
+  <section class="privacy-policy__section">
+
+    <div class="privacy-policy__section-header">
+
+      <div class="privacy-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M12 3v18"></path>
+          <path d="M3 8h18"></path>
+          <path d="M5 8l-3 6h6L5 8z"></path>
+          <path d="M19 8l-3 6h6l-3-6z"></path>
+        </svg>
+      </div>
+
+      <h2>Personal Information Sources</h2>
+
+    </div>
+
+    <div class="privacy-policy__content">
+
+      <p>
+        We may collect personal information from the following sources:
+      </p>
+
+      <ul class="privacy-policy__list">
+
+        <li>
+          <strong>Directly from you</strong> including when you create an
+          account, visit or use the Services, communicate with us, or
+          otherwise provide us with your personal information.
+        </li>
+
+        <li>
+          <strong>Automatically through the Services</strong> including
+          from your device when you use our products or services or visit
+          our websites, and through the use of cookies and similar
+          technologies.
+        </li>
+
+        <li>
+          <strong>From our service providers</strong> including when we
+          engage them to enable certain technology and when they collect
+          or process your personal information on our behalf.
+        </li>
+
+        <li>
+          <strong>From our partners or other third parties.</strong>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+
+  <!-- How We Use -->
+  <section class="privacy-policy__section">
+
+    <div class="privacy-policy__section-header">
+
+      <div class="privacy-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"></path>
+          <path d="M9 12l2 2 4-4"></path>
+        </svg>
+      </div>
+
+      <h2>How We Use Your Personal Information</h2>
+
+    </div>
+
+    <div class="privacy-policy__content">
+
+      <p>
+        Depending on how you interact with us or which of the Services
+        you use, we may use personal information for the following purposes:
+      </p>
+
+      <ul class="privacy-policy__list">
+
+        <li>
+          <strong>Provide, Tailor, and Improve the Services.</strong>
+          We use your personal information to provide you with the Services,
+          including to perform our contract with you, to process your payments,
+          to fulfill your orders, to remember your preferences and items you
+          are interested in, to send notifications to you related to your
+          account, to process purchases, returns, exchanges or other
+          transactions, to create, maintain and otherwise manage your account,
+          to arrange for shipping, to facilitate any returns and exchanges,
+          to enable you to post reviews, and to create a customized shopping
+          experience for you, such as recommending products related to your
+          purchases.
+        </li>
+
+        <li>
+          <strong>Marketing and Advertising.</strong>
+          We use your personal information for marketing and promotional
+          purposes, such as to send marketing, advertising and promotional
+          communications by email, text message or postal mail, and to show
+          you online advertisements for products or services on the Services
+          or other websites.
+        </li>
+
+        <li>
+          <strong>Security and Fraud Prevention.</strong>
+          We use your personal information to authenticate your account,
+          provide a secure payment and shopping experience, detect,
+          investigate or take action regarding possible fraudulent, illegal,
+          unsafe, or malicious activity, protect public safety, and secure
+          our services.
+        </li>
+
+        <li>
+          <strong>Communicating with You.</strong>
+          We use your personal information to provide customer support,
+          be responsive to you, provide effective services, and maintain
+          our business relationship with you.
+        </li>
+
+        <li>
+          <strong>Legal Reasons.</strong>
+          We use your personal information to comply with applicable law
+          or respond to valid legal process, including requests from law
+          enforcement or government agencies, and to enforce or investigate
+          potential violations of our terms or policies.
+        </li>
+
+      </ul>
+
+      <p>
+        If you choose to use the Services and register an account, you are
+        responsible for keeping your account credentials safe. We highly
+        recommend that you do not share your username, password or other
+        access details with anyone else.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Disclosure -->
+  <section class="privacy-policy__section">
+
+    <div class="privacy-policy__section-header">
+
+      <div class="privacy-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M12 3v18"></path>
+          <path d="M5 7h14"></path>
+          <path d="M7 7l-4 6h8L7 7z"></path>
+          <path d="M17 7l-4 6h8l-4-6z"></path>
+        </svg>
+      </div>
+
+      <h2>How We Disclose Personal Information</h2>
+
+    </div>
+
+    <div class="privacy-policy__content">
+
+      <p>
+        In certain circumstances, we may disclose your personal information
+        to third parties for legitimate purposes subject to this Privacy Policy.
+        Such circumstances may include:
+      </p>
+
+      <ul class="privacy-policy__list">
+
+        <li>
+          With Shopify, vendors and other third parties who perform services
+          on our behalf, including IT management, payment processing, data
+          analytics, customer support, cloud storage, fulfillment and shipping.
+        </li>
+
+        <li>
+          With business and marketing partners to provide marketing services
+          and advertise to you. Our business and marketing partners will use
+          your information in accordance with their own privacy notices.
+        </li>
+
+        <li>
+          When you direct, request us or otherwise consent to our disclosure
+          of certain information to third parties, such as to ship you products
+          or through your use of social media widgets or login integrations.
+        </li>
+
+        <li>
+          With our affiliates or otherwise within our corporate group.
+        </li>
+
+        <li>
+          In connection with a business transaction such as a merger or
+          bankruptcy, to comply with applicable legal obligations, to enforce
+          applicable terms of service or policies, and to protect or defend
+          the Services, our rights, and the rights of our users or others.
+        </li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+
+  <!-- Shopify -->
+  <section class="privacy-policy__section">
+
+    <div class="privacy-policy__section-header">
+
+      <div class="privacy-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M7 3h10v18H7z"></path>
+          <path d="M9 7h6M9 11h6M9 15h6"></path>
+        </svg>
+      </div>
+
+      <h2>Relationship with Shopify</h2>
+
+    </div>
+
+    <div class="privacy-policy__content">
+
+      <p>
+        The Services are hosted by Shopify, which collects and processes
+        personal information about your access to and use of the Services
+        in order to provide and improve the Services for you.
+      </p>
+
+      <p>
+        Information you submit to the Services will be transmitted to and
+        shared with Shopify as well as third parties that may be located in
+        countries other than where you reside, in order to provide and
+        improve the Services for you.
+      </p>
+
+      <p>
+        In addition, to help protect, grow, and improve our business, we use
+        certain Shopify enhanced features that incorporate data and
+        information obtained from your interactions with our Store, along
+        with other merchants and with Shopify.
+      </p>
+
+      <p>
+        To provide these enhanced features, Shopify may make use of personal
+        information collected about your interactions with our store, along
+        with other merchants, and with Shopify.
+      </p>
+
+      <p>
+        In these circumstances, Shopify is responsible for the processing
+        of your personal information, including for responding to your
+        requests to exercise your rights over use of your personal
+        information for these purposes.
+      </p>
+
+      <p>
+        To learn more about how Shopify uses your personal information and
+        any rights you may have, please visit the
+        <a href="https://privacy.shopify.com/en" target="_blank" rel="noopener">
+          Shopify Consumer Privacy Policy
+        </a>.
+      </p>
+
+      <p>
+        Depending on where you live, you may exercise certain rights with
+        respect to your personal information through the
+        <a href="https://privacy.shopify.com/en" target="_blank" rel="noopener">
+          Shopify Privacy Portal
+        </a>.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Third Party -->
+  <section class="privacy-policy__section">
+
+    <div class="privacy-policy__section-header">
+
+      <div class="privacy-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M10 13a5 5 0 0 0 7.5.5l2-2a5 5 0 0 0-7-7l-1.2 1.2"></path>
+          <path d="M14 11a5 5 0 0 0-7.5-.5l-2 2a5 5 0 0 0 7 7l1.2-1.2"></path>
+        </svg>
+      </div>
+
+      <h2>Third Party Websites and Links</h2>
+
+    </div>
+
+    <div class="privacy-policy__content">
+
+      <p>
+        The Services may provide links to websites or other online platforms
+        operated by third parties.
+      </p>
+
+      <p>
+        If you follow links to sites not affiliated or controlled by us,
+        you should review their privacy and security policies and other
+        terms and conditions.
+      </p>
+
+      <p>
+        We do not guarantee and are not responsible for the privacy or
+        security of such sites, including the accuracy, completeness, or
+        reliability of information found on these sites.
+      </p>
+
+      <p>
+        Information you provide on public or semi-public venues, including
+        information you share on third-party social networking platforms,
+        may also be viewable by other users of the Services and/or users
+        of those third-party platforms.
+      </p>
+
+      <p>
+        Our inclusion of such links does not, by itself, imply any
+        endorsement of the content on such platforms or of their owners
+        or operators, except as disclosed on the Services.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Children's Data -->
+  <section class="privacy-policy__section">
+
+    <div class="privacy-policy__section-header">
+
+      <div class="privacy-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <circle cx="12" cy="8" r="3"></circle>
+          <path d="M5 21c0-4 3-6 7-6s7 2 7 6"></path>
+          <path d="M4 5h2M18 5h2"></path>
+        </svg>
+      </div>
+
+      <h2>Children's Data</h2>
+
+    </div>
+
+    <div class="privacy-policy__content">
+
+      <p>
+        The Services are not intended to be used by children, and we do not
+        knowingly collect any personal information about children under the
+        age of majority in your jurisdiction.
+      </p>
+
+      <p>
+        If you are the parent or guardian of a child who has provided us
+        with their personal information, you may contact us using the
+        contact details set out below to request that it be deleted.
+      </p>
+
+      <p>
+        As of the Effective Date of this Privacy Policy, we do not have
+        actual knowledge that we "share" or "sell" personal information of
+        individuals under 16 years of age as those terms are defined in
+        applicable law.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Security -->
+  <section class="privacy-policy__section">
+
+    <div class="privacy-policy__section-header">
+
+      <div class="privacy-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"></path>
+          <path d="M12 8v4"></path>
+          <path d="M12 16h.01"></path>
+        </svg>
+      </div>
+
+      <h2>Security and Retention of Your Information</h2>
+
+    </div>
+
+    <div class="privacy-policy__content">
+
+      <p>
+        Please be aware that no security measures are perfect or
+        impenetrable, and we cannot guarantee "perfect security."
+      </p>
+
+      <p>
+        In addition, any information you send to us may not be secure
+        while in transit. We recommend that you do not use unsecured
+        channels to communicate sensitive or confidential information
+        to us.
+      </p>
+
+      <p>
+        How long we retain your personal information depends on different
+        factors, such as whether we need the information to maintain your
+        account, to provide you with Services, comply with legal obligations,
+        resolve disputes or enforce other applicable contracts and policies.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Rights -->
+  <section class="privacy-policy__section">
+
+    <div class="privacy-policy__section-header">
+
+      <div class="privacy-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M12 3v18"></path>
+          <path d="M5 7h14"></path>
+          <path d="M7 7l-4 6h8L7 7z"></path>
+          <path d="M17 7l-4 6h8l-4-6z"></path>
+        </svg>
+      </div>
+
+      <h2>Your Rights and Choices</h2>
+
+    </div>
+
+    <div class="privacy-policy__content">
+
+      <p>
+        Depending on where you live, you may have some or all of the rights
+        listed below in relation to your personal information. However,
+        these rights are not absolute, may apply only in certain circumstances,
+        and in certain cases we may decline your request as permitted by law.
+      </p>
+
+      <ul class="privacy-policy__list">
+
+        <li>
+          <strong>Right to Access / Know.</strong>
+          You may have a right to request access to personal information
+          that we hold about you.
+        </li>
+
+        <li>
+          <strong>Right to Delete.</strong>
+          You may have a right to request that we delete personal information
+          we maintain about you.
+        </li>
+
+        <li>
+          <strong>Right to Correct.</strong>
+          You may have a right to request that we correct inaccurate personal
+          information we maintain about you.
+        </li>
+
+        <li>
+          <strong>Right of Portability.</strong>
+          You may have a right to receive a copy of the personal information
+          we hold about you and to request that we transfer it to a third
+          party, in certain circumstances and with certain exceptions.
+        </li>
+
+        <li>
+          <strong>Managing Communication Preferences.</strong>
+          You may opt out of promotional emails at any time by using the
+          unsubscribe option displayed in our emails. We may still send
+          non-promotional emails, such as those about your account or orders.
+        </li>
+
+      </ul>
+
+      <p>
+        You may exercise any of these rights where indicated on the Services
+        or by contacting us using the contact details provided below.
+      </p>
+
+      <p>
+        To learn more about how Shopify uses your personal information and
+        any rights you may have, including rights related to data processed
+        by Shopify, please visit
+        <a href="https://privacy.shopify.com/en" target="_blank" rel="noopener">
+          Shopify Privacy
+        </a>.
+      </p>
+
+      <p>
+        We will not discriminate against you for exercising any of these
+        rights. We may need to verify your identity before we can process
+        your requests, as permitted or required under applicable law.
+      </p>
+
+      <p>
+        In accordance with applicable laws, you may designate an authorized
+        agent to make requests on your behalf to exercise your rights.
+        Before accepting such a request from an agent, we will require that
+        the agent provide proof you have authorized them to act on your behalf.
+      </p>
+
+      <p>
+        We will respond to your request in a timely manner as required
+        under applicable law.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Complaints -->
+  <section class="privacy-policy__section">
+
+    <div class="privacy-policy__section-header">
+
+      <div class="privacy-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M4 4h16v12H8l-4 4V4z"></path>
+          <path d="M8 9h8M8 12h5"></path>
+        </svg>
+      </div>
+
+      <h2>Complaints</h2>
+
+    </div>
+
+    <div class="privacy-policy__content">
+
+      <p>
+        If you have complaints about how we process your personal information,
+        please contact us using the contact details provided below.
+      </p>
+
+      <p>
+        Depending on where you live, you may have the right to appeal our
+        decision by contacting us using the contact details set out below,
+        or lodge your complaint with your local data protection authority.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- International Transfers -->
+  <section class="privacy-policy__section">
+
+    <div class="privacy-policy__section-header">
+
+      <div class="privacy-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M3 12h18"></path>
+          <path d="M12 3c3 3 3 15 0 18"></path>
+          <path d="M12 3c-3 3-3 15 0 18"></path>
+        </svg>
+      </div>
+
+      <h2>International Transfers</h2>
+
+    </div>
+
+    <div class="privacy-policy__content">
+
+      <p>
+        Please note that we may transfer, store and process your personal
+        information outside the country you live in.
+      </p>
+
+      <p>
+        If we transfer your personal information out of the European
+        Economic Area or the United Kingdom, we will rely on recognized
+        transfer mechanisms like the European Commission's Standard
+        Contractual Clauses, or any equivalent contracts issued by the
+        relevant competent authority of the UK, as relevant, unless the
+        data transfer is to a country that has been determined to provide
+        an adequate level of protection.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Changes -->
+  <section class="privacy-policy__section">
+
+    <div class="privacy-policy__section-header">
+
+      <div class="privacy-policy__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+          <path d="M20 11a8 8 0 0 0-14.8-4"></path>
+          <path d="M4 4v5h5"></path>
+          <path d="M4 13a8 8 0 0 0 14.8 4"></path>
+          <path d="M20 20v-5h-5"></path>
+        </svg>
+      </div>
+
+      <h2>Changes to This Privacy Policy</h2>
+
+    </div>
+
+    <div class="privacy-policy__content">
+
+      <p>
+        We may update this Privacy Policy from time to time, including to
+        reflect changes to our practices or for other operational, legal,
+        or regulatory reasons.
+      </p>
+
+      <p>
+        We will post the revised Privacy Policy on this website, update the
+        "Last updated" date and provide notice as required by applicable law.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Contact -->
+  <section class="privacy-policy__contact">
+
+    <div class="privacy-policy__icon">
+
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+        <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+        <path d="M3 7l9 6 9-6"></path>
+      </svg>
+
+    </div>
+
+    <h2>Contact Us</h2>
+
+    <p>
+      Should you have any questions about our privacy practices or this
+      Privacy Policy, or if you would like to exercise any of the rights
+      available to you, please contact us.
+    </p>
+
+    <p>
+      <a href="mailto:agessentials.pk@gmail.com">
+        agessentials.pk@gmail.com
+      </a>
+    </p>
+
+    <p class="privacy-policy__address">
+      65-A Brandreth Road, 54000, Pakistan
+    </p>
+
+  </section>
+
+</div>
