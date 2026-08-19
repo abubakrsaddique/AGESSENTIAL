@@ -3,12 +3,20 @@
 <div class="product-container">
 
 
-<div class="product-gallery">
+<!-- PRODUCT GALLERY -->
+
+<div class="product-gallery" id="ProductGallery-{{ section.id }}">
+
+
+<div class="main-slider">
 
 
 {% for image in product.images %}
 
-<div class="product-image-card">
+<div 
+class="slide {% if forloop.first %}active{% endif %}"
+data-index="{{ forloop.index0 }}"
+>
 
 <img 
 src="{{ image | image_url: width:800 }}"
@@ -20,11 +28,74 @@ loading="lazy">
 {% endfor %}
 
 
+
+{% if product.images.size > 1 %}
+
+<button 
+type="button"
+class="slider-arrow prev-slide"
+aria-label="Previous Image"
+>
+
+❮
+
+</button>
+
+
+<button 
+type="button"
+class="slider-arrow next-slide"
+aria-label="Next Image"
+>
+
+❯
+
+</button>
+
+{% endif %}
+
+
+</div>
+
+
+
+<!-- THUMBNAILS -->
+
+{% if product.images.size > 1 %}
+
+<div class="product-thumbnails">
+
+
+{% for image in product.images %}
+
+<button
+type="button"
+class="thumbnail {% if forloop.first %}active{% endif %}"
+data-index="{{ forloop.index0 }}"
+>
+
+<img
+src="{{ image | image_url: width:200 }}"
+alt="{{ product.title }}"
+loading="lazy">
+
+</button>
+
+{% endfor %}
+
+
+</div>
+
+{% endif %}
+
+
 </div>
 
 
 
 
+
+<!-- PRODUCT DETAILS -->
 
 <div class="product-details">
 
@@ -79,7 +150,6 @@ Out of Stock
 
 
 
-
 {% form 'product', product %}
 
 
@@ -124,7 +194,10 @@ selected
 {% else %}
 
 
-<input type="hidden" name="id" value="{{ current_variant.id }}">
+<input 
+type="hidden" 
+name="id" 
+value="{{ current_variant.id }}">
 
 
 {% endunless %}
@@ -184,6 +257,8 @@ class="qty-plus">
 
 
 
+
+
 <button 
 type="submit"
 class="add-cart-btn"
@@ -218,6 +293,10 @@ Add To Cart
 
 </section>
 
+
+
+
+
 <style>
 
 *{
@@ -250,22 +329,20 @@ align-items:start;
 
 
 
-
-
-/* IMAGE SECTION */
+/* ========================= */
+/* IMAGE SLIDER */
+/* ========================= */
 
 
 .product-gallery{
 
-display:grid;
-grid-template-columns:1fr;
-gap:25px;
+width:100%;
 
 }
 
 
 
-.product-image-card{
+.main-slider{
 
 width:100%;
 height:600px;
@@ -284,11 +361,35 @@ box-shadow:0 10px 35px rgba(0,0,0,.10);
 
 overflow:hidden;
 
+position:relative;
+
 }
 
 
 
-.product-image-card img{
+.slide{
+
+width:100%;
+height:100%;
+
+display:none;
+
+align-items:center;
+justify-content:center;
+
+}
+
+
+
+.slide.active{
+
+display:flex;
+
+}
+
+
+
+.slide img{
 
 width:100%;
 height:100%;
@@ -300,6 +401,142 @@ object-fit:contain;
 }
 
 
+
+/* SLIDER ARROWS */
+
+
+.slider-arrow{
+
+position:absolute;
+
+top:50%;
+
+transform:translateY(-50%);
+
+width:48px;
+height:48px;
+
+border:none;
+
+border-radius:50%;
+
+background:#1256a0;
+
+color:white;
+
+font-size:28px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+z-index:10;
+
+display:flex;
+
+align-items:center;
+justify-content:center;
+
+transition:.3s;
+
+}
+
+
+
+.slider-arrow:hover{
+
+background:#0b3c72;
+
+}
+
+
+
+.prev-slide{
+
+left:20px;
+
+}
+
+
+
+.next-slide{
+
+right:20px;
+
+}
+
+
+
+/* THUMBNAILS */
+
+
+.product-thumbnails{
+
+display:flex;
+
+gap:12px;
+
+margin-top:20px;
+
+overflow-x:auto;
+
+padding-bottom:8px;
+
+}
+
+
+
+.thumbnail{
+
+width:100px;
+
+height:100px;
+
+min-width:100px;
+
+background:#fff;
+
+border:2px solid transparent;
+
+border-radius:15px;
+
+padding:8px;
+
+cursor:pointer;
+
+box-shadow:0 5px 18px rgba(0,0,0,.08);
+
+transition:.3s;
+
+}
+
+
+
+.thumbnail:hover{
+
+transform:translateY(-2px);
+
+}
+
+
+
+.thumbnail.active{
+
+border:2px solid #1256a0;
+
+}
+
+
+
+.thumbnail img{
+
+width:100%;
+
+height:100%;
+
+object-fit:contain;
+
+}
 
 
 
@@ -416,8 +653,6 @@ color:#555;
 margin-bottom:30px;
 
 }
-
-
 
 
 
@@ -541,7 +776,6 @@ font-size:20px;
 
 
 
-
 /* ADD CART */
 
 
@@ -601,8 +835,6 @@ font-size:18px!important;
 
 
 
-
-
 /* TABLET */
 
 
@@ -617,7 +849,7 @@ grid-template-columns:1fr;
 
 
 
-.product-image-card{
+.main-slider{
 
 height:500px;
 
@@ -665,7 +897,7 @@ gap:25px;
 
 
 
-.product-image-card{
+.main-slider{
 
 height:380px;
 
@@ -677,9 +909,51 @@ border-radius:18px;
 
 
 
-.product-image-card img{
+.slide img{
 
 max-width:330px;
+
+}
+
+
+
+.slider-arrow{
+
+width:40px;
+
+height:40px;
+
+font-size:22px;
+
+}
+
+
+
+.prev-slide{
+
+left:10px;
+
+}
+
+
+
+.next-slide{
+
+right:10px;
+
+}
+
+
+
+.thumbnail{
+
+width:70px;
+
+height:70px;
+
+min-width:70px;
+
+padding:5px;
 
 }
 
@@ -754,17 +1028,237 @@ font-size:17px;
 
 </style>
 
+
+
+
+
 <script>
+
+(function(){
+
+function initProductSlider(){
+
+var gallery = document.getElementById(
+"ProductGallery-{{ section.id }}"
+);
+
+
+if(!gallery){
+return;
+}
+
+
+var slides = gallery.querySelectorAll(".slide");
+
+var thumbnails = gallery.querySelectorAll(".thumbnail");
+
+var nextBtn = gallery.querySelector(".next-slide");
+
+var prevBtn = gallery.querySelector(".prev-slide");
+
+
+if(slides.length === 0){
+return;
+}
+
+
+var currentSlide = 0;
+
+
+
+function showSlide(index){
+
+
+if(index >= slides.length){
+
+index = 0;
+
+}
+
+
+if(index < 0){
+
+index = slides.length - 1;
+
+}
+
+
+
+/* REMOVE ACTIVE FROM ALL SLIDES */
+
+
+for(var i = 0; i < slides.length; i++){
+
+slides[i].classList.remove("active");
+
+slides[i].style.display = "none";
+
+}
+
+
+
+/* SHOW SELECTED SLIDE */
+
+
+slides[index].classList.add("active");
+
+slides[index].style.display = "flex";
+
+
+
+/* REMOVE ACTIVE FROM ALL THUMBNAILS */
+
+
+for(var j = 0; j < thumbnails.length; j++){
+
+thumbnails[j].classList.remove("active");
+
+}
+
+
+
+/* ACTIVE CURRENT THUMBNAIL */
+
+
+if(thumbnails[index]){
+
+thumbnails[index].classList.add("active");
+
+}
+
+
+
+currentSlide = index;
+
+}
+
+
+
+/* NEXT BUTTON */
+
+
+if(nextBtn){
+
+nextBtn.addEventListener("click", function(e){
+
+e.preventDefault();
+
+e.stopPropagation();
+
+showSlide(currentSlide + 1);
+
+});
+
+}
+
+
+
+/* PREVIOUS BUTTON */
+
+
+if(prevBtn){
+
+prevBtn.addEventListener("click", function(e){
+
+e.preventDefault();
+
+e.stopPropagation();
+
+showSlide(currentSlide - 1);
+
+});
+
+}
+
+
+
+/* THUMBNAIL CLICK */
+
+
+for(var k = 0; k < thumbnails.length; k++){
+
+
+thumbnails[k].addEventListener("click", function(e){
+
+e.preventDefault();
+
+e.stopPropagation();
+
+
+var index = parseInt(
+this.getAttribute("data-index")
+);
+
+
+showSlide(index);
+
+
+});
+
+
+}
+
+
+
+/* SHOW FIRST IMAGE */
+
+
+showSlide(0);
+
+
+}
+
+
+
+/* INITIALIZE */
+
+
+if(document.readyState === "loading"){
+
+document.addEventListener(
+"DOMContentLoaded",
+initProductSlider
+);
+
+}
+
+else{
+
+initProductSlider();
+
+}
+
+
+
+/* SHOPIFY CUSTOMIZER SUPPORT */
+
+
+document.addEventListener(
+"shopify:section:load",
+function(){
+
+initProductSlider();
+
+}
+);
+
+
+})();
+
+
+
+
+
+/* QUANTITY PLUS / MINUS */
+
 
 document.addEventListener("click", function(e){
 
 
-/* PLUS */
-
 if(e.target.classList.contains("qty-plus")){
 
 
-let input = e.target
+var input = e.target
 .closest(".quantity-box")
 .querySelector(".qty-input");
 
@@ -776,12 +1270,12 @@ input.value = Number(input.value) + 1;
 
 
 
-/* MINUS */
+
 
 if(e.target.classList.contains("qty-minus")){
 
 
-let input = e.target
+var input = e.target
 .closest(".quantity-box")
 .querySelector(".qty-input");
 
