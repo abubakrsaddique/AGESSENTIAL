@@ -109,7 +109,13 @@ loading="lazy">
 {{ product.title }}
 </h1>
 
+{% assign current_variant = product.selected_or_first_available_variant %}
 
+{% if current_variant.sku != blank %}
+  <div class="product-sku">
+    Item Code: {{ current_variant.sku }}
+  </div>
+{% endif %}
 
 
 <div class="product-price">
@@ -325,6 +331,17 @@ padding:60px 0;
 
 .back-btn:hover{
 background:#0b3c72;
+}
+
+.product-sku {
+  font-size: 15px;
+  color: #666;
+  margin: 8px 0 15px;
+  font-weight: 500;
+}
+
+.product-sku strong {
+  color: #222;
 }
 
 .product-container{

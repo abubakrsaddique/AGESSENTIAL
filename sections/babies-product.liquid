@@ -54,7 +54,11 @@ loading="lazy">
 </h3>
 
 
-
+{% if product.selected_or_first_available_variant.sku != blank %}
+  <div class="product-sku">
+    Item Code: {{ product.selected_or_first_available_variant.sku }}
+  </div>
+{% endif %}
 
 <div class="price">
 
@@ -224,7 +228,16 @@ gap:25px;
 }
 
 
+.product-sku {
+  font-size: 15px;
+  color: #666;
+  margin: 8px 0 15px;
+  font-weight: 500;
+}
 
+.product-sku strong {
+  color: #222;
+}
 
 
 .product-card{
