@@ -1,40 +1,70 @@
-<section class="popular-categories-section">
+<section class="ag-popular-categories">
 
-  <div class="page-width">
+  <div class="ag-pc-container">
 
-    <h2 class="pc-heading">
-      Popular Categories
-    </h2>
+    <!-- HEADER -->
+
+    <div class="ag-pc-header">
+
+      <span class="ag-pc-eyebrow">
+        EXPLORE COLLECTIONS
+      </span>
+
+      <h2>
+        Shop by Category
+      </h2>
+
+      <p>
+        Discover playful favorites carefully chosen for every little personality.
+      </p>
+
+    </div>
 
 
-    <p class="pc-subheading">
-      Explore our amazing toy collections
-    </p>
+    <!-- CATEGORY SLIDER -->
 
+    <div class="ag-pc-slider">
 
-
-    <div class="pc-slider-wrapper">
-
-
-      <button class="pc-arrow pc-prev">
-        ❮
+      <button
+        type="button"
+        class="ag-pc-arrow ag-pc-prev"
+        aria-label="Previous categories"
+      >
+        <svg viewBox="0 0 24 24">
+          <path d="M15 18L9 12L15 6"/>
+        </svg>
       </button>
 
 
-
-      <div class="swiper popularSwiper">
-
-        <div class="swiper-wrapper">
+      <div class="ag-pc-track">
 
 
+        <!-- DOLLS -->
 
-          <!-- Dolls -->
+        <a
+          href="/collections/dolls"
+          class="ag-pc-card"
+        >
 
-          <div class="swiper-slide">
+          <div class="ag-pc-card-image">
 
-            <a href="/collections/dolls" class="category-card">
+            <img
+              src="{{ 'doll.png' | asset_url }}"
+              alt="Dolls"
+              loading="lazy"
+            >
 
-              <img src="{{ 'doll.png' | asset_url }}">
+            <div class="ag-pc-gradient"></div>
+<!--
+            <span class="ag-pc-index">
+              01
+            </span>
+-->
+            <span class="ag-pc-arrow-icon">
+              ↗
+            </span>
+
+            <div class="ag-pc-card-content">
 
               <h3>
                 Dolls
@@ -44,20 +74,45 @@
                 Cute dolls collection
               </p>
 
-            </a>
+              <span class="ag-pc-explore">
+                Explore collection
+                <b>→</b>
+              </span>
+
+            </div>
 
           </div>
 
+        </a>
 
 
 
-          <!-- Baby Toys -->
+        <!-- BABY TOYS -->
 
-          <div class="swiper-slide">
+        <a
+          href="/collections/babies"
+          class="ag-pc-card"
+        >
 
-            <a href="/collections/babies" class="category-card">
+          <div class="ag-pc-card-image">
 
-              <img src="{{ 'baby-toys.png' | asset_url }}">
+            <img
+              src="{{ 'baby-toys.png' | asset_url }}"
+              alt="Baby Toys"
+              loading="lazy"
+            >
+
+            <div class="ag-pc-gradient"></div>
+<!--
+            <span class="ag-pc-index">
+              02
+            </span>
+-->
+            <span class="ag-pc-arrow-icon">
+              ↗
+            </span>
+
+            <div class="ag-pc-card-content">
 
               <h3>
                 Baby Toys
@@ -67,20 +122,45 @@
                 Safe toys for babies
               </p>
 
-            </a>
+              <span class="ag-pc-explore">
+                Explore collection
+                <b>→</b>
+              </span>
+
+            </div>
 
           </div>
 
+        </a>
 
 
 
-          <!-- Vehicles -->
+        <!-- VEHICLES -->
 
-          <div class="swiper-slide">
+        <a
+          href="/collections/vehicles"
+          class="ag-pc-card"
+        >
 
-            <a href="/collections/vehicles" class="category-card">
+          <div class="ag-pc-card-image">
 
-              <img src="{{ 'vehicles.png' | asset_url }}">
+            <img
+              src="{{ 'vehicles.png' | asset_url }}"
+              alt="Cars"
+              loading="lazy"
+            >
+
+            <div class="ag-pc-gradient"></div>
+<!--
+            <span class="ag-pc-index">
+              03
+            </span>
+-->
+            <span class="ag-pc-arrow-icon">
+              ↗
+            </span>
+
+            <div class="ag-pc-card-content">
 
               <h3>
                 Cars
@@ -90,768 +170,926 @@
                 Cars and vehicles toys
               </p>
 
-            </a>
+              <span class="ag-pc-explore">
+                Explore collection
+                <b>→</b>
+              </span>
+
+            </div>
 
           </div>
 
+        </a>
 
 
 
-          <!-- Stationary -->
-<!-- 
-          <div class="swiper-slide">
+        <!-- LEARNING TOYS -->
 
-            <a href="/collections/stationary" class="category-card">
+        <a
+          href="/collections/learning-toys"
+          class="ag-pc-card"
+        >
 
+          <div class="ag-pc-card-image">
 
-              <img src="{{ 'flying-toys.png' | asset_url }}">
+            <img
+              src="{{ 'learning.png' | asset_url }}"
+              alt="Learning Toys"
+              loading="lazy"
+            >
 
-
-              <h3>
-                Stationary
-              </h3>
-
-
-              <p>
-                Creative learning supplies
-              </p>
-
-
-            </a>
-
-          </div>
-
-
+            <div class="ag-pc-gradient"></div>
+<!--
+            <span class="ag-pc-index">
+              04
+            </span>
 -->
+            <span class="ag-pc-arrow-icon">
+              ↗
+            </span>
 
-
-          <!-- Learning Toys -->
-
-          <div class="swiper-slide">
-
-
-            <a href="/collections/learning-toys" class="category-card">
-
-
-              <img src="{{ 'learning.png' | asset_url }}">
-
+            <div class="ag-pc-card-content">
 
               <h3>
                 Learning Toys
               </h3>
 
-
               <p>
                 Learn while playing
               </p>
 
+              <span class="ag-pc-explore">
+                Explore collection
+                <b>→</b>
+              </span>
 
-            </a>
-
+            </div>
 
           </div>
 
+        </a>
 
 
 
+        <!-- TOY GUNS -->
 
-          <!-- Art -->
+        <a
+          href="/collections/toy-guns"
+          class="ag-pc-card"
+        >
 
-     
-       <div class="swiper-slide">
+          <div class="ag-pc-card-image">
 
+            <img
+              src="{{ 'pick-3.png' | asset_url }}"
+              alt="Toy Guns"
+              loading="lazy"
+            >
 
-            <a href="/collections/toy-guns" class="category-card">
+            <div class="ag-pc-gradient"></div>
+<!--
+            <span class="ag-pc-index">
+              05
+            </span>
+-->
+            <span class="ag-pc-arrow-icon">
+              ↗
+            </span>
 
-
-              <img src="{{ 'pick-3.png' | asset_url }}">
-
+            <div class="ag-pc-card-content">
 
               <h3>
                 Toy Guns
               </h3>
 
-
               <p>
-               Imaginative and action-packed playtime.
+                Imaginative and action-packed playtime.
               </p>
 
+              <span class="ag-pc-explore">
+                Explore collection
+                <b>→</b>
+              </span>
 
-            </a>
-
+            </div>
 
           </div>
 
+        </a>
 
-
-
-
-          <!-- Teddy Bear -->
-<!--
-          <div class="swiper-slide">
-
-
-            <a href="/collections/teddy-bear" class="category-card">
-
-
-              <img src="{{ 'teddy-bear.jpg' | asset_url }}">
-
-
-              <h3>
-                Teddy Bear
-              </h3>
-
-
-              <p>
-                Soft teddy collection
-              </p>
-
-
-            </a>
-
-
-          </div>
-
--->
-
-
-        </div>
 
       </div>
 
 
-
-      <button class="pc-arrow pc-next">
-        ❯
+      <button
+        type="button"
+        class="ag-pc-arrow ag-pc-next"
+        aria-label="Next categories"
+      >
+        <svg viewBox="0 0 24 24">
+          <path d="M9 6L15 12L9 18"/>
+        </svg>
       </button>
-
 
     </div>
 
 
-  </div>
+    <div class="ag-pc-mobile-hint">
+      <span></span>
+      Swipe to explore
+      <span></span>
+    </div>
 
+  </div>
 
 </section>
 
 
+{% javascript %}
+
+document.addEventListener("DOMContentLoaded", function() {
+
+  const section = document.querySelector(".ag-popular-categories");
+
+  if (!section) return;
+
+  const track = section.querySelector(".ag-pc-track");
+
+  const next = section.querySelector(".ag-pc-next");
+
+  const prev = section.querySelector(".ag-pc-prev");
 
 
+  function moveSlider(direction) {
+
+    const card = track.querySelector(".ag-pc-card");
+
+    if (!card) return;
+
+    const gap = 22;
+
+    const amount = card.offsetWidth + gap;
+
+    track.scrollBy({
+
+      left: amount * direction,
+
+      behavior: "smooth"
+
+    });
+
+  }
 
 
-<link rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  next.addEventListener("click", function() {
+
+    moveSlider(1);
+
+  });
 
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  prev.addEventListener("click", function() {
 
-
-
-
-<script>
-
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  new Swiper(".popularSwiper", {
-
-    slidesPerView: 7,
-    spaceBetween: 25,
-
-    loop: false,
-
-    centeredSlides: false,
-
-    centerInsufficientSlides: true,
-
-    navigation: {
-      nextEl: ".pc-next",
-      prevEl: ".pc-prev"
-    },
-
-    breakpoints: {
-
-      1600: {
-        slidesPerView: 7
-      },
-
-      1200: {
-        slidesPerView: 6
-      },
-
-      992: {
-        slidesPerView: 4
-      },
-
-      768: {
-        slidesPerView: 3
-      },
-
-      480: {
-        slidesPerView: 2
-      },
-
-      0: {
-        slidesPerView: 1.2
-      }
-
-    }
+    moveSlider(-1);
 
   });
 
 });
 
-
-</script>
-
-
-
-
+{% endjavascript %}
 
 
 {% stylesheet %}
 
 
-/* ==============================
-POPULAR CATEGORIES SECTION
-============================== */
+/* =========================================
+   MAIN SECTION
+========================================= */
 
+.ag-popular-categories {
 
-.popular-categories-section{
-  width: 99.4vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;
+  width: 99.4vw;
 
-padding:50px 0;
+  position: relative;
 
-background:linear-gradient(
-180deg,
-#eafcff,
-#eafcff
-);
+  left: 50%;
 
-overflow:hidden;
+  margin-left: -50vw;
 
-}
+background: #FFF9F1
 
-
-
-
-
-/* ==============================
-HEADING
-============================== */
-
-
-.pc-heading{
-
-text-align:center;
-
-font-size:50px;
-
-font-weight:800;
-
-line-height:1.2;
-
-color:#13205c;
-
-margin:0 0 12px;
+  overflow: hidden;
 
 }
 
 
+.ag-pc-container {
 
-.pc-subheading{
+  max-width: 1380px;
 
-text-align:center;
+  margin: auto;
 
-font-size:20px;
-
-color:#555;
-
-margin:0 0 50px;
+  padding: 0px 35px 80px;
 
 }
 
 
+/* =========================================
+   HEADER
+========================================= */
 
+.ag-pc-header {
 
+  text-align: center;
 
-/* ==============================
-SLIDER
-============================== */
+  max-width: 720px;
 
-
-.pc-slider-wrapper{
-
-position:relative;
-    padding: 0px 25px 0px 25px;
-
-}
-
-
-
-.popularSwiper{
-
-overflow:hidden;
-
-padding:15px 10px 40px;
+  margin: 0 auto 42px;
 
 }
 
 
+.ag-pc-eyebrow {
 
-.swiper-slide{
+  display: inline-flex;
 
-height:auto;
+  align-items: center;
 
-}
+  padding: 8px 15px;
 
+  border-radius: 50px;
 
+  background: #ffffff;
 
+  color: #1684ff;
 
+  border: 1px solid rgba(22,132,255,.12);
 
-/* ==============================
-CARDS
-============================== */
+  font-size: 10px;
 
+  font-weight: 800;
 
-.category-card{
-
-display:block;
-
-height:100%;
-
-min-height:360px;
-
-padding:25px;
-
-border-radius:30px;
-
-text-align:center;
-
-text-decoration:none;
-
-box-shadow:
-0 12px 30px rgba(0,0,0,.12);
-
-transition:.35s;
-
-overflow:hidden;
+  letter-spacing: 1.7px;
 
 }
 
 
+.ag-pc-eyebrow:before {
 
+  content: "";
 
+  width: 7px;
 
-.category-card:hover{
+  height: 7px;
 
-transform:translateY(-10px);
+  margin-right: 8px;
 
-box-shadow:
-0 20px 40px rgba(0,0,0,.18);
+  border-radius: 50%;
 
-}
+  background: #ff4c91;
 
-
-
-
-
-/* ==============================
-CARD BACKGROUND COLORS
-============================== */
-
-
-.swiper-slide:nth-child(1) .category-card{
-
-background:#FFE4E8;
+  box-shadow: 0 0 0 4px rgba(255,76,145,.12);
 
 }
 
 
-.swiper-slide:nth-child(2) .category-card{
+.ag-pc-header h2 {
 
-background:#DDF7FF;
+  margin: 15px 0 10px;
 
-}
+  color: #13205c;
 
+  font-size: clamp(38px, 4vw, 54px);
 
-.swiper-slide:nth-child(3) .category-card{
+  line-height: 1.05;
 
-background:#FFF3C7;
+  letter-spacing: -1.8px;
 
-}
-
-
-.swiper-slide:nth-child(4) .category-card{
-
-background:#E8DFFF;
+  font-weight: 800;
 
 }
 
 
-.swiper-slide:nth-child(5) .category-card{
+.ag-pc-header p {
 
-background:#DFFFD8;
+  margin: 0 auto;
 
-}
+  color: #52607c;
 
+  font-size: 16px;
 
-.swiper-slide:nth-child(6) .category-card{
-
-background:#FFE5C2;
-
-}
-
-
-.swiper-slide:nth-child(7) .category-card{
-
-background:#FFDDF5;
+  line-height: 1.6;
 
 }
 
 
+/* =========================================
+   SLIDER
+========================================= */
 
+.ag-pc-slider {
 
-
-/* ==============================
-IMAGE
-============================== */
-
-
-.category-card img{
-
-width:100%;
-
-height:180px;
-
-object-fit:contain;
-
-margin-bottom:20px;
-
-transition:.3s;
+  position: relative;
 
 }
 
 
+.ag-pc-track {
 
-.category-card:hover img{
+  display: flex;
 
-transform:scale(1.05);
+  gap: 22px;
 
-}
+  overflow-x: auto;
 
+  padding: 8px 4px 28px;
 
+  scroll-behavior: smooth;
 
+  scrollbar-width: none;
 
-
-/* ==============================
-TEXT
-============================== */
-
-
-.category-card h3{
-
-font-size:26px;
-
-font-weight:800;
-
-color:#1d1d33;
-
-margin:0 0 10px;
+  scroll-snap-type: x mandatory;
 
 }
 
 
+.ag-pc-track::-webkit-scrollbar {
 
-.category-card p{
-
-font-size:15px;
-
-line-height:1.5;
-
-color:#555;
-
-margin:0;
+  display: none;
 
 }
 
 
+/* =========================================
+   CARD
+========================================= */
 
+.ag-pc-card {
 
+  flex: 0 0 calc((100% - 66px) / 4);
 
-/* ==============================
-ARROWS
-============================== */
+  min-width: 0;
 
+  text-decoration: none;
 
-.pc-arrow{
-
-position:absolute;
-
-top:50%;
-
-transform:translateY(-50%);
-
-z-index:10;
-
-width:55px;
-
-height:55px;
-
-border-radius:50%;
-
-border:none;
-
-background:white;
-
-color:#13205c;
-
-font-size:25px;
-
-cursor:pointer;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-box-shadow:
-
-0 8px 25px rgba(0,0,0,.15);
-
-transition:.3s;
+  scroll-snap-align: start;
 
 }
 
 
+.ag-pc-card-image {
 
-.pc-arrow:hover{
+  position: relative;
 
-transform:translateY(-50%) scale(1.1);
+  height: 410px;
 
-background:#13205c;
+  overflow: hidden;
 
-color:white;
+  border-radius: 30px;
 
-}
+  background: #ffffff;
 
+  box-shadow:
 
+    0 12px 30px rgba(19,32,92,.09);
 
+  transition:
 
+    transform .35s ease,
 
-.pc-prev{
-
-left:0px;
-
-}
-
-
-
-.pc-next{
-
-right:0px;
+    box-shadow .35s ease;
 
 }
 
 
+.ag-pc-card:hover .ag-pc-card-image {
 
+  transform: translateY(-7px);
 
+  box-shadow:
 
-/* ==============================
-TABLET
-============================== */
-
-
-@media(max-width:992px){
-
-
-.pc-heading{
-
-font-size:42px;
+    0 22px 45px rgba(19,32,92,.16);
 
 }
 
 
+/* =========================================
+   IMAGE
+========================================= */
 
-.category-card{
+.ag-pc-card-image img {
 
-min-height:330px;
+  width: 100%;
 
-}
+  height: 100%;
 
+  display: block;
 
+  object-fit: cover;
 
-.category-card img{
+  transition:
 
-height:160px;
-
-}
-
-
-
-.pc-arrow{
-
-width:45px;
-
-height:45px;
-
-font-size:20px;
+    transform .65s cubic-bezier(.2,.7,.2,1);
 
 }
 
 
+.ag-pc-card:hover
+.ag-pc-card-image img {
+
+  transform: scale(1.07);
 
 }
 
 
+/* =========================================
+   GRADIENT
+========================================= */
 
+.ag-pc-gradient {
 
+  position: absolute;
 
-/* ==============================
-MOBILE
-============================== */
+  inset: 0;
 
+  background:
 
-@media(max-width:768px){
+    linear-gradient(
 
+      180deg,
 
-.popular-categories-section{
+      rgba(0,0,0,0) 35%,
 
-padding:50px 0;
+      rgba(0,0,0,.05) 50%,
 
-}
+      rgba(0,0,0,.68) 100%
 
-
-
-.pc-heading{
-
-font-size:34px;
-
-}
-
-
-
-.pc-subheading{
-
-font-size:16px;
-
-margin-bottom:30px;
+    );
 
 }
 
 
+/* =========================================
+   NUMBER
+========================================= */
 
-.popularSwiper{
+.ag-pc-index {
 
-padding:10px 5px 30px;
+  position: absolute;
 
-}
+  top: 15px;
 
+  left: 15px;
 
+  width: 42px;
 
-.category-card{
+  height: 30px;
 
-min-height:300px;
+  display: flex;
 
-padding:20px;
+  align-items: center;
 
-}
+  justify-content: center;
 
+  border-radius: 50px;
 
+  background: rgba(255,255,255,.94);
 
-.category-card img{
+  color: #13205c;
 
-height:140px;
+  font-size: 10px;
 
-}
+  font-weight: 800;
 
-
-
-.category-card h3{
-
-font-size:22px;
-
-}
-
-
-
-.pc-prev{
-
-left:5px;
+  letter-spacing: 1px;
 
 }
 
 
+/* =========================================
+   TOP ARROW
+========================================= */
 
-.pc-next{
+.ag-pc-arrow-icon {
 
-right:5px;
+  position: absolute;
 
-}
+  top: 15px;
 
+  right: 15px;
 
+  width: 43px;
 
-.pc-arrow{
+  height: 43px;
 
-width:38px;
+  display: flex;
 
-height:38px;
+  align-items: center;
 
-font-size:18px;
+  justify-content: center;
 
-}
+  border-radius: 50%;
 
+  background: rgba(255,255,255,.95);
 
+  color: #13205c;
 
-}
+  font-size: 20px;
 
-
-
-
-
-/* ==============================
-SMALL MOBILE
-============================== */
-
-
-@media(max-width:480px){
-
-
-.category-card{
-
-border-radius:22px;
+  transition: .3s ease;
 
 }
 
 
+.ag-pc-card:hover .ag-pc-arrow-icon {
 
-.category-card img{
+  background: #13205c;
 
-height:120px;
+  color: #fff;
 
-}
-
-
-
-.category-card h3{
-
-font-size:20px;
+  transform: rotate(45deg);
 
 }
 
 
+/* =========================================
+   CARD CONTENT
+========================================= */
 
-.category-card p{
+.ag-pc-card-content {
 
-font-size:14px;
+  position: absolute;
+
+  left: 15px;
+
+  right: 15px;
+
+  bottom: 15px;
+
+  padding: 18px;
+
+  border-radius: 21px;
+
+  background: rgba(255,255,255,.96);
+
+  backdrop-filter: blur(12px);
 
 }
 
 
+.ag-pc-card-content h3 {
+
+  margin: 0;
+
+  color: #18204d;
+
+  font-size: 23px;
+
+  line-height: 1.15;
+
+  font-weight: 800;
 
 }
 
 
+.ag-pc-card-content p {
+
+  margin: 5px 0 13px;
+
+  color: #68728a;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+
+}
+
+
+.ag-pc-explore {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  color: #1684ff;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+}
+
+
+.ag-pc-explore b {
+
+  font-size: 17px;
+
+  transition: transform .25s ease;
+
+}
+
+
+.ag-pc-card:hover
+.ag-pc-explore b {
+
+  transform: translateX(5px);
+
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.ag-pc-arrow {
+
+  position: absolute;
+
+  top: 50%;
+
+  z-index: 5;
+
+  width: 52px;
+
+  height: 52px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #13205c;
+
+  box-shadow:
+
+    0 8px 25px rgba(0,0,0,.14);
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  transition: .25s ease;
+
+}
+
+
+.ag-pc-arrow:hover {
+
+  background: #13205c;
+
+  color: #ffffff;
+
+  transform: translateY(-50%) scale(1.08);
+
+}
+
+
+.ag-pc-arrow svg {
+
+  width: 20px;
+
+  height: 20px;
+
+}
+
+
+.ag-pc-arrow path {
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 2;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+}
+
+
+.ag-pc-prev {
+
+  left: -20px;
+
+}
+
+
+.ag-pc-next {
+
+  right: -20px;
+
+}
+
+
+/* =========================================
+   MOBILE HINT
+========================================= */
+
+.ag-pc-mobile-hint {
+
+  display: none;
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media(max-width:1100px) {
+
+  .ag-pc-card {
+
+    flex-basis: calc((100% - 44px) / 3);
+
+  }
+
+}
+
+
+@media(max-width:800px) {
+
+  .ag-pc-card {
+
+    flex-basis: calc((100% - 22px) / 2);
+
+  }
+
+  .ag-pc-arrow {
+
+    width: 44px;
+
+    height: 44px;
+
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:749px) {
+
+  .ag-pc-container {
+
+    padding: 55px 15px 60px;
+
+  }
+
+
+  .ag-pc-header {
+
+    margin-bottom: 28px;
+
+  }
+
+
+  .ag-pc-header h2 {
+
+    font-size: 34px;
+
+    letter-spacing: -1px;
+
+  }
+
+
+  .ag-pc-header p {
+
+    font-size: 14px;
+
+  }
+
+
+  .ag-pc-track {
+
+    gap: 15px;
+
+    margin-right: -15px;
+
+    padding-right: 15px;
+
+  }
+
+
+  .ag-pc-card {
+
+    flex: 0 0 80%;
+
+  }
+
+
+  .ag-pc-card-image {
+
+    height: 360px;
+
+    border-radius: 25px;
+
+  }
+
+
+  .ag-pc-card-content {
+
+    left: 12px;
+
+    right: 12px;
+
+    bottom: 12px;
+
+    padding: 15px;
+
+    border-radius: 18px;
+
+  }
+
+
+  .ag-pc-card-content h3 {
+
+    font-size: 20px;
+
+  }
+
+
+  .ag-pc-card-content p {
+
+    font-size: 11px;
+
+    margin-bottom: 10px;
+
+  }
+
+
+  .ag-pc-arrow {
+
+    display: none;
+
+  }
+
+
+  .ag-pc-mobile-hint {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    color: #7d879c;
+
+    font-size: 10px;
+
+  }
+
+
+  .ag-pc-mobile-hint span {
+
+    width: 20px;
+
+    height: 1px;
+
+    background: #cbd3df;
+
+  }
+
+}
+
+
+@media(max-width:420px) {
+
+  .ag-pc-card {
+
+    flex-basis: 86%;
+
+  }
+
+}
 
 {% endstylesheet %}
+
+
+{% schema %}
+
+{
+  "name": "Popular Categories",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Popular Categories"
+    }
+  ]
+}
+
+{% endschema %}

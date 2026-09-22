@@ -1,687 +1,211 @@
-<section class="babies-products">
-
-<div class="page-width">
-
-
-<a href="/" class="back-btn">
-&#8592;
+<section class="luxury-babies-products"> <div class="luxury-babies-container">
+<!-- BACK -->
+<a href="/" class="luxury-back-btn" aria-label="Back to home">
+  <span class="back-arrow">←</span>
+  <span>Back</span>
 </a>
 
 
-<h1 class="babies-heading">
-{{ page.title }}
-</h1>
+<!-- HEADER -->
+<header class="luxury-babies-header">
 
+  <div class="luxury-babies-badge">
+    <span></span>
+    LITTLE LUXURIES
+    <span></span>
+  </div>
 
+  <h1 class="luxury-babies-title">
+    {{ page.title }}
+  </h1>
 
+  <p class="luxury-babies-description">
+    Thoughtfully chosen essentials made for beautiful little moments.
+  </p>
 
-<div class="product-grid">
+  <div class="luxury-babies-divider">
+    <i></i>
+    <span>✦</span>
+    <i></i>
+  </div>
+
+</header>
 
 
 {% assign babies_collection = collections['babies'] %}
 
 
+<!-- PRODUCTS -->
+<div class="luxury-babies-grid">
 
-{% for product in babies_collection.products %}
+  {% for product in babies_collection.products %}
+
+    <article class="luxury-baby-card">
+
+      <!-- IMAGE -->
+      <a
+        href="{{ product.url }}"
+        class="luxury-baby-image-link"
+      >
+
+        <div class="luxury-baby-image">
+
+          <div class="image-shine"></div>
+
+          {% if product.featured_image %}
+
+            <img
+              src="{{ product.featured_image | image_url: width: 800 }}"
+              alt="{{ product.featured_image.alt | default: product.title | escape }}"
+              loading="lazy"
+              width="{{ product.featured_image.width }}"
+              height="{{ product.featured_image.height }}"
+            >
+
+          {% else %}
+
+            <div class="luxury-image-placeholder">
+              <span>♡</span>
+            </div>
+
+          {% endif %}
 
 
+          <div class="luxury-view-pill">
+            <span>VIEW COLLECTION</span>
+            <b>→</b>
+          </div>
 
-<div class="product-card">
+        </div>
+
+      </a>
 
 
+      <!-- INFO -->
+      <div class="luxury-baby-info">
 
-<div class="product-image">
+        {% if product.selected_or_first_available_variant.sku != blank %}
+
+          <div class="luxury-sku">
+            <span>ITEM</span>
+            {{ product.selected_or_first_available_variant.sku }}
+          </div>
+
+        {% endif %}
 
 
-<img
-src="{{ product.featured_image | image_url: width:500 }}"
-alt="{{ product.title }}"
-loading="lazy">
+        <h3 class="luxury-product-title">
+          <a href="{{ product.url }}">
+            {{ product.title }}
+          </a>
+        </h3>
 
+
+        <div class="luxury-product-meta">
+
+          <div class="luxury-price">
+            {{ product.price | money }}
+          </div>
+
+          {% if product.selected_or_first_available_variant.available %}
+
+            <div class="luxury-stock">
+              <span class="stock-dot"></span>
+              In Stock
+            </div>
+
+          {% endif %}
+
+        </div>
+
+
+        <div class="luxury-actions">
+
+          <!-- DETAILS -->
+          <a
+            href="{{ product.url }}"
+            class="luxury-details-btn"
+          >
+            <span>Explore Product</span>
+            <b>↗</b>
+          </a>
+
+
+          <!-- CART -->
+          <form
+            method="post"
+            action="/cart/add"
+            class="luxury-cart-form"
+          >
+
+            <input
+              type="hidden"
+              name="id"
+              value="{{ product.selected_or_first_available_variant.id }}"
+            >
+
+
+            <button
+              type="submit"
+              class="luxury-cart-btn"
+              {% unless product.selected_or_first_available_variant.available %}
+                disabled
+              {% endunless %}
+            >
+
+              {% if product.selected_or_first_available_variant.available %}
+
+                <span class="cart-plus">+</span>
+                <span>Add To Cart</span>
+
+              {% else %}
+
+                <span>Sold Out</span>
+
+              {% endif %}
+
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+  {% else %}
+
+
+    <!-- EMPTY -->
+    <div class="luxury-empty-products">
+
+      <div class="empty-heart">♡</div>
+
+      <div class="luxury-babies-badge">
+        <span></span>
+        COMING SOON
+        <span></span>
+      </div>
+
+      <h2>
+        Something Beautiful Is Coming
+      </h2>
+
+      <p>
+        Our new collection for little ones is being prepared with love.
+      </p>
+
+      <a href="/" class="empty-home-btn">ac
+        Return Home
+      </a>
+
+    </div>
+
+
+  {% endfor %}
 
 </div>
 
-
-
-
-
-<div class="product-info">
-
-
-
-<h3>
-{{ product.title }}
-</h3>
-
-
-{% if product.selected_or_first_available_variant.sku != blank %}
-  <div class="product-sku">
-    Item Code: {{ product.selected_or_first_available_variant.sku }}
-  </div>
-{% endif %}
-
-<div class="price">
-
-{{ product.price | money }}
-
-</div>
-
-
-
-
-
-<a href="{{ product.url }}" class="details-btn">
-More Details
-</a>
-
-
-
-
-
-<form method="post" action="/cart/add">
-
-
-<input 
-type="hidden"
-name="id"
-value="{{ product.selected_or_first_available_variant.id }}">
-
-
-
-<button class="cart-btn">
-
-Add To Cart
-
-</button>
-
-
-</form>
-
-
-
-</div>
-
-
-</div>
-
-
-
-{% endfor %}
-
-
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-<style>
-
-
-*{
-box-sizing:border-box;
-}
-
-
-
-.babies-products{
-
-width:99.4vw;
-
-position:relative;
-
-left:50%;
-
-right:50%;
-
-margin-left:-50vw;
-
-margin-right:-50vw;
-
-
-padding:40px 0;
-
-
-background:#fff8ef;
-
-
-overflow:hidden;
-
-}
-
-
-
-
-
-.page-width{
-
-max-width:1200px;
-
-margin:auto;
-
-padding:0 20px;
-
-}
-
-
-
-
-
-.back-btn{
-    display: flex; align-items: center; justify-content: center; padding: 10px 15px 24px 15px; width: 60px; height: 30px; font-size: 50px; background: #1256a0; color: #fff; text-decoration: none; border-radius: 50px; font-weight: 900; transition: .3s; margin-bottom: 10px;
-
-}
-
-
-
-.back-btn:hover{
-background:#0b3c72;
-}
-
-
-
-
-
-.babies-heading{
-
-
-text-align:center;
-
-
-font-size:42px;
-
-
-font-weight:700;
-
-
-color:#e67e22;
-
-
-margin-bottom:40px;
-
-
-}
-
-
-
-
-
-.product-grid{
-
-
-display:grid;
-
-
-grid-template-columns:repeat(4,1fr);
-
-
-gap:25px;
-
-
-}
-
-
-.product-sku {
-  font-size: 15px;
-  color: #666;
-  margin: 8px 0 15px;
-  font-weight: 500;
-}
-
-.product-sku strong {
-  color: #222;
-}
-
-
-.product-card{
-
-
-background:#fff;
-
-
-border-radius:16px;
-
-
-overflow:hidden;
-
-
-box-shadow:0 5px 18px rgba(0,0,0,.12);
-
-
-text-align:center;
-
-
-transition:.3s;
-
-
-}
-
-
-
-
-
-.product-card:hover{
-
-
-transform:translateY(-5px);
-
-
-}
-
-
-
-
-
-.product-image{
-
-
-height:260px;
-
-
-display:flex;
-
-
-align-items:center;
-
-
-justify-content:center;
-
-
-padding:20px;
-
-
-}
-
-
-
-
-
-.product-image img{
-
-
-width:100%;
-
-
-height:100%;
-
-
-object-fit:contain;
-
-
-}
-
-
-
-
-
-.product-info{
-
-
-padding:20px;
-
-
-}
-
-
-
-
-
-.product-info h3{
-
-
-font-size:20px;
-
-
-margin:0 0 12px;
-
-
-color:#222;
-
-
-}
-
-
-
-
-
-.price{
-
-
-font-size:24px;
-
-
-font-weight:700;
-
-
-color:red;
-
-
-margin-bottom:20px;
-
-
-}
-
-
-
-
-
-.details-btn{
-
-
-display:block;
-
-
-background:#e67e22;
-
-
-color:white;
-
-
-padding:12px;
-
-
-border-radius:8px;
-
-
-text-decoration:none;
-
-
-font-weight:600;
-
-
-margin-bottom:12px;
-
-
-}
-
-
-
-.details-btn:hover{
-
-
-background:#c65d00;
-
-
-}
-
-
-
-
-
-
-.cart-btn{
-
-
-width:100%;
-
-
-background:#28a745;
-
-
-color:white;
-
-
-padding:12px;
-
-
-border:none;
-
-
-border-radius:8px;
-
-
-font-size:16px;
-
-
-font-weight:600;
-
-
-cursor:pointer;
-
-
-}
-
-
-
-
-.cart-btn:hover{
-
-
-background:#218838;
-
-
-}
-
-
-
-
-
-
-
-
-/* Laptop */
-
-
-@media(max-width:1200px){
-
-
-.product-grid{
-
-
-grid-template-columns:repeat(3,1fr);
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-
-/* Tablet */
-
-
-@media(max-width:900px){
-
-
-.babies-heading{
-
-
-font-size:34px;
-
-
-}
-
-
-
-
-
-.product-grid{
-
-
-grid-template-columns:repeat(2,1fr);
-
-
-gap:20px;
-
-
-}
-
-
-
-
-
-.product-image{
-
-
-height:230px;
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-
-/* Mobile */
-
-
-@media(max-width:600px){
-
-
-.babies-products{
-
-
-padding:25px 0;
-
-
-}
-
-
-
-
-
-.page-width{
-
-
-padding:0 15px;
-
-
-}
-
-
-
-
-
-.back-btn{
-
-
-width:50px;
-
-
-height:40px;
-
-
-font-size:32px;
-
-
-}
-
-
-
-
-
-.babies-heading{
-
-
-font-size:28px;
-
-
-margin-bottom:25px;
-
-
-}
-
-
-
-
-
-.product-grid{
-
-
-grid-template-columns:1fr;
-
-
-gap:18px;
-
-
-}
-
-
-
-
-
-.product-image{
-
-
-height:240px;
-
-
-}
-
-
-
-
-
-.product-info{
-
-
-padding:18px;
-
-
-}
-
-
-
-
-
-.product-info h3{
-
-
-font-size:18px;
-
-
-}
-
-
-
-
-
-.price{
-
-
-font-size:20px;
-
-
-}
-
-
-
-}
-
-
-</style>
-
-
-
-
-
-{% schema %}
-{
-"name":"Babies Products",
-"settings":[],
-"presets":[
-{
-"name":"Babies Products"
-}
-]
-}
-{% endschema %}
+</div> </section> <style> /* ===================================================== LUXURY BABIES COLLECTION ===================================================== */ .luxury-babies-products { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; padding: 55px 0 100px; overflow: hidden; background: radial-gradient( circle at 5% 5%, rgba(205, 164, 116, .13), transparent 28% ), radial-gradient( circle at 95% 35%, rgba(23, 59, 95, .07), transparent 30% ), linear-gradient( 135deg, #fcfaf7 0%, #f7f2eb 48%, #fbf9f6 100% ); color: #173b5f; } .luxury-babies-products *, .luxury-babies-products *::before, .luxury-babies-products *::after { box-sizing: border-box; } /* ===================================================== CONTAINER ===================================================== */ .luxury-babies-container { width: 100%; max-width: 1380px; margin: 0 auto; padding: 0 35px; } /* ===================================================== BACK BUTTON ===================================================== */ .luxury-back-btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; height: 44px; padding: 0 17px; border: 1px solid #ded5ca; border-radius: 40px; background: rgba(255,255,255,.65); color: #173b5f; text-decoration: none; font-size: 12px; font-weight: 700; letter-spacing: .5px; backdrop-filter: blur(12px); box-shadow: 0 5px 20px rgba(40,30,20,.04); transition: .35s ease; margin-bottom: 48px; } .luxury-back-btn .back-arrow { font-size: 20px; line-height: 1; transition: transform .35s ease; } .luxury-back-btn:hover { background: #173b5f; border-color: #173b5f; color: #fff; transform: translateX(-3px); box-shadow: 0 10px 25px rgba(23,59,95,.18); } .luxury-back-btn:hover .back-arrow { transform: translateX(-3px); } /* ===================================================== HEADER ===================================================== */ .luxury-babies-header { max-width: 780px; margin: 0 auto 65px; text-align: center; } /* badge */ .luxury-babies-badge { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 17px; color: #ad8157; font-size: 9px; font-weight: 800; letter-spacing: 3px; } .luxury-babies-badge span { width: 24px; height: 1px; background: #cba47d; opacity: .75; } /* title */ .luxury-babies-title { margin: 0; color: #173b5f; font-family: Georgia, "Times New Roman", serif; font-size: clamp(42px, 5.5vw, 70px); line-height: 1; font-weight: 500; letter-spacing: -2px; } /* description */ .luxury-babies-description { max-width: 570px; margin: 22px auto 0; color: #817a72; font-size: 14px; line-height: 1.8; } /* divider */ .luxury-babies-divider { display: flex; align-items: center; justify-content: center; gap: 12px; width: 130px; margin: 25px auto 0; } .luxury-babies-divider i { display: block; width: 42px; height: 1px; background: #d4b28f; } .luxury-babies-divider span { color: #b98555; font-size: 12px; } /* ===================================================== PRODUCT GRID ===================================================== */ .luxury-babies-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 25px; } /* ===================================================== CARD ===================================================== */ .luxury-baby-card { position: relative; overflow: hidden; background: rgba(255,255,255,.92); border: 1px solid #e6ded4; border-radius: 20px; box-shadow: 0 8px 30px rgba(49,37,24,.055); transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s ease, border-color .45s ease; } .luxury-baby-card:hover { transform: translateY(-8px); border-color: #d7c5b3; box-shadow: 0 22px 50px rgba(49,37,24,.13); } /* ===================================================== IMAGE ===================================================== */ .luxury-baby-image-link { display: block; text-decoration: none; } .luxury-baby-image { position: relative; height: 315px; display: flex; align-items: center; justify-content: center; padding: 20px; overflow: hidden; background: linear-gradient( 145deg, #faf7f2 0%, #f1ebe2 100% ); } .luxury-baby-image img { display: block; width: 100%; height: 100%; object-fit: contain; position: relative; z-index: 2; transition: transform .7s cubic-bezier(.2,.7,.2,1); } .luxury-baby-card:hover .luxury-baby-image img { transform: scale(1.065); } /* ===================================================== IMAGE SHINE ===================================================== */ .image-shine { position: absolute; z-index: 3; top: -120%; left: -80%; width: 50%; height: 300%; transform: rotate(25deg); background: linear-gradient( 90deg, transparent, rgba(255,255,255,.38), transparent ); transition: left .8s ease; pointer-events: none; } .luxury-baby-card:hover .image-shine { left: 130%; } /* ===================================================== VIEW PILL ===================================================== */ .luxury-view-pill { position: absolute; z-index: 5; left: 50%; bottom: 17px; transform: translate(-50%, 16px); display: flex; align-items: center; gap: 12px; padding: 10px 15px; white-space: nowrap; background: rgba(255,255,255,.94); border: 1px solid rgba(255,255,255,.8); border-radius: 50px; color: #173b5f; font-size: 8px; font-weight: 800; letter-spacing: 1.8px; box-shadow: 0 8px 25px rgba(0,0,0,.09); opacity: 0; backdrop-filter: blur(10px); transition: .4s ease; } .luxury-view-pill b { font-size: 14px; line-height: 1; transition: transform .3s ease; } .luxury-baby-card:hover .luxury-view-pill { opacity: 1; transform: translate(-50%, 0); } .luxury-baby-card:hover .luxury-view-pill b { transform: translateX(3px); } /* ===================================================== INFO ===================================================== */ .luxury-baby-info { padding: 21px 20px 22px; } /* ===================================================== SKU ===================================================== */ .luxury-sku { margin-bottom: 9px; color: #aaa096; font-size: 8px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; } .luxury-sku span { color: #c09369; margin-right: 4px; } /* ===================================================== TITLE ===================================================== */ .luxury-product-title { margin: 0; min-height: 47px; font-size: 17px; line-height: 1.4; font-weight: 600; color: #202b36; } .luxury-product-title a { color: inherit; text-decoration: none; transition: color .3s ease; } .luxury-product-title a:hover { color: #b0784d; } /* ===================================================== META ===================================================== */ .luxury-product-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 12px 0 17px; } /* price */ .luxury-price { color: #a9683d; font-size: 20px; font-weight: 800; letter-spacing: .2px; } /* stock */ .luxury-stock { display: flex; align-items: center; gap: 5px; color: #719073; font-size: 8px; font-weight: 700; letter-spacing: .7px; text-transform: uppercase; } .stock-dot { width: 6px; height: 6px; border-radius: 50%; background: #7baa7b; box-shadow: 0 0 0 3px rgba(123,170,123,.12); } /* ===================================================== ACTIONS ===================================================== */ .luxury-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; } .luxury-details-btn, .luxury-cart-btn { min-height: 45px; border-radius: 9px; font-family: inherit; font-size: 10px; font-weight: 800; letter-spacing: .4px; transition: all .3s ease; } /* details */ .luxury-details-btn { display: flex; align-items: center; justify-content: center; gap: 7px; background: #173b5f; color: #fff; text-decoration: none; } .luxury-details-btn b { font-size: 14px; font-weight: 400; transition: transform .3s ease; } .luxury-details-btn:hover { background: #0e2d49; box-shadow: 0 7px 18px rgba(23,59,95,.18); } .luxury-details-btn:hover b { transform: translate(2px,-2px); } /* cart */ .luxury-cart-form { margin: 0; } .luxury-cart-btn { width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px; background: #fff; color: #9a6946; border: 1px solid #d9c4af; cursor: pointer; } .luxury-cart-btn:hover { background: #f8efe6; border-color: #cba987; color: #815437; } .cart-plus { width: 17px; height: 17px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid currentColor; border-radius: 50%; font-size: 13px; font-weight: 400; } .luxury-cart-btn:disabled { background: #f2efeb; color: #aaa49d; border-color: #e3ddd6; cursor: not-allowed; } /* ===================================================== PLACEHOLDER ===================================================== */ .luxury-image-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #eee8df; } .luxury

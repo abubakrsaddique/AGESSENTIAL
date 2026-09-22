@@ -1,48 +1,185 @@
-<section class="collections-page">
+<section class="luxury-collections-page">
 
-  <div class="page-width">
+  <div class="luxury-collections-container">
 
-  <a href="/" class="back-btn">
-  &#8592;
-</a>
+    <a href="/" class="luxury-back-btn">
+      <span>←</span>
+      <span>Back</span>
+    </a>
 
-    <h1 class="collections-heading">All Collections</h1>
+    <header class="luxury-collections-header">
 
-    <div class="collections-grid">
+      <div class="luxury-collections-badge">
+        <span></span>
+        EXPLORE COLLECTIONS
+        <span></span>
+      </div>
 
-      {% paginate collections by 50 %}
+      <h1 class="luxury-collections-title">
+        All Collections
+      </h1>
+
+      <p class="luxury-collections-description">
+        Discover our carefully selected collections, made for every little moment.
+      </p>
+
+      <div class="luxury-collections-divider">
+        <i></i>
+        <span>✦</span>
+        <i></i>
+      </div>
+
+    </header>
+
+
+    {% paginate collections by 50 %}
+
+      <div class="luxury-collections-grid">
 
         {% for collection in collections %}
 
-          <div class="collection-card">
+          {% unless collection.handle == 'all'
+            or collection.handle == 'frontpage'
+            or collection.handle == 'all-products' %}
 
-            <a href="{{ collection.url }}">
+            {% if collection.products_count > 0 %}
 
-              {% if collection.featured_image %}
-                <img 
-                  src="{{ collection.featured_image | image_url: width: 500 }}"
-                  alt="{{ collection.title }}">
-              {% endif %}
+              <article class="luxury-collection-card">
 
-              <h3>{{ collection.title }}</h3>
+                <a href="{{ collection.url }}" class="luxury-collection-image-link">
 
-              {% if collection.description != blank %}
-                <p>
-                  {{ collection.description | strip_html | truncatewords: 15 }}
-                </p>
-              {% endif %}
+                  <div class="luxury-collection-image">
 
-            </a>
+                    <div class="luxury-collection-shine"></div>
 
-          </div>
+                    {% if collection.featured_image %}
+
+                      <img
+                        src="{{ collection.featured_image | image_url: width: 800 }}"
+                        alt="{{ collection.title | escape }}"
+                        loading="lazy"
+                        width="{{ collection.featured_image.width }}"
+                        height="{{ collection.featured_image.height }}"
+                      >
+
+                    {% else %}
+
+                      <div class="luxury-collection-placeholder">
+                        <span>♡</span>
+                      </div>
+
+                    {% endif %}
+
+                    <div class="luxury-collection-view-pill">
+                      <span>VIEW COLLECTION</span>
+                      <b>→</b>
+                    </div>
+
+                  </div>
+
+                </a>
+
+
+                <div class="luxury-collection-info">
+
+                  <div class="luxury-collection-label">
+                    COLLECTION
+                  </div>
+
+                  <h2 class="luxury-collection-name">
+                    <a href="{{ collection.url }}">
+                      {{ collection.title }}
+                    </a>
+                  </h2>
+
+                  {% if collection.description != blank %}
+
+                    <p class="luxury-collection-description-text">
+                      {{ collection.description
+                        | strip_html
+                        | truncatewords: 18
+                      }}
+                    </p>
+
+                  {% endif %}
+
+                  <div class="luxury-collection-meta">
+
+                    <span>
+                      {{ collection.products_count }} Products
+                    </span>
+
+                    <span>
+                      →
+                    </span>
+
+                  </div>
+
+                  <a
+                    href="{{ collection.url }}"
+                    class="luxury-collection-button"
+                  >
+                    <span>Explore Collection</span>
+                    <b>↗</b>
+                  </a>
+
+                </div>
+
+              </article>
+
+            {% endif %}
+
+          {% endunless %}
 
         {% endfor %}
 
-        {{ paginate | default_pagination }}
+      </div>
 
-      {% endpaginate %}
+      {% if paginate.pages > 1 %}
 
-    </div>
+        <nav class="luxury-pagination">
+
+          {% if paginate.previous %}
+            <a href="{{ paginate.previous.url }}">
+              ← Previous
+            </a>
+          {% endif %}
+
+          {% for part in paginate.parts %}
+
+            {% if part.is_link %}
+
+              <a href="{{ part.url }}">
+                {{ part.title }}
+              </a>
+
+            {% elsif part.title == paginate.current_page %}
+
+              <span class="active">
+                {{ part.title }}
+              </span>
+
+            {% else %}
+
+              <span>
+                {{ part.title }}
+              </span>
+
+            {% endif %}
+
+          {% endfor %}
+
+          {% if paginate.next %}
+            <a href="{{ paginate.next.url }}">
+              Next →
+            </a>
+          {% endif %}
+
+        </nav>
+
+      {% endif %}
+
+    {% endpaginate %}
 
   </div>
 
@@ -51,97 +188,342 @@
 
 <style>
 
-.collections-page{
-  padding:60px 0;
+.luxury-collections-page{
+  width:100vw;
+  position:relative;
+  left:50%;
+  margin-left:-50vw;
+  padding:55px 0 100px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 5% 5%,rgba(205,164,116,.13),transparent 28%),
+    radial-gradient(circle at 95% 35%,rgba(23,59,95,.07),transparent 30%),
+    linear-gradient(135deg,#fcfaf7 0%,#f7f2eb 48%,#fbf9f6 100%);
+  color:#173b5f;
 }
 
-.collections-heading{
+.luxury-collections-container{
+  max-width:1380px;
+  margin:auto;
+  padding:0 35px;
+}
+
+.luxury-back-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  height:44px;
+  padding:0 17px;
+  border:1px solid #ded5ca;
+  border-radius:40px;
+  background:rgba(255,255,255,.7);
+  color:#173b5f;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:48px;
+  transition:.35s ease;
+}
+
+.luxury-back-btn:hover{
+  background:#173b5f;
+  color:#fff;
+  transform:translateX(-3px);
+}
+
+.luxury-collections-header{
+  max-width:780px;
+  margin:0 auto 65px;
   text-align:center;
-  font-size:42px;
-  margin-bottom:40px;
-  color:#13205c;
 }
 
+.luxury-collections-badge{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  margin-bottom:17px;
+  color:#ad8157;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:3px;
+}
 
-.collections-grid{
+.luxury-collections-badge span{
+  width:24px;
+  height:1px;
+  background:#cba47d;
+}
+
+.luxury-collections-title{
+  margin:0;
+  color:#173b5f;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(42px,5.5vw,70px);
+  line-height:1;
+  font-weight:500;
+  letter-spacing:-2px;
+}
+
+.luxury-collections-description{
+  max-width:570px;
+  margin:22px auto 0;
+  color:#817a72;
+  font-size:14px;
+  line-height:1.8;
+}
+
+.luxury-collections-divider{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  width:130px;
+  margin:25px auto 0;
+}
+
+.luxury-collections-divider i{
+  width:42px;
+  height:1px;
+  background:#d4b28f;
+}
+
+.luxury-collections-divider span{
+  color:#b98555;
+}
+
+.luxury-collections-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(4,minmax(0,1fr));
   gap:25px;
 }
 
-.back-btn{
-    padding: 10px 15px 24px 15px;
-    width: 60px;
-    height: 30px;
-    font-size: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #1256a0;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 900;
-    transition: .3s;
-    margin-bottom: 10px;
-}
-
-.back-btn:hover{
-background:#0b3c72;
-}
-
-.collection-card{
-  background:#fff;
-  border-radius:15px;
+.luxury-collection-card{
   overflow:hidden;
-  box-shadow:0 5px 15px rgba(0,0,0,.1);
+  background:rgba(255,255,255,.94);
+  border:1px solid #e6ded4;
+  border-radius:20px;
+  box-shadow:0 8px 30px rgba(49,37,24,.055);
+  transition:.45s ease;
 }
 
+.luxury-collection-card:hover{
+  transform:translateY(-8px);
+  border-color:#d7c5b3;
+  box-shadow:0 22px 50px rgba(49,37,24,.13);
+}
 
-.collection-card a{
+.luxury-collection-image-link{
+  display:block;
   text-decoration:none;
-  color:#000;
 }
 
+.luxury-collection-image{
+  position:relative;
+  height:300px;
+  overflow:hidden;
+  background:linear-gradient(145deg,#faf7f2,#f1ebe2);
+}
 
-.collection-card img{
+.luxury-collection-image img{
   width:100%;
-  height:250px;
+  height:100%;
+  display:block;
   object-fit:cover;
+  transition:.7s ease;
 }
 
+.luxury-collection-card:hover img{
+  transform:scale(1.065);
+}
 
-.collection-card h3{
-  font-size:22px;
-  padding:15px;
+.luxury-collection-shine{
+  position:absolute;
+  z-index:3;
+  top:-120%;
+  left:-80%;
+  width:50%;
+  height:300%;
+  transform:rotate(25deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.38),transparent);
+  transition:.8s ease;
+}
+
+.luxury-collection-card:hover .luxury-collection-shine{
+  left:130%;
+}
+
+.luxury-collection-placeholder{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#b98555;
+  font-size:45px;
+}
+
+.luxury-collection-view-pill{
+  position:absolute;
+  z-index:5;
+  left:50%;
+  bottom:18px;
+  transform:translate(-50%,16px);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:11px 17px;
+  background:rgba(255,255,255,.95);
+  border-radius:50px;
+  color:#173b5f;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:1.8px;
+  opacity:0;
+  transition:.4s ease;
+}
+
+.luxury-collection-card:hover .luxury-collection-view-pill{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+.luxury-collection-info{
+  padding:21px 20px 22px;
+}
+
+.luxury-collection-label{
+  margin-bottom:8px;
+  color:#b98555;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+.luxury-collection-name{
   margin:0;
+  min-height:48px;
+  font-size:20px;
+  line-height:1.35;
 }
 
-
-.collection-card p{
-  padding:0 15px 20px;
+.luxury-collection-name a{
+  color:#202b36;
+  text-decoration:none;
 }
 
-
-@media(max-width:991px){
-
-.collections-grid{
-grid-template-columns:repeat(2,1fr);
+.luxury-collection-description-text{
+  min-height:44px;
+  margin:10px 0 15px;
+  color:#817a72;
+  font-size:12px;
+  line-height:1.65;
 }
 
+.luxury-collection-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-top:13px;
+  margin-bottom:15px;
+  border-top:1px solid #eee6dc;
+  color:#a28d79;
+  font-size:9px;
+  font-weight:700;
+  text-transform:uppercase;
 }
 
+.luxury-collection-button{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:100%;
+  min-height:45px;
+  border-radius:9px;
+  background:#173b5f;
+  color:#fff;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:800;
+}
+
+.luxury-collection-button:hover{
+  background:#0e2d49;
+  color:#fff;
+}
+
+.luxury-pagination{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:55px;
+}
+
+.luxury-pagination a,
+.luxury-pagination span{
+  min-width:43px;
+  height:43px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 13px;
+  border:1px solid #ddd2c5;
+  border-radius:9px;
+  background:#fff;
+  color:#173b5f;
+  text-decoration:none;
+  font-size:11px;
+}
+
+.luxury-pagination .active{
+  background:#173b5f;
+  color:#fff;
+}
+
+@media(max-width:1100px){
+  .luxury-collections-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:850px){
+  .luxury-collections-container{
+    padding:0 25px;
+  }
+
+  .luxury-collections-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
 
 @media(max-width:600px){
+  .luxury-collections-page{
+    padding:30px 0 55px;
+  }
 
-.collections-grid{
-grid-template-columns:1fr;
-}
+  .luxury-collections-container{
+    padding:0 14px;
+  }
 
-.collections-heading{
-font-size:30px;
-}
+  .luxury-collections-header{
+    margin-bottom:38px;
+  }
 
+  .luxury-collections-grid{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  .luxury-collection-image{
+    height:285px;
+  }
+
+  .luxury-collections-title{
+    font-size:42px;
+  }
 }
 
 </style>
@@ -149,12 +531,12 @@ font-size:30px;
 
 {% schema %}
 {
-"name":"Collections Grid",
-"settings":[],
-"presets":[
-{
-"name":"Collections Grid"
-}
-]
+  "name": "Collections Grid",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collections Grid"
+    }
+  ]
 }
 {% endschema %}

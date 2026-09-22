@@ -1,397 +1,682 @@
-{% comment %}
-  Modern Collection Grid - 30 Products Per Page
-{% endcomment %}
+<section class="luxury-products-page">
 
-<section class="collection-page">
+  <div class="luxury-products-container">
 
-  <div class="collection-header">
-    <h1>{{ collection.title }}</h1>
+    <a href="/collections" class="luxury-products-back">
+      ← <span>All Collections</span>
+    </a>
 
-    {% if collection.description != blank %}
-      <div class="collection-description">
-        {{ collection.description }}
+    <header class="luxury-products-header">
+
+      <div class="luxury-products-badge">
+        <span></span>
+        EXPLORE COLLECTION
+        <span></span>
       </div>
-    {% endif %}
 
-    <p class="collection-count">
-      {{ collection.products_count }} Products
-    </p>
-  </div>
+      <h1>
+        {{ collection.title }}
+      </h1>
 
-  {% paginate collection.products by 30 %}
+      {% if collection.description != blank %}
+        <div class="luxury-products-description">
+          {{ collection.description }}
+        </div>
+      {% endif %}
 
-    <div class="collection-grid">
+      <div class="luxury-products-divider">
+        <i></i>
+        <span>✦</span>
+        <i></i>
+      </div>
 
-      {% for product in collection.products %}
+    </header>
 
-        <article class="product-card">
 
-          <a href="{{ product.url }}" class="product-card__image">
+    {% paginate collection.products by 30 %}
 
-            {% if product.compare_at_price > product.price %}
-              <span class="badge">Sale</span>
-            {% endif %}
+      {% if collection.products_count > 0 %}
 
-            {% if product.featured_image %}
-              {% render 'image',
-                image: product.featured_image,
-                width: 700,
-                height: 700,
-                crop: 'center',
-                class: 'product-image'
-              %}
-            {% endif %}
+        <div class="luxury-products-grid">
 
-          </a>
+          {% for product in collection.products %}
 
-          <div class="product-card__content">
+            {% assign current_variant = product.selected_or_first_available_variant %}
 
-            <h3>
-              <a href="{{ product.url }}">
-                {{ product.title | escape }}
-              </a>
-            </h3>
+            <article class="luxury-product-card">
 
-            <div class="price">
+              <a
+                href="{{ product.url }}"
+                class="luxury-product-image-link"
+              >
 
-              {% if product.compare_at_price > product.price %}
+                <div class="luxury-product-image">
 
-                <span class="price-sale">
-                  {{ product.price | money }}
-                </span>
+                  {% if product.compare_at_price > product.price %}
+                    <span class="luxury-sale-badge">
+                      SALE
+                    </span>
+                  {% endif %}
 
-                <span class="price-compare">
-                  {{ product.compare_at_price | money }}
-                </span>
+                  {% if product.featured_image %}
 
-              {% else %}
+                    <img
+                      src="{{ product.featured_image | image_url: width: 800 }}"
+                      srcset="
+                        {{ product.featured_image | image_url: width: 400 }} 400w,
+                        {{ product.featured_image | image_url: width: 600 }} 600w,
+                        {{ product.featured_image | image_url: width: 800 }} 800w
+                      "
+                      sizes="
+                        (max-width:600px) 92vw,
+                        (max-width:850px) 45vw,
+                        (max-width:1100px) 30vw,
+                        23vw
+                      "
+                      alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                      loading="lazy"
+                    >
 
-                <span class="price-regular">
-                  {{ product.price | money }}
-                </span>
+                  {% else %}
 
-              {% endif %}
+                    <div class="luxury-product-placeholder">
+                      ♡
+                    </div>
 
-            </div>
+                  {% endif %}
 
-            {% if product.available %}
-              <a href="{{ product.url }}" class="btn">
-                View Product
-              </a>
-            {% else %}
-              <span class="sold-out">
-                Sold Out
-              </span>
-            {% endif %}
+                  <div class="luxury-product-view">
+                    VIEW PRODUCT →
+                  </div>
 
-          </div>
+                </div>
 
-        </article>
-
-      {% endfor %}
-
-    </div>
-
-    {% if paginate.pages > 1 %}
-
-      <nav class="pagination">
-
-        {% if paginate.previous %}
-          <a href="{{ paginate.previous.url }}" class="pagination-btn">
-            ← Previous
-          </a>
-        {% endif %}
-
-        <div class="pagination-pages">
-
-          {% for part in paginate.parts %}
-
-            {% if part.is_link %}
-
-              <a href="{{ part.url }}" class="page-number">
-                {{ part.title }}
               </a>
 
-            {% else %}
 
-              {% if part.title == paginate.current_page %}
+              <div class="luxury-product-info">
 
-                <span class="page-number active">
-                  {{ part.title }}
-                </span>
+                <h2>
+                  <a href="{{ product.url }}">
+                    {{ product.title | escape }}
+                  </a>
+                </h2>
 
-              {% else %}
+                <div class="luxury-product-meta">
 
-                <span class="page-number dots">
-                  {{ part.title }}
-                </span>
+                  <div class="luxury-product-price">
 
-              {% endif %}
+                    {% if product.compare_at_price > product.price %}
 
-            {% endif %}
+                      <span class="luxury-sale-price">
+                        {{ product.price | money }}
+                      </span>
+
+                      <span class="luxury-compare-price">
+                        {{ product.compare_at_price | money }}
+                      </span>
+
+                    {% else %}
+
+                      {{ product.price | money }}
+
+                    {% endif %}
+
+                  </div>
+
+                  {% if current_variant.available %}
+
+                    <span class="luxury-stock">
+                      <i></i>
+                      In Stock
+                    </span>
+
+                  {% endif %}
+
+                </div>
+
+
+                <div class="luxury-product-actions">
+
+                  <a
+                    href="{{ product.url }}"
+                    class="luxury-details-btn"
+                  >
+                    Explore Product ↗
+                  </a>
+
+
+                  <form
+                    method="post"
+                    action="{{ routes.cart_add_url }}"
+                    class="luxury-cart-form"
+                  >
+
+                    <input
+                      type="hidden"
+                      name="id"
+                      value="{{ current_variant.id }}"
+                    >
+
+                    <input
+                      type="hidden"
+                      name="quantity"
+                      value="1"
+                    >
+
+                    <button
+                      type="submit"
+                      class="luxury-cart-btn"
+                      {% unless current_variant.available %}
+                        disabled
+                      {% endunless %}
+                    >
+
+                      {% if current_variant.available %}
+                        + Add To Cart
+                      {% else %}
+                        Sold Out
+                      {% endif %}
+
+                    </button>
+
+                  </form>
+
+                </div>
+
+              </div>
+
+            </article>
 
           {% endfor %}
 
         </div>
 
-        {% if paginate.next %}
-          <a href="{{ paginate.next.url }}" class="pagination-btn">
-            Next →
-          </a>
+
+        {% if paginate.pages > 1 %}
+
+          <nav class="luxury-product-pagination">
+
+            {% if paginate.previous %}
+              <a href="{{ paginate.previous.url }}">
+                ← Previous
+              </a>
+            {% endif %}
+
+            {% for part in paginate.parts %}
+
+              {% if part.is_link %}
+
+                <a href="{{ part.url }}">
+                  {{ part.title }}
+                </a>
+
+              {% elsif part.title == paginate.current_page %}
+
+                <span class="active">
+                  {{ part.title }}
+                </span>
+
+              {% else %}
+
+                <span>
+                  {{ part.title }}
+                </span>
+
+              {% endif %}
+
+            {% endfor %}
+
+            {% if paginate.next %}
+              <a href="{{ paginate.next.url }}">
+                Next →
+              </a>
+            {% endif %}
+
+          </nav>
+
         {% endif %}
 
-      </nav>
 
-    {% endif %}
+      {% else %}
 
-  {% endpaginate %}
+        <div class="luxury-products-empty">
+          <div>♡</div>
+
+          <h2>
+            No Products Found
+          </h2>
+
+          <p>
+            There are currently no products in this collection.
+          </p>
+
+          <a href="/collections">
+            Back To Collections
+          </a>
+        </div>
+
+      {% endif %}
+
+    {% endpaginate %}
+
+  </div>
 
 </section>
 
-{% stylesheet %}
 
-.collection-page{
-    max-width:1400px;
-    margin:auto;
-    padding:50px 20px;
+<style>
+
+.luxury-products-page{
+  width:100vw;
+  position:relative;
+  left:50%;
+  margin-left:-50vw;
+  padding:50px 0 100px;
+  background:
+    radial-gradient(circle at 5% 5%,rgba(205,164,116,.13),transparent 28%),
+    linear-gradient(135deg,#fcfaf7,#f7f2eb,#fbf9f6);
+  color:#173b5f;
 }
 
-.collection-header{
-    text-align:center;
-    margin-bottom:40px;
+.luxury-products-container{
+  max-width:1380px;
+  margin:auto;
+  padding:0 35px;
 }
 
-.collection-header h1{
-    font-size:42px;
-    margin-bottom:10px;
+.luxury-products-back{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 18px;
+  border:1px solid #ded5ca;
+  border-radius:40px;
+  color:#173b5f;
+  background:#fff;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:45px;
+  transition:.3s;
 }
 
-.collection-description{
-    color:#666;
-    max-width:700px;
-    margin:0 auto 10px;
+.luxury-products-back:hover{
+  background:#173b5f;
+  color:#fff;
 }
 
-.collection-count{
-    color:#999;
+.luxury-products-header{
+  text-align:center;
+  max-width:780px;
+  margin:0 auto 60px;
 }
 
-/* GRID */
-
-.collection-grid{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:24px;
+.luxury-products-badge{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  margin-bottom:15px;
+  color:#ad8157;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:3px;
 }
 
-/* CARD */
-
-.product-card{
-    background:#fff;
-    border:1px solid #eee;
-    border-radius:14px;
-    overflow:hidden;
-    transition:.35s ease;
+.luxury-products-badge span{
+  width:24px;
+  height:1px;
+  background:#cba47d;
 }
 
-.product-card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 15px 35px rgba(0,0,0,.08);
+.luxury-products-header h1{
+  margin:0;
+  color:#173b5f;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(42px,5.5vw,70px);
+  line-height:1;
+  font-weight:500;
 }
 
-.product-card__image{
-    display:block;
-    position:relative;
-    aspect-ratio:1;
-    overflow:hidden;
+.luxury-products-description{
+  max-width:600px;
+  margin:20px auto;
+  color:#817a72;
+  font-size:14px;
+  line-height:1.8;
 }
 
-.product-image{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:.4s;
+.luxury-products-description p{
+  margin:0;
 }
 
-.product-card:hover .product-image{
-    transform:scale(1.08);
+.luxury-products-divider{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
 }
 
-/* Badge */
-
-.badge{
-    position:absolute;
-    top:12px;
-    left:12px;
-    background:#ff3b30;
-    color:#fff;
-    padding:6px 12px;
-    border-radius:20px;
-    font-size:12px;
-    font-weight:600;
-    z-index:5;
+.luxury-products-divider i{
+  width:42px;
+  height:1px;
+  background:#d4b28f;
 }
 
-/* Content */
-
-.product-card__content{
-    padding:18px;
+.luxury-products-divider span{
+  color:#b98555;
 }
 
-.product-card h3{
-    font-size:16px;
-    margin-bottom:12px;
-    line-height:1.4;
+.luxury-products-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:25px;
 }
 
-.product-card h3 a{
-    color:#111;
-    text-decoration:none;
+.luxury-product-card{
+  overflow:hidden;
+  background:#fff;
+  border:1px solid #e6ded4;
+  border-radius:20px;
+  box-shadow:0 8px 30px rgba(49,37,24,.055);
+  transition:.45s ease;
 }
 
-.price{
-    display:flex;
-    gap:10px;
-    align-items:center;
-    margin-bottom:18px;
+.luxury-product-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 22px 50px rgba(49,37,24,.13);
 }
 
-.price-sale{
-    color:#e60023;
-    font-weight:700;
+.luxury-product-image-link{
+  display:block;
 }
 
-.price-compare{
-    text-decoration:line-through;
-    color:#999;
+.luxury-product-image{
+  position:relative;
+  height:315px;
+  overflow:hidden;
+  background:linear-gradient(145deg,#faf7f2,#f1ebe2);
 }
 
-.price-regular{
-    font-weight:700;
+.luxury-product-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  transition:.7s ease;
 }
 
-/* Button */
-
-.btn{
-    display:block;
-    width:100%;
-    padding:12px;
-    text-align:center;
-    text-decoration:none;
-    background:#111;
-    color:#fff;
-    border-radius:8px;
-    transition:.3s;
+.luxury-product-card:hover img{
+  transform:scale(1.065);
 }
 
-.btn:hover{
-    background:#333;
+.luxury-product-placeholder{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#b98555;
+  font-size:40px;
 }
 
-.sold-out{
-    display:block;
-    text-align:center;
-    padding:12px;
-    background:#efefef;
-    color:#777;
-    border-radius:8px;
+.luxury-sale-badge{
+  position:absolute;
+  top:14px;
+  left:14px;
+  z-index:5;
+  padding:7px 12px;
+  border-radius:30px;
+  background:#a9683d;
+  color:#fff;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1px;
 }
 
-/* Pagination */
-
-.pagination{
-    margin-top:60px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:14px;
-    flex-wrap:wrap;
+.luxury-product-view{
+  position:absolute;
+  left:50%;
+  bottom:17px;
+  transform:translate(-50%,15px);
+  padding:11px 17px;
+  border-radius:50px;
+  background:rgba(255,255,255,.95);
+  color:#173b5f;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:1.5px;
+  opacity:0;
+  transition:.4s;
+  white-space:nowrap;
 }
 
-.pagination-pages{
-    display:flex;
-    gap:8px;
+.luxury-product-card:hover .luxury-product-view{
+  opacity:1;
+  transform:translate(-50%,0);
 }
 
-.page-number,
-.pagination-btn{
-    min-width:44px;
-    height:44px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:0 14px;
-    border:1px solid #ddd;
-    border-radius:8px;
-    text-decoration:none;
-    color:#111;
-    transition:.3s;
+.luxury-product-info{
+  padding:20px;
 }
 
-.page-number:hover,
-.pagination-btn:hover{
-    background:#111;
-    color:#fff;
+.luxury-product-info h2{
+  min-height:46px;
+  margin:0 0 12px;
+  font-size:17px;
+  line-height:1.4;
 }
 
-.page-number.active{
-    background:#111;
-    color:#fff;
-    border-color:#111;
+.luxury-product-info h2 a{
+  color:#202b36;
+  text-decoration:none;
 }
 
-.dots{
-    border:none;
+.luxury-product-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  margin-bottom:17px;
 }
 
-/* Responsive */
-
-@media(max-width:1200px){
-
-.collection-grid{
-    grid-template-columns:repeat(4,1fr);
+.luxury-product-price{
+  color:#a9683d;
+  font-size:19px;
+  font-weight:800;
 }
 
+.luxury-sale-price{
+  color:#a9683d;
 }
 
-@media(max-width:992px){
+.luxury-compare-price{
+  margin-left:5px;
+  color:#aaa;
+  font-size:11px;
+  text-decoration:line-through;
+}
 
-.collection-grid{
+.luxury-stock{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  color:#719073;
+  font-size:8px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+
+.luxury-stock i{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#7baa7b;
+}
+
+.luxury-product-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.luxury-details-btn,
+.luxury-cart-btn{
+  min-height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:9px;
+  font-size:9px;
+  font-weight:800;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.luxury-details-btn{
+  background:#173b5f;
+  color:#fff;
+}
+
+.luxury-details-btn:hover{
+  background:#0e2d49;
+  color:#fff;
+}
+
+.luxury-cart-form{
+  margin:0;
+}
+
+.luxury-cart-btn{
+  width:100%;
+  border:1px solid #d9c4af;
+  background:#fff;
+  color:#9a6946;
+  cursor:pointer;
+}
+
+.luxury-cart-btn:hover{
+  background:#f8efe6;
+}
+
+.luxury-cart-btn:disabled{
+  background:#eee;
+  color:#999;
+  cursor:not-allowed;
+}
+
+.luxury-product-pagination{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:55px;
+}
+
+.luxury-product-pagination a,
+.luxury-product-pagination span{
+  min-width:43px;
+  height:43px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 13px;
+  border:1px solid #ddd2c5;
+  border-radius:9px;
+  background:#fff;
+  color:#173b5f;
+  text-decoration:none;
+  font-size:11px;
+}
+
+.luxury-product-pagination .active{
+  background:#173b5f;
+  color:#fff;
+}
+
+.luxury-products-empty{
+  max-width:600px;
+  margin:auto;
+  padding:60px 25px;
+  text-align:center;
+  background:#fff;
+  border:1px solid #e6ded4;
+  border-radius:20px;
+}
+
+.luxury-products-empty div{
+  font-size:45px;
+  color:#b98555;
+}
+
+.luxury-products-empty h2{
+  font-family:Georgia,serif;
+  font-weight:500;
+  color:#173b5f;
+}
+
+.luxury-products-empty p{
+  color:#817a72;
+}
+
+.luxury-products-empty a{
+  display:inline-flex;
+  padding:13px 22px;
+  border-radius:9px;
+  background:#173b5f;
+  color:#fff;
+  text-decoration:none;
+}
+
+@media(max-width:1100px){
+  .luxury-products-grid{
     grid-template-columns:repeat(3,1fr);
+  }
 }
 
-}
+@media(max-width:850px){
+  .luxury-products-container{
+    padding:0 25px;
+  }
 
-@media(max-width:768px){
-
-.collection-page{
-    padding:30px 15px;
-}
-
-.collection-header h1{
-    font-size:32px;
-}
-
-.collection-grid{
+  .luxury-products-grid{
     grid-template-columns:repeat(2,1fr);
-    gap:18px;
+  }
 }
 
-}
+@media(max-width:600px){
+  .luxury-products-page{
+    padding:30px 0 60px;
+  }
 
-@media(max-width:480px){
+  .luxury-products-container{
+    padding:0 14px;
+  }
 
-.collection-grid{
+  .luxury-products-grid{
     grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  .luxury-product-image{
+    height:285px;
+  }
+
+  .luxury-product-actions{
+    grid-template-columns:1fr 1fr;
+  }
 }
 
-.product-card__content{
-    padding:14px;
+@media(max-width:380px){
+  .luxury-product-actions{
+    grid-template-columns:1fr;
+  }
 }
 
-}
+</style>
 
-{% endstylesheet %}
 
 {% schema %}
 {

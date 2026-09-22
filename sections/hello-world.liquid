@@ -1,275 +1,356 @@
 <div class="hero-slider">
 
-
   <div class="slide active">
-
     <picture>
-
-      <source 
-        media="(max-width:768px)"
-        srcset="{{ 'banner-mobile-2.png' | asset_url }}"
+      <source
+        media="(max-width: 768px)"
+        srcset="{{ 'banner-mobile-3.png' | asset_url }}"
       >
-
-      <img 
-        src="{{ 'banner-2.png' | asset_url }}"
-        alt="Banner 2"
+      <img
+        src="{{ 'banner-3.png' | asset_url }}"
+        alt="Banner 3"
       >
-
     </picture>
-
   </div>
 
-
-
-
   <div class="slide">
-
     <picture>
-
-      <source 
-        media="(max-width:768px)"
+      <source
+        media="(max-width: 768px)"
         srcset="{{ 'banner-mobile-1.png' | asset_url }}"
       >
-
-      <img 
+      <img
         src="{{ 'banner-1.png' | asset_url }}"
         alt="Banner 1"
       >
-
     </picture>
+  </div>
+
+  <div class="slide">
+    <picture>
+      <source
+        media="(max-width: 768px)"
+        srcset="{{ 'banner-mobile-2.png' | asset_url }}"
+      >
+      <img
+        src="{{ 'banner-2.png' | asset_url }}"
+        alt="Banner 2"
+      >
+    </picture>
+  </div>
+
+  
+
+<button
+type="button"
+class="slider-btn prev"
+onclick="changeSlide(-1)"
+aria-label="Previous banner"
+
+>
+
+
+❮
+
+  </button>
+
+<button
+type="button"
+class="slider-btn next"
+onclick="changeSlide(1)"
+aria-label="Next banner"
+
+>
+
+❯
+
+
+  </button>
+
+  <div class="slider-dots">
+
+
+<button
+  type="button"
+  class="dot active"
+  onclick="goToSlide(0)"
+  aria-label="Go to banner 1"
+></button>
+
+<button
+  type="button"
+  class="dot"
+  onclick="goToSlide(1)"
+  aria-label="Go to banner 2"
+></button>
+
+<button
+  type="button"
+  class="dot"
+  onclick="goToSlide(2)"
+  aria-label="Go to banner 3"
+></button>
+
 
   </div>
 
-
-
-
-
-  <button class="slider-btn prev" onclick="changeSlide(-1)">
-    ❮
-  </button>
-
-
-  <button class="slider-btn next" onclick="changeSlide(1)">
-    ❯
-  </button>
-
-
-
 </div>
-
-
-
-
 
 <script>
 
-let currentSlide = 0;
+(function () {
 
+  let currentSlide = 0;
+  let autoSlide;
 
-function changeSlide(direction){
+  const slider = document.querySelector(".hero-slider");
 
-  const slides = document.querySelectorAll(".slide");
+  if (!slider) return;
 
+  const slides = slider.querySelectorAll(".slide");
+  const dots = slider.querySelectorAll(".dot");
 
-  slides[currentSlide].classList.remove("active");
+  function showSlide(index) {
 
+    slides.forEach(function (slide) {
+      slide.classList.remove("active");
+    });
 
-  currentSlide = currentSlide + direction;
+    dots.forEach(function (dot) {
+      dot.classList.remove("active");
+    });
 
+    slides[index].classList.add("active");
+    dots[index].classList.add("active");
 
-
-  if(currentSlide >= slides.length){
-
-    currentSlide = 0;
+    currentSlide = index;
 
   }
 
+  window.changeSlide = function (direction) {
 
+    let newSlide = currentSlide + direction;
 
-  if(currentSlide < 0){
+    if (newSlide >= slides.length) {
+      newSlide = 0;
+    }
 
-    currentSlide = slides.length - 1;
+    if (newSlide < 0) {
+      newSlide = slides.length - 1;
+    }
+
+    showSlide(newSlide);
+
+    restartAutoSlide();
+
+  };
+
+  window.goToSlide = function (index) {
+
+    showSlide(index);
+
+    restartAutoSlide();
+
+  };
+
+  function startAutoSlide() {
+
+    autoSlide = setInterval(function () {
+
+      let nextSlide = currentSlide + 1;
+
+      if (nextSlide >= slides.length) {
+        nextSlide = 0;
+      }
+
+      showSlide(nextSlide);
+
+    }, 5000);
 
   }
 
+  function restartAutoSlide() {
 
+    clearInterval(autoSlide);
 
-  slides[currentSlide].classList.add("active");
+    startAutoSlide();
 
-}
+  }
 
+  showSlide(0);
+
+  startAutoSlide();
+
+})();
 
 </script>
 
-
-
-
-
 {% stylesheet %}
 
+.hero-slider {
+width: 99.4vw;
+position: relative;
+left: 50%;
+right: 50%;
+margin-left: -50vw;
+margin-right: -50vw;
+overflow: hidden;
+}
+
+.hero-slider .slide {
+display: none;
+width: 100%;
+}
+
+.hero-slider .slide.active {
+display: block;
+}
+
+.hero-slider .slide picture {
+display: block;
+width: 100%;
+}
+
+.hero-slider .slide img {
+display: block;
+width: 100%;
+height: auto;
+max-width: 100%;
+}
+
+.hero-slider .slider-btn {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+z-index: 10;
+width: 45px;
+height: 45px;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 0;
+border: none;
+border-radius: 50%;
+background: rgba(0, 0, 0, 0.40);
+color: #ffffff;
+font-size: 28px;
+line-height: 1;
+cursor: pointer;
+transition: all 0.25s ease;
+}
+
+.hero-slider .slider-btn:hover {
+background: rgba(0, 0, 0, 0.70);
+transform: translateY(-50%) scale(1.05);
+}
+
+.hero-slider .prev {
+left: 20px;
+}
+
+.hero-slider .next {
+right: 20px;
+}
+
+.hero-slider .slider-dots {
+position: absolute;
+bottom: 15px;
+left: 50%;
+transform: translateX(-50%);
+z-index: 10;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+}
+
+.hero-slider .dot {
+width: 10px;
+height: 10px;
+padding: 0;
+border: none;
+border-radius: 50%;
+background: rgba(255, 255, 255, 0.55);
+cursor: pointer;
+transition: all 0.25s ease;
+}
+
+.hero-slider .dot.active {
+width: 12px;
+height: 12px;
+background: #ffffff;
+}
+
+@media (max-width: 768px) {
 
 .hero-slider {
+width: 99.4vw;
+}
 
-width:99.4vw;
-left:50%;
-right:50%;
-margin-left:-50vw;
-margin-right:-50vw;
+.hero-slider .slide img {
+width: 100%;
+height: auto;
+}
 
-overflow:hidden;
-position:relative;
+.hero-slider .slider-btn {
+width: 35px;
+height: 35px;
+font-size: 20px;
+}
+
+.hero-slider .prev {
+left: 10px;
+}
+
+.hero-slider .next {
+right: 10px;
+}
+
+.hero-slider .slider-dots {
+bottom: 10px;
+gap: 6px;
+}
+
+.hero-slider .dot {
+width: 8px;
+height: 8px;
+}
+
+.hero-slider .dot.active {
+width: 10px;
+height: 10px;
+}
 
 }
 
+@media (max-width: 480px) {
 
-
-.slide{
-
-display:none;
-
+.hero-slider .slider-btn {
+width: 32px;
+height: 32px;
+font-size: 17px;
 }
 
-
-
-.slide.active{
-
-display:block;
-
+.hero-slider .prev {
+left: 8px;
 }
 
-
-
-.slide picture{
-
-display:block;
-width:100%;
-
+.hero-slider .next {
+right: 8px;
 }
 
-
-
-.slide img{
-
-width:100%;
-height:auto;
-display:block;
-
 }
-
-
-
-
-.slider-btn{
-
-position:absolute;
-
-top:50%;
-
-transform:translateY(-50%);
-
-background:rgba(0,0,0,.4);
-
-color:white;
-
-border:none;
-
-font-size:30px;
-
-width:45px;
-
-height:45px;
-
-border-radius:50%;
-
-cursor:pointer;
-
-}
-
-
-
-.prev{
-
-left:20px;
-
-}
-
-
-
-.next{
-
-right:20px;
-
-}
-
-
-
-
-
-@media(max-width:768px){
-
-
-.hero-slider{
-
-width:99.4vw;
-
-}
-
-
-
-.slide img{
-
-width:100%;
-height:auto;
-
-}
-
-
-
-.slider-btn{
-
-width:35px;
-height:35px;
-font-size:20px;
-
-}
-
-
-}
-
-
-
-
-
-@media(max-width:480px){
-
-
-.slider-btn{
-
-width:32px;
-height:32px;
-font-size:18px;
-
-}
-
-
-}
-
-
 
 {% endstylesheet %}
 
-
-
-
-
 {% schema %}
 {
-  "name": "Banner Slider",
-  "settings": [],
-  "presets": [
-    {
-      "name": "Banner Slider"
-    }
-  ]
+"name": "Banner Slider",
+"settings": [],
+"presets": [
+{
+"name": "Banner Slider"
+}
+]
 }
 {% endschema %}

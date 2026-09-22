@@ -10,6 +10,28 @@
       "settings": {}
     },
 
+    "trending_products": {
+      "type": "trending-products",
+      "settings": {
+        "collection": "trending-now",
+        "products_to_show": 4,
+        "eyebrow": "WHAT'S HOT RIGHT NOW",
+        "heading": "Trending Now 🔥",
+        "subheading": "Discover the toys little ones are loving right now.",
+        "view_all_text": "View All Toys →",
+        "show_badge": true,
+        "show_second_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "background_color": "#FFF9F1",
+        "heading_color": "#222222",
+        "text_color": "#6F6A63",
+        "accent_color": "#FF6B35",
+        "button_color": "#222222",
+        "button_text_color": "#FFFFFF"
+      }
+    },
+
     "popular_categories": {
       "type": "popular-categories",
       "settings": {}
@@ -40,9 +62,9 @@
   "order": [
     "main",
     "shop_by_age",
+    "trending_products",
     "popular_categories",
     "why_parents_love",
-
     "top_picks",
     "contact_us"
   ]

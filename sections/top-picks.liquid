@@ -1,64 +1,234 @@
 <section class="top-picks-section">
 
-  <div class="page-width">
+  <div class="top-picks-container">
 
-    <h2 class="top-picks-heading">
-      {{ section.settings.heading }}
-    </h2>
+    <!-- HEADER -->
+
+    <div class="top-picks-header">
+<!--
+      <span class="top-picks-eyebrow">
+        <span class="top-picks-dot"></span>
+        CUSTOMER FAVORITES
+      </span>
+-->
+      <h2 class="top-picks-heading">
+        {{ section.settings.heading }}
+      </h2>
+
+      <p class="top-picks-subheading">
+        Discover some of our most-loved picks for little ones.
+      </p>
+
+    </div>
+
+
+    <!-- CARDS -->
 
     <div class="top-picks-grid">
 
-      <!-- Doll Collection -->
-      <a href="/collections/dolls" class="top-pick-card">
+
+      <!-- =========================
+           DOLL
+      ========================== -->
+
+      <a
+        href="/collections/dolls"
+        class="top-pick-card"
+      >
 
         <div class="top-pick-image">
-          <img src="{{ 'pick-1.png' | asset_url }}" alt="Doll">
+
+          <img
+            src="{{ 'pick-1.png' | asset_url }}"
+            alt="Doll"
+            loading="lazy"
+          >
+
+          <span class="top-pick-hover-icon">
+            💕
+          </span>
+
+          <span class="top-pick-arrow">
+            →
+          </span>
+
         </div>
 
-        <div class="top-pick-title">
-          Doll
+
+        <div class="top-pick-content">
+
+          <div>
+
+            <span class="top-pick-small">
+              LITTLE FAVORITE
+            </span>
+
+            <h3>
+              Doll
+            </h3>
+
+            <p>
+              Sweet toys for endless imagination.
+            </p>
+
+          </div>
+
         </div>
 
       </a>
 
 
-      <!-- Toy Cars Collection -->
-      <a href="/collections/vehicles" class="top-pick-card">
+
+      <!-- =========================
+           TOY CARS
+      ========================== -->
+
+      <a
+        href="/collections/vehicles"
+        class="top-pick-card"
+      >
 
         <div class="top-pick-image">
-          <img src="{{ 'pick-2.jpg' | asset_url }}" alt="Toy Cars">
+
+          <img
+            src="{{ 'pick-2.jpg' | asset_url }}"
+            alt="Toy Cars"
+            loading="lazy"
+          >
+
+          <span class="top-pick-hover-icon">
+            🚗
+          </span>
+
+          <span class="top-pick-arrow">
+            →
+          </span>
+
         </div>
 
-        <div class="top-pick-title">
-          Toy Cars
+
+        <div class="top-pick-content">
+
+          <div>
+
+            <span class="top-pick-small">
+              PLAYTIME FAVORITE
+            </span>
+
+            <h3>
+              Toy Cars
+            </h3>
+
+            <p>
+              Fast, fun adventures for little racers.
+            </p>
+
+          </div>
+
         </div>
 
       </a>
 
 
-      <!-- Makeup Sets Collection -->
-      <a href="/collections/toy-guns" class="top-pick-card">
+
+      <!-- =========================
+           TOY GUNS
+      ========================== -->
+
+      <a
+        href="/collections/toy-guns"
+        class="top-pick-card"
+      >
 
         <div class="top-pick-image">
-          <img src="{{ 'pick-3.png' | asset_url }}" alt="Toy Guns">
+
+          <img
+            src="{{ 'pick-3.png' | asset_url }}"
+            alt="Toy Guns"
+            loading="lazy"
+          >
+
+          <span class="top-pick-hover-icon">
+            ⭐
+          </span>
+
+          <span class="top-pick-arrow">
+            →
+          </span>
+
         </div>
 
-        <div class="top-pick-title">
-          Toy Guns
+
+        <div class="top-pick-content">
+
+          <div>
+
+            <span class="top-pick-small">
+              FUN PICK
+            </span>
+
+            <h3>
+              Toy Guns
+            </h3>
+
+            <p>
+              Imaginative and action-packed playtime.
+            </p>
+
+          </div>
+
         </div>
 
       </a>
 
 
-      <!-- Outdoor Toys Collection -->
-   <a href="/collections/boylearning-toyss" class="top-pick-card">
+
+      <!-- =========================
+           LEARNING TOYS
+      ========================== -->
+
+      <a
+        href="/collections/learning-toys"
+        class="top-pick-card"
+      >
 
         <div class="top-pick-image">
-          <img src="{{ 'learning.png' | asset_url }}" alt="Learning Toys">
+
+          <img
+            src="{{ 'learning.png' | asset_url }}"
+            alt="Learning Toys"
+            loading="lazy"
+          >
+
+          <span class="top-pick-hover-icon">
+            ✨
+          </span>
+
+          <span class="top-pick-arrow">
+            →
+          </span>
+
         </div>
 
-        <div class="top-pick-title">
-          Learning Toys
+
+        <div class="top-pick-content">
+
+          <div>
+
+            <span class="top-pick-small">
+              SMART PLAY
+            </span>
+
+            <h3>
+              Learning Toys
+            </h3>
+
+            <p>
+              Fun ways to learn, explore and grow.
+            </p>
+
+          </div>
+
         </div>
 
       </a>
@@ -71,180 +241,763 @@
 </section>
 
 
-<style>
-
-.top-picks-section{
-    width:99.4vw;
-    position:relative;
-    left:50%;
-    right:50%;
-    margin-left:-50vw;
-    margin-right:-50vw;
-    padding:40px 0;
-    background:linear-gradient(180deg,#eafcff,#eafcff);
-}
+{% stylesheet %}
 
 
-.top-picks-heading{
-    text-align:center;
-    font-size:48px;
-    font-weight:700;
-    color:#13205c;
-    margin-bottom:45px;
-}
+/* =====================================================
+   TOP PICKS
+===================================================== */
 
+.top-picks-section {
 
-.top-picks-grid{
-    padding:20px;
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:30px;
-}
+  width: 99.4vw;
 
+  position: relative;
 
-.top-pick-card{
+  left: 50%;
 
-    text-decoration:none;
-    border-radius:20px;
-    overflow:hidden;
-    background:#fff;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-    transition:.35s ease;
-    display:block;
+  margin-left: -50vw;
+
+  background: #FFF9F1;
+
+  overflow: hidden;
 
 }
 
 
-.top-pick-card:hover{
+.top-picks-container {
 
-    transform:translateY(-8px);
-    box-shadow:0 18px 35px rgba(0,0,0,.15);
+  width: 100%;
 
-}
+  max-width: 1380px;
 
+  margin: 0 auto;
 
-.top-pick-image{
+  padding: 0px 40px 90px;
 
-    width:100%;
-    overflow:hidden;
-}
-
-
-.top-pick-image img{
-
-    width:100%;
-    height:300px;
-    object-fit:cover;
-    display:block;
-    transition:.4s;
+  box-sizing: border-box;
 
 }
 
 
-.top-pick-card:hover img{
+/* =====================================================
+   HEADER
+===================================================== */
 
-    transform:scale(1.08);
+.top-picks-header {
 
-}
+  text-align: center;
 
+  max-width: 700px;
 
-.top-pick-title{
-
-    background:#1773b0;
-    color:white;
-    text-align:center;
-    padding:18px;
-    font-size:22px;
-    font-weight:600;
+  margin: 0 auto 45px;
 
 }
 
 
+.top-picks-eyebrow {
 
-/* Tablet */
+  display: inline-flex;
 
-@media(max-width:990px){
+  align-items: center;
 
-    .top-picks-heading{
-        font-size:38px;
-    }
+  gap: 8px;
+
+  padding: 7px 14px;
+
+  margin-bottom: 14px;
+
+  border-radius: 50px;
+
+  background: #ffffff;
+
+  border: 1px solid #eee4d8;
+
+  color: #8a7560;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.6px;
+
+}
 
 
-    .top-picks-grid{
+.top-picks-dot {
 
-        grid-template-columns:repeat(2,1fr);
-        gap:20px;
+  width: 7px;
 
-    }
+  height: 7px;
 
+  border-radius: 50%;
+
+  background: #ff6b35;
+
+  box-shadow:
+    0 0 0 4px rgba(255,107,53,.12);
 
 }
 
 
+.top-picks-heading {
 
-/* Mobile */
+  margin: 0;
 
-@media(max-width:767px){
+  color: #222222;
 
-    .top-picks-section{
+  font-size: clamp(38px, 4vw, 54px);
 
-        padding:30px 0;
+  line-height: 1.05;
 
-    }
+  letter-spacing: -1.8px;
 
-
-    .top-picks-heading{
-
-        font-size:30px;
-        margin-bottom:30px;
-
-    }
-
-
-    .top-picks-grid{
-
-        grid-template-columns:1fr;
-        gap:18px;
-
-    }
-
-
-    .top-pick-image img{
-
-        height:230px;
-
-    }
-
-
-    .top-pick-title{
-
-        font-size:18px;
-        padding:15px;
-
-    }
+  font-weight: 800;
 
 }
 
-</style>
+
+.top-picks-subheading {
+
+  max-width: 520px;
+
+  margin: 13px auto 0;
+
+  color: #6f6a63;
+
+  font-size: 16px;
+
+  line-height: 1.65;
+
+}
+
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.top-picks-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 22px;
+
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.top-pick-card {
+
+  position: relative;
+
+  display: block;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  border-radius: 25px;
+
+  background: #ffffff;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 8px 28px rgba(36, 29, 20, .07);
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+
+}
+
+
+.top-pick-card:hover {
+
+  transform: translateY(-7px);
+
+  box-shadow:
+    0 20px 45px rgba(36, 29, 20, .14);
+
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.top-pick-image {
+
+  position: relative;
+
+  width: 100%;
+
+  height: 315px;
+
+  overflow: hidden;
+
+  background: #f6f1e9;
+
+}
+
+
+.top-pick-image img {
+
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform .65s cubic-bezier(.2,.7,.2,1);
+
+}
+
+
+.top-pick-card:hover
+.top-pick-image img {
+
+  transform: scale(1.07);
+
+}
+
+
+/* =====================================================
+   COLORFUL HOVER BUBBLE
+===================================================== */
+
+.top-pick-hover-icon {
+
+  position: absolute;
+
+  top: 15px;
+
+  left: 15px;
+
+  z-index: 5;
+
+  width: 58px;
+
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 26px;
+
+  opacity: 0;
+
+  transform:
+    scale(.35)
+    rotate(-25deg);
+
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.18);
+
+  transition:
+    opacity .25s ease,
+    transform .45s cubic-bezier(.2,.8,.2,1);
+
+}
+
+
+/* Bubble colors */
+
+.top-pick-card:nth-child(1)
+.top-pick-hover-icon {
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff4f91,
+      #ff719c,
+      #ffb347
+    );
+
+}
+
+
+.top-pick-card:nth-child(2)
+.top-pick-hover-icon {
+
+  background:
+    linear-gradient(
+      135deg,
+      #1684ff,
+      #36cfc9,
+      #7c5cff
+    );
+
+}
+
+
+.top-pick-card:nth-child(3)
+.top-pick-hover-icon {
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c5cff,
+      #ff4f91,
+      #ff9f43
+    );
+
+}
+
+
+.top-pick-card:nth-child(4)
+.top-pick-hover-icon {
+
+  background:
+    linear-gradient(
+      135deg,
+      #20c997,
+      #36cfc9,
+      #1684ff
+    );
+
+}
+
+
+/* Shine */
+
+.top-pick-hover-icon::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 8px;
+
+  left: 10px;
+
+  width: 12px;
+
+  height: 12px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,.9);
+
+}
+
+
+.top-pick-hover-icon::after {
+
+  content: "";
+
+  position: absolute;
+
+  right: 9px;
+
+  bottom: 10px;
+
+  width: 6px;
+
+  height: 6px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,.7);
+
+}
+
+
+/* Show bubble */
+
+.top-pick-card:hover
+.top-pick-hover-icon {
+
+  opacity: 1;
+
+  transform:
+    scale(1)
+    rotate(0deg);
+
+}
+
+
+/* =====================================================
+   ARROW
+===================================================== */
+
+.top-pick-arrow {
+
+  position: absolute;
+
+  right: 15px;
+
+  top: 15px;
+
+  z-index: 5;
+
+  width: 42px;
+
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,.92);
+
+  color: #222222;
+
+  font-size: 20px;
+
+  opacity: 0;
+
+  transform:
+    translateY(6px);
+
+  transition:
+    opacity .25s ease,
+    transform .3s ease;
+
+  box-shadow:
+    0 7px 20px rgba(0,0,0,.10);
+
+}
+
+
+.top-pick-card:hover
+.top-pick-arrow {
+
+  opacity: 1;
+
+  transform:
+    translateY(0);
+
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.top-pick-content {
+
+  position: relative;
+
+  padding: 20px 20px 22px;
+
+}
+
+
+.top-pick-small {
+
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #a09487;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.2px;
+
+}
+
+
+.top-pick-content h3 {
+
+  margin: 0;
+
+  color: #222222;
+
+  font-size: 23px;
+
+  line-height: 1.2;
+
+  font-weight: 800;
+
+}
+
+
+.top-pick-content p {
+
+  margin: 7px 0 0;
+
+  color: #77716a;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+}
+
+
+/* =====================================================
+   CARD ACCENTS
+===================================================== */
+
+.top-pick-card:nth-child(1)
+.top-pick-content h3 {
+
+  color: #e94f82;
+
+}
+
+
+.top-pick-card:nth-child(2)
+.top-pick-content h3 {
+
+  color: #1684ff;
+
+}
+
+
+.top-pick-card:nth-child(3)
+.top-pick-content h3 {
+
+  color: #7657e8;
+
+}
+
+
+.top-pick-card:nth-child(4)
+.top-pick-content h3 {
+
+  color: #13a978;
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media screen and (max-width: 1050px) {
+
+  .top-picks-container {
+
+    padding:
+      70px
+      25px
+      75px;
+
+  }
+
+
+  .top-picks-grid {
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+  }
+
+
+  .top-pick-image {
+
+    height: 300px;
+
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media screen and (max-width: 749px) {
+
+  .top-picks-container {
+
+    padding:
+      58px
+      16px
+      65px;
+
+  }
+
+
+  .top-picks-header {
+
+    margin-bottom: 30px;
+
+  }
+
+
+  .top-picks-eyebrow {
+
+    font-size: 9px;
+
+  }
+
+
+  .top-picks-heading {
+
+    font-size: 34px;
+
+    letter-spacing: -1.1px;
+
+  }
+
+
+  .top-picks-subheading {
+
+    font-size: 14px;
+
+    padding: 0 10px;
+
+  }
+
+
+  .top-picks-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+
+  }
+
+
+  .top-pick-card {
+
+    border-radius: 21px;
+
+  }
+
+
+  .top-pick-image {
+
+    height: 250px;
+
+  }
+
+
+  .top-pick-content {
+
+    padding:
+      16px
+      17px
+      19px;
+
+  }
+
+
+  .top-pick-content h3 {
+
+    font-size: 21px;
+
+  }
+
+
+  .top-pick-content p {
+
+    font-size: 13px;
+
+  }
+
+
+  .top-pick-hover-icon {
+
+    width: 50px;
+
+    height: 50px;
+
+    top: 12px;
+
+    left: 12px;
+
+    font-size: 22px;
+
+  }
+
+
+  .top-pick-arrow {
+
+    width: 38px;
+
+    height: 38px;
+
+    top: 12px;
+
+    right: 12px;
+
+  }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media screen and (max-width: 420px) {
+
+  .top-picks-heading {
+
+    font-size: 31px;
+
+  }
+
+
+  .top-pick-image {
+
+    height: 225px;
+
+  }
+
+}
+
+{% endstylesheet %}
 
 
 {% schema %}
+
 {
   "name": "Top Picks",
+
   "tag": "section",
+
   "class": "section",
+
   "settings": [
+
     {
       "type": "text",
       "id": "heading",
       "label": "Heading",
       "default": "Top Picks"
     }
+
   ],
+
   "presets": [
+
     {
       "name": "Top Picks"
     }
+
   ]
+
 }
+
 {% endschema %}

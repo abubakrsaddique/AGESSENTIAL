@@ -1,0 +1,1461 @@
+{% comment %}
+  AG Essential - Trending Toys
+  Automatically loads products from:
+  /collections/trending-toys
+{% endcomment %}
+
+{% assign trending_collection = collections['trending-toys'] %}
+
+<section
+  class="ag-trending ag-trending--{{ section.id }}"
+  style="
+    --trending-bg: {{ section.settings.background_color }};
+    --trending-heading: {{ section.settings.heading_color }};
+    --trending-text: {{ section.settings.text_color }};
+    --trending-accent: {{ section.settings.accent_color }};
+    --trending-button: {{ section.settings.button_color }};
+    --trending-button-text: {{ section.settings.button_text_color }};
+  "
+>
+
+  <div class="ag-trending__container">
+
+    <!-- HEADER -->
+
+    <div class="ag-trending__header">
+
+      {% if section.settings.eyebrow != blank %}
+
+        <span class="ag-trending__eyebrow">
+
+          <span class="ag-trending__pulse"></span>
+
+          {{ section.settings.eyebrow }}
+
+        </span>
+
+      {% endif %}
+
+
+      {% if section.settings.heading != blank %}
+
+        <h2 class="ag-trending__heading">
+
+          {{ section.settings.heading }}
+
+        </h2>
+
+      {% endif %}
+
+
+      {% if section.settings.subheading != blank %}
+
+        <p class="ag-trending__subheading">
+
+          {{ section.settings.subheading }}
+
+        </p>
+
+      {% endif %}
+
+
+      <!-- DIRECT TRENDING TOYS LINK -->
+
+      {% if section.settings.view_all_text != blank %}
+
+        <a
+          href="/collections/trending-toys"
+          class="ag-trending__view-all"
+        >
+
+          {{ section.settings.view_all_text }}
+
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+
+            <path
+              d="M5 12h13M13 6l6 6-6 6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+          </svg>
+
+        </a>
+
+      {% endif %}
+
+    </div>
+
+
+    <!-- PRODUCTS -->
+
+    {% if trending_collection != blank and trending_collection.products_count > 0 %}
+
+      <div class="ag-trending__products">
+
+        {% for product in trending_collection.products limit: section.settings.products_to_show %}
+
+          <article class="ag-product-card">
+
+            <!-- IMAGE -->
+
+            <div class="ag-product-card__image-wrap">
+
+
+              <!-- BADGE -->
+
+              {% if section.settings.show_badge %}
+
+                {% if product.compare_at_price > product.price %}
+
+                  <span class="ag-product-card__badge ag-product-card__badge--sale">
+
+                    SALE
+
+                  </span>
+
+                {% elsif forloop.index <= 2 %}
+
+                  <span class="ag-product-card__badge">
+
+                    🔥 TRENDING
+
+                  </span>
+
+                {% endif %}
+
+              {% endif %}
+
+
+              <!-- PRODUCT LINK -->
+
+              <a
+                href="{{ product.url }}"
+                class="ag-product-card__image-link"
+                aria-label="{{ product.title | escape }}"
+              >
+
+                {% if product.featured_image %}
+
+                  <img
+                    src="{{ product.featured_image | image_url: width: 800 }}"
+                    srcset="
+                      {{ product.featured_image | image_url: width: 400 }} 400w,
+                      {{ product.featured_image | image_url: width: 600 }} 600w,
+                      {{ product.featured_image | image_url: width: 800 }} 800w
+                    "
+                    sizes="(min-width: 1200px) 25vw, (min-width: 750px) 33vw, 84vw"
+                    alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                    loading="lazy"
+                    class="ag-product-card__image"
+                  >
+
+                {% else %}
+
+                  <div class="ag-product-card__placeholder">
+
+                    {{ 'product-1' | placeholder_svg_tag }}
+
+                  </div>
+
+                {% endif %}
+
+
+                <!-- SECOND IMAGE -->
+
+                {% if product.images.size > 1 and section.settings.show_second_image %}
+
+                  <img
+                    src="{{ product.images[1] | image_url: width: 800 }}"
+                    alt="{{ product.images[1].alt | default: product.title | escape }}"
+                    loading="lazy"
+                    class="ag-product-card__image ag-product-card__image--second"
+                  >
+
+                {% endif %}
+
+              </a>
+
+
+              <!-- VIEW BUTTON -->
+
+              <a
+                href="{{ product.url }}"
+                class="ag-product-card__view"
+                aria-label="View {{ product.title | escape }}"
+              >
+
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+
+                  <path
+                    d="M12 5c5 0 9 7 9 7s-4 7-9 7-9-7-9-7 4-7 9-7Z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  />
+
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="2.7"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  />
+
+                </svg>
+
+              </a>
+
+
+              <!-- QUICK ADD -->
+
+              {% if product.available %}
+
+                <form
+                  method="post"
+                  action="{{ routes.cart_add_url }}"
+                  class="ag-product-card__quick-add"
+                  enctype="multipart/form-data"
+                >
+
+                  <input
+                    type="hidden"
+                    name="id"
+                    value="{{ product.selected_or_first_available_variant.id }}"
+                  >
+
+                  <input
+                    type="hidden"
+                    name="quantity"
+                    value="1"
+                  >
+
+                  <button
+                    type="submit"
+                    name="add"
+                    class="ag-product-card__quick-add-button"
+                  >
+
+                    <svg
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+
+                      <path
+                        d="M5 7h14l-1 12H6L5 7Z"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linejoin="round"
+                      />
+
+                      <path
+                        d="M9 7a3 3 0 0 1 6 0"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+
+                    </svg>
+
+                    <span>
+                      Add to Cart
+                    </span>
+
+                  </button>
+
+                </form>
+
+              {% endif %}
+
+            </div>
+
+
+            <!-- PRODUCT INFO -->
+
+            <div class="ag-product-card__info">
+
+              {% if section.settings.show_vendor and product.vendor != blank %}
+
+                <div class="ag-product-card__vendor">
+
+                  {{ product.vendor }}
+
+                </div>
+
+              {% endif %}
+
+
+              <a
+                href="{{ product.url }}"
+                class="ag-product-card__title"
+              >
+
+                {{ product.title }}
+
+              </a>
+
+
+              <div class="ag-product-card__bottom">
+
+                <div class="ag-product-card__price">
+
+                  {% if product.compare_at_price > product.price %}
+
+                    <span class="ag-product-card__price--sale">
+
+                      {{ product.price | money }}
+
+                    </span>
+
+                    <span class="ag-product-card__price--compare">
+
+                      {{ product.compare_at_price | money }}
+
+                    </span>
+
+                  {% else %}
+
+                    <span class="ag-product-card__price--regular">
+
+                      {{ product.price | money }}
+
+                    </span>
+
+                  {% endif %}
+
+                </div>
+
+
+                {% unless product.available %}
+
+                  <span class="ag-product-card__soldout">
+
+                    Sold Out
+
+                  </span>
+
+                {% endunless %}
+
+              </div>
+
+            </div>
+
+          </article>
+
+        {% endfor %}
+
+      </div>
+
+
+    {% else %}
+
+      <!-- FALLBACK -->
+
+      <div class="ag-trending__empty">
+
+        <div class="ag-trending__empty-icon">
+          🧸
+        </div>
+
+        <h3>
+          Trending Toys Coming Soon
+        </h3>
+
+        <p>
+          Add products to your Trending Toys collection
+          and they will automatically appear here.
+        </p>
+
+        <a
+          href="/collections/trending-toys"
+          class="ag-empty-button"
+        >
+          Explore Collection →
+        </a>
+
+      </div>
+
+    {% endif %}
+
+
+    <!-- MOBILE HINT -->
+
+    {% if trending_collection != blank and trending_collection.products_count > 0 %}
+
+      <div class="ag-trending__scroll-hint">
+
+        <span></span>
+
+        Swipe to explore
+
+        <span></span>
+
+      </div>
+
+    {% endif %}
+
+  </div>
+
+</section>
+
+
+{% stylesheet %}
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.ag-trending {
+
+  width: 99.4vw;
+
+  position: relative;
+
+  left: 50%;
+
+  right: 50%;
+
+  margin-left: -50vw;
+
+  margin-right: -50vw;
+
+  overflow: hidden;
+
+  background: var(--trending-bg);
+
+}
+
+
+.ag-trending__container {
+
+  width: 100%;
+
+  max-width: 1380px;
+
+  margin: 0 auto;
+
+  padding: 65px 40px 90px;
+
+  box-sizing: border-box;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.ag-trending__header {
+
+  text-align: center;
+
+  max-width: 760px;
+
+  margin: 0 auto 48px;
+
+}
+
+
+.ag-trending__eyebrow {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 14px;
+
+  padding: 7px 14px;
+
+  border-radius: 50px;
+
+  background: #ffffff;
+
+  border: 1px solid #ece6dd;
+
+  color: #8c765f;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.7px;
+
+}
+
+
+.ag-trending__pulse {
+
+  width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #ff6b35;
+
+  box-shadow:
+
+    0 0 0 4px rgba(255,107,53,.12);
+
+}
+
+
+.ag-trending__heading {
+
+  margin: 0;
+
+  color: var(--trending-heading);
+
+  font-size: clamp(38px, 4vw, 58px);
+
+  line-height: 1.05;
+
+  letter-spacing: -2px;
+
+  font-weight: 800;
+
+}
+
+
+.ag-trending__subheading {
+
+  max-width: 570px;
+
+  margin: 16px auto 0;
+
+  color: var(--trending-text);
+
+  font-size: 16px;
+
+  line-height: 1.65;
+
+}
+
+
+.ag-trending__view-all {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 20px;
+
+  padding: 11px 17px;
+
+  border-radius: 50px;
+
+  background: #ffffff;
+
+  border: 1px solid #e9e2d8;
+
+  color: #222222;
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  transition: .25s ease;
+
+}
+
+
+.ag-trending__view-all:hover {
+
+  background: #222222;
+
+  border-color: #222222;
+
+  color: #ffffff;
+
+}
+
+
+.ag-trending__view-all svg {
+
+  width: 16px;
+
+  height: 16px;
+
+}
+
+
+/* =====================================================
+   PRODUCT GRID
+===================================================== */
+
+.ag-trending__products {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 22px;
+
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.ag-product-card {
+
+  min-width: 0;
+
+  background: #ffffff;
+
+  border-radius: 23px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 6px 25px rgba(36,29,20,.06);
+
+  transition:
+
+    transform .3s ease,
+
+    box-shadow .3s ease;
+
+}
+
+
+.ag-product-card:hover {
+
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 18px 40px rgba(36,29,20,.12);
+
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.ag-product-card__image-wrap {
+
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 1 / 1.05;
+
+  overflow: hidden;
+
+  background: #f5f2ed;
+
+}
+
+
+.ag-product-card__image-link {
+
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+}
+
+
+.ag-product-card__image {
+
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+
+    transform .55s cubic-bezier(.2,.7,.2,1),
+
+    opacity .35s ease;
+
+}
+
+
+.ag-product-card:hover
+.ag-product-card__image {
+
+  transform: scale(1.045);
+
+}
+
+
+.ag-product-card__image--second {
+
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0;
+
+}
+
+
+.ag-product-card:hover
+.ag-product-card__image--second {
+
+  opacity: 1;
+
+}
+
+
+/* =====================================================
+   BADGE
+===================================================== */
+
+.ag-product-card__badge {
+
+  position: absolute;
+
+  z-index: 5;
+
+  top: 13px;
+
+  left: 13px;
+
+  padding: 7px 10px;
+
+  border-radius: 50px;
+
+  background: var(--trending-accent);
+
+  color: #ffffff;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: .8px;
+
+}
+
+
+.ag-product-card__badge--sale {
+
+  background: #e94f64;
+
+}
+
+
+/* =====================================================
+   VIEW ICON
+===================================================== */
+
+.ag-product-card__view {
+
+  position: absolute;
+
+  z-index: 6;
+
+  right: 13px;
+
+  top: 13px;
+
+  width: 38px;
+
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.94);
+
+  color: #222222;
+
+  opacity: 0;
+
+  transform: translateY(5px);
+
+  transition: .25s ease;
+
+}
+
+
+.ag-product-card:hover
+.ag-product-card__view {
+
+  opacity: 1;
+
+  transform: translateY(0);
+
+}
+
+
+.ag-product-card__view svg {
+
+  width: 18px;
+
+  height: 18px;
+
+}
+
+
+/* =====================================================
+   QUICK ADD
+===================================================== */
+
+.ag-product-card__quick-add {
+
+  position: absolute;
+
+  z-index: 7;
+
+  left: 13px;
+
+  right: 13px;
+
+  bottom: 13px;
+
+  margin: 0;
+
+  opacity: 0;
+
+  transform: translateY(12px);
+
+  transition:
+
+    opacity .28s ease,
+
+    transform .28s ease;
+
+}
+
+
+.ag-product-card:hover
+.ag-product-card__quick-add {
+
+  opacity: 1;
+
+  transform: translateY(0);
+
+}
+
+
+.ag-product-card__quick-add-button {
+
+  width: 100%;
+
+  height: 45px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  border: 0;
+
+  border-radius: 13px;
+
+  background: var(--trending-button);
+
+  color: var(--trending-button-text);
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  box-shadow:
+    0 7px 20px rgba(0,0,0,.18);
+
+  transition: .2s ease;
+
+}
+
+
+.ag-product-card__quick-add-button:hover {
+
+  transform: translateY(-2px);
+
+  opacity: .92;
+
+}
+
+
+.ag-product-card__quick-add-button svg {
+
+  width: 18px;
+
+  height: 18px;
+
+}
+
+
+/* =====================================================
+   INFO
+===================================================== */
+
+.ag-product-card__info {
+
+  padding: 17px 17px 18px;
+
+}
+
+
+.ag-product-card__vendor {
+
+  margin-bottom: 5px;
+
+  color: #999;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+
+}
+
+
+.ag-product-card__title {
+
+  display: block;
+
+  min-height: 40px;
+
+  color: #242424;
+
+  text-decoration: none;
+
+  font-size: 15px;
+
+  line-height: 1.35;
+
+  font-weight: 700;
+
+  transition: color .2s ease;
+
+}
+
+
+.ag-product-card__title:hover {
+
+  color: var(--trending-accent);
+
+}
+
+
+/* =====================================================
+   PRICE
+===================================================== */
+
+.ag-product-card__bottom {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-top: 12px;
+
+}
+
+
+.ag-product-card__price {
+
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+}
+
+
+.ag-product-card__price--regular,
+.ag-product-card__price--sale {
+
+  color: #202020;
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+}
+
+
+.ag-product-card__price--sale {
+
+  color: #e94f64;
+
+}
+
+
+.ag-product-card__price--compare {
+
+  color: #a5a5a5;
+
+  font-size: 11px;
+
+  text-decoration: line-through;
+
+}
+
+
+.ag-product-card__soldout {
+
+  color: #999;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+}
+
+
+/* =====================================================
+   EMPTY FALLBACK
+===================================================== */
+
+.ag-trending__empty {
+
+  padding: 65px 25px;
+
+  text-align: center;
+
+  border: 1px dashed #ddd3c5;
+
+  border-radius: 24px;
+
+  background: rgba(255,255,255,.6);
+
+}
+
+
+.ag-trending__empty-icon {
+
+  font-size: 40px;
+
+  margin-bottom: 10px;
+
+}
+
+
+.ag-trending__empty h3 {
+
+  margin: 0;
+
+  color: #222;
+
+  font-size: 21px;
+
+}
+
+
+.ag-trending__empty p {
+
+  max-width: 440px;
+
+  margin: 9px auto 0;
+
+  color: #777;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+}
+
+
+.ag-empty-button {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-top: 18px;
+
+  padding: 12px 18px;
+
+  border-radius: 50px;
+
+  background: #1256a0;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+}
+
+
+/* =====================================================
+   SCROLL HINT
+===================================================== */
+
+.ag-trending__scroll-hint {
+
+  display: none;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  margin-top: 15px;
+
+  color: #a0988d;
+
+  font-size: 10px;
+
+}
+
+
+.ag-trending__scroll-hint span {
+
+  width: 20px;
+
+  height: 1px;
+
+  background: #d5cdc1;
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media screen and (max-width: 1050px) {
+
+  .ag-trending__container {
+
+    padding:
+      60px 25px 75px;
+
+  }
+
+
+  .ag-trending__products {
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media screen and (max-width: 749px) {
+
+  .ag-trending__container {
+
+    padding:
+      50px 16px 55px;
+
+  }
+
+
+  .ag-trending__header {
+
+    margin-bottom: 30px;
+
+  }
+
+
+  .ag-trending__heading {
+
+    font-size: 34px;
+
+    letter-spacing: -1.1px;
+
+  }
+
+
+  .ag-trending__subheading {
+
+    font-size: 14px;
+
+  }
+
+
+  .ag-trending__products {
+
+    display: flex;
+
+    overflow-x: auto;
+
+    gap: 14px;
+
+    padding:
+      4px 2px 16px;
+
+    margin-right: -16px;
+
+    padding-right: 16px;
+
+    scrollbar-width: none;
+
+    scroll-snap-type: x mandatory;
+
+  }
+
+
+  .ag-trending__products::-webkit-scrollbar {
+
+    display: none;
+
+  }
+
+
+  .ag-product-card {
+
+    flex:
+      0 0 78%;
+
+    scroll-snap-align: start;
+
+    border-radius: 20px;
+
+  }
+
+
+  .ag-product-card:hover {
+
+    transform: none;
+
+  }
+
+
+  .ag-product-card__image--second {
+
+    display: none;
+
+  }
+
+
+  /* Mobile */
+
+  .ag-product-card__quick-add {
+
+    opacity: 1;
+
+    transform: none;
+
+  }
+
+
+  .ag-product-card__view {
+
+    opacity: 1;
+
+    transform: none;
+
+  }
+
+
+  .ag-product-card__quick-add-button {
+
+    height: 43px;
+
+  }
+
+
+  .ag-trending__scroll-hint {
+
+    display: flex;
+
+  }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media screen and (max-width: 420px) {
+
+  .ag-product-card {
+
+    flex-basis: 84%;
+
+  }
+
+
+  .ag-trending__heading {
+
+    font-size: 31px;
+
+  }
+
+}
+
+{% endstylesheet %}
+
+
+{% schema %}
+
+{
+  "name": "Trending Toys",
+
+  "settings": [
+
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    },
+
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "OUR MOST LOVED"
+    },
+
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Trending Toys 🔥"
+    },
+
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Discover the toys little ones are loving right now."
+    },
+
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All Text",
+      "default": "View All Toys →"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Show product badges",
+      "default": true
+    },
+
+    {
+      "type": "checkbox",
+      "id": "show_second_image",
+      "label": "Show second image on hover",
+      "default": true
+    },
+
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": false
+    },
+
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#FFF9F1"
+    },
+
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#222222"
+    },
+
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#6F6A63"
+    },
+
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent / Trending Badge",
+      "default": "#FF6B35"
+    },
+
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Add to Cart Button",
+      "default": "#222222"
+    },
+
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text",
+      "default": "#FFFFFF"
+    }
+
+  ],
+
+  "presets": [
+    {
+      "name": "Trending Toys"
+    }
+  ]
+
+}
+
+{% endschema %}

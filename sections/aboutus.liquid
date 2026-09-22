@@ -1,396 +1,985 @@
-<section class="about-section">
+<section class="about-section-premium">
 
-<div class="page-width">
+  <div class="about-container">
 
-<a href="/" class="back-btn">
-  &#8592;
-</a>
+    <!-- Back Button -->
+    <a href="/" class="premium-back-btn" aria-label="Go back">
+      <span>←</span>
+      <strong>Back</strong>
+    </a>
 
-<div class="about-wrapper">
+    <div class="about-hero">
 
+      <!-- Content -->
+      <div class="about-content-premium">
 
-<div class="about-content">
+        <div class="about-eyebrow">
+          <span></span>
+          ABOUT AGESSENTIAL
+        </div>
 
+        <h1>
+          {{ page.title }}
+        </h1>
 
-<h1>
-{{ page.title }}
-</h1>
+        <h2>
+          Making Childhood <span>More Creative</span> & Joyful
+        </h2>
 
+        <p class="about-intro">
+          Welcome to <strong>AGESSENTIAL</strong> — your trusted destination
+          for fun, creativity, learning, and everyday essentials for children.
+        </p>
 
-<h2>
-Welcome to AGESSENTIAL
-</h2>
+        <p>
+          We are passionate about bringing happiness and creativity to children
+          through our carefully selected range of quality toys and stationery
+          products.
+        </p>
 
+        <p>
+          From imaginative toys that encourage endless play to practical school
+          supplies that make learning more exciting, every product is selected
+          with quality, usefulness, and children's happiness in mind.
+        </p>
 
-<p>
-We are passionate about bringing happiness, creativity, and learning to children through our wide range of quality toys and stationery products.
-</p>
+        <p>
+          Our mission is simple — to create a trusted place where parents and
+          children can discover amazing products at affordable prices.
+        </p>
 
+        <!-- Trust Stats -->
+        <div class="about-stats">
 
-<p>
-From fun toys that inspire imagination to school supplies that support learning, we carefully select products that are safe, useful, and loved by kids of all ages.
-</p>
+          <div class="stat-item">
+            <strong>100%</strong>
+            <span>Quality Focus</span>
+          </div>
 
+          <div class="stat-item">
+            <strong>Kids</strong>
+            <span>Made for Joy</span>
+          </div>
 
-<p>
-Our goal is to provide parents and children with a trusted place where they can find amazing toys, educational products, and everyday stationery essentials at affordable prices.
-</p>
+          <div class="stat-item">
+            <strong>★</strong>
+            <span>Customer First</span>
+          </div>
 
+        </div>
 
-
-<div class="about-boxes">
-
-
-<div class="box">
-
-<h3>
-🎮 Toys Collection
-</h3>
-
-<p>
-Explore exciting toys designed for creativity, fun, and endless playtime.
-</p>
-
-</div>
-
-
-
-<div class="box">
-
-<h3>
-✏️ Stationery Collection
-</h3>
-
-<p>
-Discover school and office stationery products with great quality and style.
-</p>
-
-</div>
-
-
-
-<div class="box">
-
-<h3>
-⭐ Our Promise
-</h3>
-
-<p>
-Quality products, friendly service, and customer satisfaction are our priorities.
-</p>
-
-</div>
+      </div>
 
 
-</div>
+      <!-- Image -->
+      <div class="about-image-premium">
+
+        <div class="image-glow"></div>
+
+        <div class="image-frame">
+
+          <img
+            src="{{ 'about-toys.jpg' | asset_url }}"
+            alt="AGESSENTIAL Toys and Stationery"
+            loading="lazy"
+          >
+
+          <div class="image-badge">
+            <span>✦</span>
+            <div>
+              <strong>Play.</strong>
+              <small>Learn. Create.</small>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="floating-shape shape-one"></div>
+        <div class="floating-shape shape-two"></div>
+
+      </div>
+
+    </div>
 
 
-</div>
+    <!-- Feature Cards -->
+    <div class="about-features">
+
+      <div class="feature-card">
+
+        <div class="feature-icon orange">
+          🎮
+        </div>
+
+        <div>
+          <h3>Toys Collection</h3>
+
+          <p>
+            Discover exciting toys that inspire imagination, creativity,
+            exploration, and endless playtime.
+          </p>
+        </div>
+
+        <span class="card-arrow">↗</span>
+
+      </div>
 
 
+      <div class="feature-card">
 
-<div class="about-image">
+        <div class="feature-icon blue">
+          ✏️
+        </div>
+
+        <div>
+          <h3>Stationery Collection</h3>
+
+          <p>
+            Stylish and practical school and office essentials designed to
+            make everyday learning more enjoyable.
+          </p>
+        </div>
+
+        <span class="card-arrow">↗</span>
+
+      </div>
 
 
-<img 
-src="{{ 'about-toys.jpg' | asset_url }}"
-alt="Toys and Stationery">
+      <div class="feature-card">
+
+        <div class="feature-icon yellow">
+          ⭐
+        </div>
+
+        <div>
+          <h3>Our Promise</h3>
+
+          <p>
+            Quality products, friendly service, affordable prices, and
+            customer satisfaction are always our priorities.
+          </p>
+        </div>
+
+        <span class="card-arrow">↗</span>
+
+      </div>
+
+    </div>
 
 
-</div>
+    <!-- Bottom Promise -->
+    <div class="about-bottom">
 
+      <div class="bottom-line"></div>
 
-</div>
+      <p>
+        <span>✦</span>
+        Bringing little moments of happiness to every child.
+      </p>
 
+      <div class="bottom-line"></div>
 
-</div>
+    </div>
+
+  </div>
 
 </section>
 
 
-
-
 <style>
 
+/* =========================================
+   AGESSENTIAL PREMIUM ABOUT SECTION
+========================================= */
 
-*{
-box-sizing:border-box;
+.about-section-premium {
+  width: 99.4vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  padding: 80px 0 70px;
+
+  background:
+    radial-gradient(circle at 10% 15%, rgba(255, 107, 0, .10), transparent 28%),
+    radial-gradient(circle at 90% 20%, rgba(18, 86, 160, .10), transparent 30%),
+    linear-gradient(135deg, #fffaf1 0%, #ffffff 48%, #f7fbff 100%);
+
+  overflow: hidden;
+
+  color: #202020;
 }
 
 
+/* Container */
 
-.about-section{
-
-width: 99.4vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;
-padding:60px 0;
-background:linear-gradient(
-180deg,
-#fff8e8,
-#ffffff
-);
-
-overflow:hidden;
-
+.about-container {
+  width: 100%;
+  max-width: 1240px;
+  margin: auto;
+  padding: 0 25px;
 }
 
-.back-btn{
-    padding: 10px 15px 24px 15px;
-    width: 60px;
-    height: 30px;
-    font-size: 50px;
-    display: flex;
-    align-items: center;
+
+/* Back Button */
+
+.premium-back-btn {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 9px 17px 9px 10px;
+
+  background: rgba(18, 86, 160, .08);
+  border: 1px solid rgba(18, 86, 160, .12);
+
+  color: #1256a0;
+  text-decoration: none;
+
+  border-radius: 50px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition: all .3s ease;
+
+  margin-bottom: 35px;
+}
+
+.premium-back-btn span {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #1256a0;
+  color: #fff;
+
+  font-size: 20px;
+
+  transition: transform .3s ease;
+}
+
+.premium-back-btn:hover {
+  background: #1256a0;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.premium-back-btn:hover span {
+  transform: translateX(-3px);
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.about-hero {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+
+  gap: 80px;
+
+  align-items: center;
+}
+
+
+/* Eyebrow */
+
+.about-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #ff6b00;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 18px;
+}
+
+.about-eyebrow span {
+  width: 35px;
+  height: 3px;
+
+  background: #ff6b00;
+
+  border-radius: 10px;
+}
+
+
+/* Heading */
+
+.about-content-premium h1 {
+  margin: 0 0 10px;
+
+  font-size: clamp(42px, 5vw, 68px);
+
+  line-height: 1;
+
+  font-weight: 900;
+
+  letter-spacing: -2px;
+
+  color: #171717;
+}
+
+
+.about-content-premium h2 {
+  margin: 0 0 25px;
+
+  max-width: 620px;
+
+  font-size: clamp(25px, 3vw, 38px);
+
+  line-height: 1.2;
+
+  font-weight: 700;
+
+  color: #292929;
+}
+
+.about-content-premium h2 span {
+  color: #ff6b00;
+}
+
+
+/* Paragraphs */
+
+.about-content-premium p {
+  max-width: 650px;
+
+  margin: 0 0 14px;
+
+  font-size: 17px;
+
+  line-height: 1.8;
+
+  color: #606060;
+}
+
+.about-content-premium .about-intro {
+  font-size: 19px;
+  color: #383838;
+  margin-bottom: 20px;
+}
+
+.about-content-premium strong {
+  color: #1256a0;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.about-stats {
+  display: flex;
+
+  margin-top: 32px;
+
+  gap: 0;
+
+  border-top: 1px solid rgba(0,0,0,.09);
+  border-bottom: 1px solid rgba(0,0,0,.09);
+
+  width: fit-content;
+}
+
+
+.stat-item {
+  min-width: 125px;
+
+  padding: 17px 25px 17px 0;
+  margin-right: 25px;
+
+  border-right: 1px solid rgba(0,0,0,.09);
+
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.stat-item:last-child {
+  border-right: none;
+  margin-right: 0;
+}
+
+
+.stat-item strong {
+  font-size: 22px;
+  font-weight: 900;
+  color: #ff6b00;
+}
+
+.stat-item span {
+  font-size: 11px;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+/* =========================================
+   PREMIUM IMAGE
+========================================= */
+
+.about-image-premium {
+  position: relative;
+
+  min-height: 520px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.image-frame {
+  position: relative;
+
+  width: 100%;
+  max-width: 500px;
+
+  z-index: 2;
+
+  border-radius: 35px;
+
+  padding: 10px;
+
+  background: rgba(255,255,255,.72);
+
+  border: 1px solid rgba(255,255,255,.8);
+
+  box-shadow:
+    0 30px 70px rgba(18, 50, 80, .15),
+    0 10px 25px rgba(0,0,0,.06);
+
+  transform: rotate(2deg);
+
+  transition: transform .5s ease;
+}
+
+
+.image-frame:hover {
+  transform: rotate(0deg) translateY(-8px);
+}
+
+
+.image-frame img {
+  display: block;
+
+  width: 100%;
+  height: 510px;
+
+  object-fit: cover;
+
+  border-radius: 27px;
+}
+
+
+/* Image Glow */
+
+.image-glow {
+  position: absolute;
+
+  width: 380px;
+  height: 380px;
+
+  background: #ffb000;
+
+  filter: blur(90px);
+
+  opacity: .18;
+
+  border-radius: 50%;
+}
+
+
+/* Badge */
+
+.image-badge {
+  position: absolute;
+
+  left: -25px;
+  bottom: 35px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 13px 20px 13px 13px;
+
+  background: rgba(255,255,255,.92);
+
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,.8);
+
+  border-radius: 16px;
+
+  box-shadow: 0 15px 35px rgba(0,0,0,.12);
+
+  transform: rotate(-2deg);
+}
+
+
+.image-badge > span {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ff6b00;
+
+  color: white;
+
+  border-radius: 12px;
+
+  font-size: 20px;
+}
+
+
+.image-badge div {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-badge strong {
+  color: #222;
+  font-size: 16px;
+}
+
+.image-badge small {
+  color: #777;
+  font-size: 11px;
+}
+
+
+/* Decorative shapes */
+
+.floating-shape {
+  position: absolute;
+
+  border-radius: 50%;
+
+  z-index: 1;
+}
+
+.shape-one {
+  width: 80px;
+  height: 80px;
+
+  background: #1256a0;
+
+  top: 30px;
+  right: 0;
+
+  opacity: .1;
+}
+
+.shape-two {
+  width: 45px;
+  height: 45px;
+
+  background: #ff6b00;
+
+  bottom: 40px;
+  right: 15px;
+
+  opacity: .2;
+}
+
+
+/* =========================================
+   FEATURE CARDS
+========================================= */
+
+.about-features {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+
+  margin-top: 75px;
+}
+
+
+.feature-card {
+  position: relative;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 17px;
+
+  padding: 27px 25px;
+
+  background: rgba(255,255,255,.78);
+
+  border: 1px solid rgba(0,0,0,.07);
+
+  border-radius: 22px;
+
+  box-shadow: 0 10px 35px rgba(0,0,0,.055);
+
+  overflow: hidden;
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease;
+}
+
+
+.feature-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(255,107,0,.2);
+
+  box-shadow: 0 20px 45px rgba(0,0,0,.10);
+}
+
+
+.feature-icon {
+  flex: 0 0 55px;
+
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  font-size: 25px;
+}
+
+
+.feature-icon.orange {
+  background: #fff0e5;
+}
+
+.feature-icon.blue {
+  background: #e9f2ff;
+}
+
+.feature-icon.yellow {
+  background: #fff7d8;
+}
+
+
+.feature-card h3 {
+  margin: 2px 0 8px;
+
+  font-size: 19px;
+
+  color: #202020;
+}
+
+
+.feature-card p {
+  margin: 0;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+
+  color: #707070;
+}
+
+
+.card-arrow {
+  position: absolute;
+
+  top: 20px;
+  right: 20px;
+
+  color: #bbb;
+
+  font-size: 18px;
+
+  transition: .3s;
+}
+
+.feature-card:hover .card-arrow {
+  color: #ff6b00;
+  transform: translate(3px,-3px);
+}
+
+
+/* =========================================
+   BOTTOM
+========================================= */
+
+.about-bottom {
+  display: flex;
+
+  align-items: center;
+  gap: 20px;
+
+  margin-top: 60px;
+}
+
+
+.bottom-line {
+  height: 1px;
+
+  flex: 1;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0,0,0,.12)
+  );
+}
+
+
+.bottom-line:last-child {
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,.12),
+    transparent
+  );
+}
+
+
+.about-bottom p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  letter-spacing: .3px;
+
+  white-space: nowrap;
+}
+
+
+.about-bottom p span {
+  color: #ff6b00;
+  margin-right: 5px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 950px) {
+
+  .about-section-premium {
+    padding: 60px 0;
+  }
+
+  .about-hero {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+  }
+
+  .about-content-premium {
+    text-align: center;
+  }
+
+  .about-eyebrow {
     justify-content: center;
-    background: #1256a0;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 900;
-    transition: .3s;
-    margin-bottom: 20px;
-    margin-top: -30px;
-}
+  }
 
-.back-btn:hover{
-background:#0b3c72;
-}
+  .about-content-premium p,
+  .about-content-premium h2 {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
+  .about-stats {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
 
-.about-section .page-width{
+  .about-image-premium {
+    min-height: auto;
+  }
 
-max-width:1200px;
-margin:auto;
-padding:0 20px;
+  .image-frame {
+    max-width: 600px;
+  }
 
-}
-
-
-
-.about-wrapper{
-
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:50px;
-align-items:center;
+  .about-features {
+    grid-template-columns: 1fr;
+  }
 
 }
 
 
+/* =========================================
+   MOBILE
+========================================= */
 
+@media (max-width: 600px) {
 
-.about-content h1{
+  .about-section-premium {
+    width: 100vw;
 
-font-size:48px;
-color:#ff6b00;
-margin-bottom:20px;
+    padding: 40px 0 45px;
+  }
+
+  .about-container {
+    padding: 0 16px;
+  }
+
+  .premium-back-btn {
+    margin-bottom: 25px;
+  }
+
+  .about-content-premium h1 {
+    font-size: 38px;
+    letter-spacing: -1.5px;
+  }
+
+  .about-content-premium h2 {
+    font-size: 24px;
+  }
+
+  .about-content-premium p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .about-content-premium .about-intro {
+    font-size: 16px;
+  }
+
+  .about-stats {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .stat-item {
+    min-width: 0;
+    flex: 1;
+
+    padding: 15px 10px;
+    margin-right: 0;
+
+    text-align: center;
+  }
+
+  .stat-item strong {
+    font-size: 19px;
+  }
+
+  .stat-item span {
+    font-size: 9px;
+  }
+
+  .about-image-premium {
+    padding: 0 8px;
+  }
+
+  .image-frame {
+    border-radius: 25px;
+    transform: rotate(1deg);
+  }
+
+  .image-frame img {
+    height: 390px;
+    border-radius: 18px;
+  }
+
+  .image-badge {
+    left: -3px;
+    bottom: 25px;
+
+    padding: 10px 15px 10px 10px;
+  }
+
+  .image-badge > span {
+    width: 35px;
+    height: 35px;
+  }
+
+  .shape-one {
+    right: -5px;
+  }
+
+  .shape-two {
+    right: 0;
+  }
+
+  .about-features {
+    margin-top: 50px;
+    gap: 14px;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
+
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+    font-size: 21px;
+  }
+
+  .feature-card h3 {
+    font-size: 17px;
+  }
+
+  .feature-card p {
+    font-size: 13px;
+  }
+
+  .about-bottom {
+    margin-top: 40px;
+  }
+
+  .about-bottom p {
+    font-size: 11px;
+  }
+
+  .bottom-line {
+    display: none;
+  }
+
+  .about-bottom {
+    justify-content: center;
+  }
 
 }
-
-
-
-.about-content h2{
-
-font-size:32px;
-color:#222;
-margin-bottom:20px;
-
-}
-
-
-
-.about-content p{
-
-font-size:18px;
-line-height:1.7;
-color:#555;
-margin-bottom:15px;
-
-}
-
-
-
-
-.about-boxes{
-
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-margin-top:35px;
-
-}
-
-
-
-
-.box{
-
-background:white;
-padding:20px;
-border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,.1);
-
-}
-
-
-
-.box h3{
-
-font-size:20px;
-color:#ff6b00;
-margin-bottom:10px;
-
-}
-
-
-
-.box p{
-
-font-size:15px;
-margin:0;
-
-}
-
-
-
-
-.about-image img{
-
-width:100%;
-max-width:500px;
-border-radius:25px;
-object-fit:cover;
-
-}
-
-
-
-
-/* Tablet */
-
-@media(max-width:900px){
-
-
-.about-wrapper{
-
-grid-template-columns:1fr;
-text-align:center;
-
-}
-
-
-
-.about-content h1{
-
-font-size:38px;
-
-}
-
-
-
-.about-content h2{
-
-font-size:26px;
-
-}
-
-
-
-.about-boxes{
-
-grid-template-columns:1fr 1fr;
-
-}
-
-
-
-.about-image{
-
-order:-1;
-
-}
-
-
-}
-
-
-
-
-/* Mobile */
-
-@media(max-width:600px){
-
-
-.about-section{
-
-padding:40px 0;
-
-}
-
-
-
-.about-section .page-width{
-
-padding:0 15px;
-
-}
-
-
-
-.about-content h1{
-
-font-size:32px;
-
-}
-
-
-
-.about-content h2{
-
-font-size:22px;
-
-}
-
-
-
-.about-content p{
-
-font-size:16px;
-
-}
-
-
-
-.about-boxes{
-
-grid-template-columns:1fr;
-
-}
-
-
-
-.about-image img{
-
-border-radius:15px;
-
-}
-
-
-}
-
 
 </style>
 
 
-
-
 {% schema %}
 {
-"name":"About Us",
-"settings":[],
-"presets":[
-{
-"name":"About Us"
-}
-]
+  "name": "About Us",
+  "settings": [],
+  "presets": [
+    {
+      "name": "About Us"
+    }
+  ]
 }
 {% endschema %}

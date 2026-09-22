@@ -1,23 +1,374 @@
-<section class="contact-us-section">
-{% if template.name == 'page' and page.handle == 'contact-us' %}
+<section class="ag-contact-section">
 
-<a href="/" class="back-btn">
-  &#8592;
-</a>
+  <div class="ag-contact-container">
 
-{% endif %}
+    {% if template.name == 'page' and page.handle == 'contact-us' %}
 
-  <!-- Heading Banner -->
-  <div class="contact-banner">
+      <a href="/" class="ag-contact-back">
+        <span>←</span>
+        Back to Home
+      </a>
 
-    <div class="page-width">
-   
+    {% endif %}
 
-      <div class="contact-banner-content">
 
-        <h1>
-          Contact Us
-        </h1>
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <div class="ag-contact-header">
+
+      <span class="ag-contact-eyebrow">
+        <span class="ag-contact-dot"></span>
+        WE'D LOVE TO HEAR FROM YOU
+      </span>
+
+      <h1>
+        Contact Us
+        <span>💛</span>
+      </h1>
+
+      <p>
+        Have a question about our toys, your order, or anything else?
+        Our friendly team is here to help.
+      </p>
+
+    </div>
+
+
+    <!-- =========================================
+         MAIN CONTACT CARD
+    ========================================== -->
+
+    <div class="ag-contact-card">
+
+
+      <!-- LEFT SIDE -->
+
+      <div class="ag-contact-info">
+
+        <div class="ag-contact-info-inner">
+
+          <span class="ag-contact-mini">
+            LET'S TALK
+          </span>
+
+          <h2>
+            We're here to help
+            <span>✨</span>
+          </h2>
+
+          <p class="ag-contact-description">
+            Whether you're looking for the perfect gift,
+            need help with an order, or simply have a question,
+            send us a message and we'll get back to you.
+          </p>
+
+
+          <!-- INFO ITEMS -->
+
+          <div class="ag-contact-details">
+
+
+            <div class="ag-contact-detail">
+
+              <div class="ag-contact-detail-icon">
+                💬
+              </div>
+
+              <div>
+                <span>Quick Support</span>
+                <strong>We're happy to help</strong>
+              </div>
+
+            </div>
+
+
+            <div class="ag-contact-detail">
+
+              <div class="ag-contact-detail-icon">
+                📦
+              </div>
+
+              <div>
+                <span>Order Questions</span>
+                <strong>Need help with your order?</strong>
+              </div>
+
+            </div>
+
+
+            <div class="ag-contact-detail">
+
+              <div class="ag-contact-detail-icon">
+                💛
+              </div>
+
+              <div>
+                <span>Customer Care</span>
+                <strong>We care about your experience</strong>
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+          <!-- DECORATION -->
+
+          <div class="ag-contact-decoration">
+
+            <span>🧸</span>
+            <span>⭐</span>
+            <span>🎁</span>
+            <span>🌈</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- RIGHT FORM -->
+
+      <div class="ag-contact-form-area">
+
+
+        {% form 'contact', id: 'AGContactForm' %}
+
+
+          {% if form.posted_successfully? %}
+
+            <div class="ag-contact-success">
+
+              <div class="ag-success-icon">
+                ✓
+              </div>
+
+              <div>
+
+                <strong>
+                  Message sent successfully!
+                </strong>
+
+                <p>
+                  Thank you for reaching out. We'll get back to you soon.
+                </p>
+
+              </div>
+
+            </div>
+
+          {% endif %}
+
+
+          {% if form.errors %}
+
+            <div class="ag-contact-errors">
+
+              {{ form.errors | default_errors }}
+
+            </div>
+
+          {% endif %}
+
+
+
+          <div class="ag-contact-form-header">
+
+            <h2>
+              Send us a message
+            </h2>
+
+            <p>
+              Fill in the details below and we'll be in touch.
+            </p>
+
+          </div>
+
+
+
+          <div class="ag-contact-fields">
+
+
+            <!-- NAME -->
+
+            <div class="ag-contact-field">
+
+              <label for="AGContactName">
+                Full Name
+                <span>*</span>
+              </label>
+
+              <div class="ag-input-wrap">
+
+                <span class="ag-input-icon">
+                  👤
+                </span>
+
+                <input
+                  id="AGContactName"
+                  type="text"
+                  name="contact[name]"
+                  placeholder="Your full name"
+                  autocomplete="name"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+
+
+            <!-- EMAIL -->
+
+            <div class="ag-contact-field">
+
+              <label for="AGContactEmail">
+                Email Address
+                <span>*</span>
+              </label>
+
+              <div class="ag-input-wrap">
+
+                <span class="ag-input-icon">
+                  ✉️
+                </span>
+
+                <input
+                  id="AGContactEmail"
+                  type="email"
+                  name="contact[email]"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+
+
+            <!-- PHONE -->
+
+            <div class="ag-contact-field">
+
+              <label for="AGContactPhone">
+                Mobile Number
+              </label>
+
+              <div class="ag-input-wrap">
+
+                <span class="ag-input-icon">
+                  📱
+                </span>
+
+                <input
+                  id="AGContactPhone"
+                  type="tel"
+                  name="contact[phone]"
+                  placeholder="Your phone number"
+                  autocomplete="tel"
+                >
+
+              </div>
+
+            </div>
+
+
+
+            <!-- SUBJECT -->
+
+            <div class="ag-contact-field">
+
+              <label for="AGContactSubject">
+                Subject
+              </label>
+
+              <div class="ag-input-wrap">
+
+                <span class="ag-input-icon">
+                  💡
+                </span>
+
+                <input
+                  id="AGContactSubject"
+                  type="text"
+                  name="contact[subject]"
+                  placeholder="How can we help?"
+                >
+
+              </div>
+
+            </div>
+
+
+
+            <!-- MESSAGE -->
+
+            <div class="ag-contact-field ag-contact-field--full">
+
+              <label for="AGContactMessage">
+                Your Message
+                <span>*</span>
+              </label>
+
+              <div class="ag-textarea-wrap">
+
+                <span class="ag-input-icon ag-textarea-icon">
+                  💬
+                </span>
+
+                <textarea
+                  id="AGContactMessage"
+                  name="contact[body]"
+                  rows="6"
+                  placeholder="Tell us how we can help..."
+                  required
+                ></textarea>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- BUTTON -->
+
+            <div class="ag-contact-submit ag-contact-field--full">
+
+              <button
+                type="submit"
+                class="ag-contact-button"
+              >
+
+                <span>
+                  Send Message
+                </span>
+
+                <span class="ag-button-arrow">
+                  →
+                </span>
+
+              </button>
+
+              <p class="ag-contact-note">
+                🔒 Your information is safe and secure.
+              </p>
+
+            </div>
+
+
+          </div>
+
+
+        {% endform %}
+
 
       </div>
 
@@ -25,515 +376,1184 @@
 
   </div>
 
-
-  <!-- Contact Form -->
-
-  <div class="page-width page-w">
-
-    <div class="contact-form-wrapper">
-
-
-      {% form 'contact', id: 'ContactForm' %}
-
-
-        {% if form.posted_successfully? %}
-
-          <div class="contact-success">
-            Thank you! Your message has been sent successfully.
-          </div>
-
-        {% endif %}
-
-
-        {{ form.errors | default_errors }}
-
-
-
-        <div class="contact-grid">
-
-
-          <div class="field">
-
-            <label for="ContactFormName">
-              Full Name
-            </label>
-
-            <input
-              id="ContactFormName"
-              type="text"
-              name="contact[name]"
-              placeholder="Enter your full name">
-
-          </div>
-
-
-
-          <div class="field">
-
-            <label for="ContactFormEmail">
-              Email Address
-            </label>
-
-            <input
-              id="ContactFormEmail"
-              type="email"
-              name="contact[email]"
-              placeholder="Enter your email"
-              required>
-
-          </div>
-
-
-
-          <div class="field">
-
-            <label for="ContactFormPhone">
-              Mobile Number
-            </label>
-
-            <input
-              id="ContactFormPhone"
-              type="tel"
-              name="contact[phone]"
-              placeholder="Enter your phone number">
-
-          </div>
-
-
-
-          <div class="field">
-
-            <label for="ContactFormSubject">
-              Subject
-            </label>
-
-            <input
-              id="ContactFormSubject"
-              type="text"
-              name="contact[subject]"
-              placeholder="Subject">
-
-          </div>
-
-
-
-          <div class="field field-full">
-
-            <label for="ContactFormMessage">
-              Message
-            </label>
-
-            <textarea
-              id="ContactFormMessage"
-              rows="7"
-              name="contact[body]"
-              placeholder="Write your message here..."></textarea>
-
-          </div>
-
-
-
-          <div class="field-full contact-button">
-
-            <button type="submit">
-              Send Message
-            </button>
-
-          </div>
-
-
-        </div>
-
-
-      {% endform %}
-
-
-    </div>
-
-  </div>
-
-
 </section>
 
 
-
-<style>
-
-
-.contact-us-section{
-    width: 99.4vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;
-    background:linear-gradient(180deg,#eafcff,#eafcff); padding: 20px 50px 20px 50px;
-
-}
+{% stylesheet %}
 
 
+/* =====================================================
+   SECTION
+===================================================== */
 
-/* Heading */
+.ag-contact-section {
 
-.contact-banner{
+  width: 99.4vw;
 
-    height:145px;
+  position: relative;
 
-    display:flex;
+  left: 50%;
 
-    align-items:center;
+  margin-left: -50vw;
 
-    justify-content:center;
+  background: #FFF9F1;
 
-}
-.page-w{
-  padding: 0px 160px 0px 160px;
-}
-
-.back-btn{
-    padding: 10px 15px 24px 15px;
-    width: 60px;
-    height: 30px;
-    font-size: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #1256a0;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 900;
-    transition: .3s;
-    margin-bottom: 10px;
-}
-
-.back-btn:hover{
-background:#0b3c72;
-}
-
-
-.contact-banner-content{
-
-    text-align:center;
+  overflow: hidden;
 
 }
 
 
+.ag-contact-container {
 
-.contact-banner-content h1{
+  width: 100%;
 
-    font-size:54px;
+  max-width: 1250px;
 
-    font-weight:700;
+  margin: 0 auto;
 
-    color:#13205c;
+  padding: 0px 30px 90px;
 
-    margin:0;
-
-}
-
-
-
-
-/* Form Box */
-
-
-.contact-form-wrapper{
-
-    background:#fff;
-
-    padding:50px;
-
-    border-radius:24px;
-
-    margin-top:-40px;
-
-    position:relative;
-
-    z-index:2;
-
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
+  box-sizing: border-box;
 
 }
 
 
+/* =====================================================
+   BACK BUTTON
+===================================================== */
 
-.contact-grid{
+.ag-contact-back {
 
-    display:grid;
+  display: inline-flex;
 
-    grid-template-columns:repeat(2,1fr);
+  align-items: center;
 
-    gap:25px;
+  gap: 8px;
 
-}
+  padding: 9px 15px;
 
+  margin-bottom: 25px;
 
+  border-radius: 50px;
 
-.field{
+  background: #ffffff;
 
-    display:flex;
+  border: 1px solid #eee4d8;
 
-    flex-direction:column;
+  color: #333;
 
-}
+  text-decoration: none;
 
+  font-size: 12px;
 
+  font-weight: 700;
 
-.field-full{
+  box-shadow:
+    0 5px 15px rgba(30,25,20,.05);
 
-    grid-column:1/-1;
-
-}
-
-
-
-.field label{
-
-    font-weight:600;
-
-    margin-bottom:8px;
-
-    color:#13205c;
+  transition: .25s ease;
 
 }
 
 
+.ag-contact-back:hover {
 
-.field input,
-.field textarea{
+  background: #222;
 
-    width:100%;
+  color: #fff;
 
-    padding:15px;
+  border-color: #222;
 
-    border:1px solid #d7d7d7;
-
-    border-radius:10px;
-
-    font-size:16px;
+  transform: translateX(-3px);
 
 }
 
 
+.ag-contact-back span {
 
-.field input:focus,
-.field textarea:focus{
-
-    outline:none;
-
-    border-color:#1773b0;
+  font-size: 17px;
 
 }
 
 
+/* =====================================================
+   HEADER
+===================================================== */
 
-.contact-button{
+.ag-contact-header {
 
-    text-align:center;
+  max-width: 720px;
 
-}
+  margin: 0 auto 50px;
 
-
-
-.contact-button button{
-
-    background:#1773b0;
-
-    color:#fff;
-
-    padding:16px 45px;
-
-    border:none;
-
-    border-radius:10px;
-
-    font-size:18px;
-
-    font-weight:600;
-
-    cursor:pointer;
+  text-align: center;
 
 }
 
 
+.ag-contact-eyebrow {
 
-.contact-button button:hover{
+  display: inline-flex;
 
-    background:#125b8b;
+  align-items: center;
 
-}
+  gap: 8px;
 
+  padding: 7px 14px;
 
+  margin-bottom: 15px;
 
-.contact-success{
+  border-radius: 50px;
 
-    background:#daf5d6;
+  background: #fff;
 
-    padding:15px;
+  border: 1px solid #eee4d8;
 
-    border-radius:8px;
+  color: #8a7560;
 
-    margin-bottom:25px;
+  font-size: 10px;
 
-}
+  font-weight: 800;
 
-
-
-
-/* Responsive */
-
-
-@media(max-width:767px){
-
-    .contact-us-section{
-            width: 99.4vw;
-        left:auto;
-        right:auto;
-               margin-left: -20px;
-        margin-right:0;
-    }
-
-
-    .page-w{
-        padding:0 20px;
-    }
-
-
-    .contact-banner{
-        height:140px;
-        padding:20px;
-    }
-
-
-    .contact-banner-content h1{
-        font-size:32px;
-        line-height:1.2;
-    }
-
-
-    .contact-form-wrapper{
-
-        padding:22px;
-        border-radius:16px;
-        margin-top:-20px;
-
-    }
-
-
-    .contact-grid{
-
-        display:grid;
-        grid-template-columns:1fr;
-        gap:18px;
-
-    }
-
-
-    .field{
-
-        width:100%;
-
-    }
-
-
-    .field label{
-
-        font-size:14px;
-        margin-bottom:6px;
-
-    }
-
-
-    .field input,
-    .field textarea{
-
-        width:100%;
-        padding:13px;
-        font-size:14px;
-        border-radius:8px;
-        box-sizing:border-box;
-
-    }
-
-
-    .field textarea{
-
-        min-height:130px;
-
-    }
-
-
-    .contact-button button{
-
-        width:100%;
-        padding:14px;
-        font-size:16px;
-
-    }
+  letter-spacing: 1.6px;
 
 }
 
 
-/* Small Mobile */
+.ag-contact-dot {
 
-@media(max-width:480px){
+  width: 7px;
 
-    .page-w{
+  height: 7px;
 
-        padding:0 15px;
+  border-radius: 50%;
 
-    }
+  background: #ff6b35;
 
-
-    .contact-banner{
-
-        height:120px;
-
-    }
-
-
-    .contact-banner-content h1{
-
-        font-size:28px;
-
-    }
-
-
-    .contact-form-wrapper{
-
-        padding:18px;
-        border-radius:14px;
-
-    }
-
-
-    .contact-grid{
-
-        gap:15px;
-
-    }
-
-
-    .field input,
-    .field textarea{
-
-        font-size:13px;
-
-    }
+  box-shadow:
+    0 0 0 4px rgba(255,107,53,.12);
 
 }
 
 
-</style>
+.ag-contact-header h1 {
 
+  margin: 0;
+
+  color: #222;
+
+  font-size: clamp(40px, 5vw, 58px);
+
+  line-height: 1.05;
+
+  letter-spacing: -2px;
+
+  font-weight: 800;
+
+}
+
+
+.ag-contact-header h1 span {
+
+  display: inline-block;
+
+  font-size: .65em;
+
+  vertical-align: middle;
+
+  transform: rotate(-8deg);
+
+}
+
+
+.ag-contact-header p {
+
+  max-width: 590px;
+
+  margin: 15px auto 0;
+
+  color: #706a62;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+
+}
+
+
+/* =====================================================
+   MAIN CARD
+===================================================== */
+
+.ag-contact-card {
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(320px, .85fr)
+    minmax(0, 1.45fr);
+
+  overflow: hidden;
+
+  border-radius: 32px;
+
+  background: #fff;
+
+  box-shadow:
+    0 20px 60px rgba(36,29,20,.10);
+
+  border: 1px solid rgba(230,220,208,.7);
+
+}
+
+
+/* =====================================================
+   LEFT INFO
+===================================================== */
+
+.ag-contact-info {
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #10245b 0%,
+      #173d85 55%,
+      #1684ff 100%
+    );
+
+  color: #fff;
+
+}
+
+
+.ag-contact-info::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+
+  height: 300px;
+
+  top: -150px;
+
+  right: -120px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,.08);
+
+}
+
+
+.ag-contact-info::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 220px;
+
+  height: 220px;
+
+  bottom: -110px;
+
+  left: -80px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,.07);
+
+}
+
+
+.ag-contact-info-inner {
+
+  position: relative;
+
+  z-index: 2;
+
+  padding: 48px 40px;
+
+}
+
+
+.ag-contact-mini {
+
+  display: block;
+
+  margin-bottom: 13px;
+
+  color: #9ed7ff;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.8px;
+
+}
+
+
+.ag-contact-info h2 {
+
+  margin: 0;
+
+  color: #fff;
+
+  font-size: 35px;
+
+  line-height: 1.15;
+
+  letter-spacing: -1px;
+
+  font-weight: 800;
+
+}
+
+
+.ag-contact-info h2 span {
+
+  font-size: 28px;
+
+}
+
+
+.ag-contact-description {
+
+  margin: 16px 0 35px;
+
+  color: rgba(255,255,255,.78);
+
+  font-size: 14px;
+
+  line-height: 1.75;
+
+}
+
+
+/* =====================================================
+   DETAILS
+===================================================== */
+
+.ag-contact-details {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+
+}
+
+
+.ag-contact-detail {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+}
+
+
+.ag-contact-detail-icon {
+
+  flex: 0 0 43px;
+
+  width: 43px;
+
+  height: 43px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background:
+    rgba(255,255,255,.13);
+
+  border:
+    1px solid rgba(255,255,255,.12);
+
+  font-size: 19px;
+
+}
+
+
+.ag-contact-detail span {
+
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: rgba(255,255,255,.55);
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+
+}
+
+
+.ag-contact-detail strong {
+
+  color: #fff;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+}
+
+
+/* =====================================================
+   DECORATION
+===================================================== */
+
+.ag-contact-decoration {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 38px;
+
+}
+
+
+.ag-contact-decoration span {
+
+  width: 38px;
+
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background:
+    rgba(255,255,255,.10);
+
+  font-size: 18px;
+
+  transform: rotate(-4deg);
+
+}
+
+
+.ag-contact-decoration span:nth-child(2) {
+
+  transform: translateY(-7px) rotate(5deg);
+
+}
+
+
+.ag-contact-decoration span:nth-child(3) {
+
+  transform: rotate(-7deg);
+
+}
+
+
+.ag-contact-decoration span:nth-child(4) {
+
+  transform: translateY(-5px) rotate(6deg);
+
+}
+
+
+/* =====================================================
+   FORM AREA
+===================================================== */
+
+.ag-contact-form-area {
+
+  padding: 45px 48px;
+
+  background: #fff;
+
+}
+
+
+.ag-contact-form-header {
+
+  margin-bottom: 28px;
+
+}
+
+
+.ag-contact-form-header h2 {
+
+  margin: 0;
+
+  color: #222;
+
+  font-size: 27px;
+
+  font-weight: 800;
+
+  letter-spacing: -.5px;
+
+}
+
+
+.ag-contact-form-header p {
+
+  margin: 6px 0 0;
+
+  color: #858078;
+
+  font-size: 13px;
+
+}
+
+
+/* =====================================================
+   SUCCESS
+===================================================== */
+
+.ag-contact-success {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  margin-bottom: 25px;
+
+  padding: 15px;
+
+  border-radius: 15px;
+
+  background: #edfff2;
+
+  border: 1px solid #c9efd5;
+
+  color: #176b36;
+
+}
+
+
+.ag-success-icon {
+
+  flex: 0 0 38px;
+
+  width: 38px;
+
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #28b463;
+
+  color: #fff;
+
+  font-weight: 800;
+
+}
+
+
+.ag-contact-success strong {
+
+  display: block;
+
+  font-size: 13px;
+
+}
+
+
+.ag-contact-success p {
+
+  margin: 3px 0 0;
+
+  font-size: 11px;
+
+}
+
+
+/* =====================================================
+   ERRORS
+===================================================== */
+
+.ag-contact-errors {
+
+  margin-bottom: 20px;
+
+  padding: 13px 16px;
+
+  border-radius: 12px;
+
+  background: #fff1f1;
+
+  color: #b52b2b;
+
+  font-size: 13px;
+
+}
+
+
+/* =====================================================
+   FORM GRID
+===================================================== */
+
+.ag-contact-fields {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+
+}
+
+
+.ag-contact-field {
+
+  min-width: 0;
+
+}
+
+
+.ag-contact-field--full {
+
+  grid-column: 1 / -1;
+
+}
+
+
+.ag-contact-field label {
+
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #333;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+}
+
+
+.ag-contact-field label span {
+
+  color: #ff547c;
+
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.ag-input-wrap,
+.ag-textarea-wrap {
+
+  position: relative;
+
+}
+
+
+.ag-input-icon {
+
+  position: absolute;
+
+  left: 14px;
+
+  top: 50%;
+
+  z-index: 2;
+
+  transform: translateY(-50%);
+
+  font-size: 15px;
+
+  pointer-events: none;
+
+}
+
+
+.ag-contact-field input,
+.ag-contact-field textarea {
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: 1px solid #e5dfd7;
+
+  border-radius: 13px;
+
+  background: #fffdfa;
+
+  color: #222;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  outline: none;
+
+  transition:
+    border-color .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+
+}
+
+
+.ag-contact-field input {
+
+  height: 50px;
+
+  padding:
+    0 15px 0 43px;
+
+}
+
+
+.ag-contact-field textarea {
+
+  min-height: 145px;
+
+  padding:
+    14px 15px 14px 43px;
+
+  resize: vertical;
+
+}
+
+
+.ag-contact-field input::placeholder,
+.ag-contact-field textarea::placeholder {
+
+  color: #aaa49d;
+
+}
+
+
+.ag-contact-field input:focus,
+.ag-contact-field textarea:focus {
+
+  border-color: #1684ff;
+
+  background: #fff;
+
+  box-shadow:
+    0 0 0 4px rgba(22,132,255,.09);
+
+}
+
+
+.ag-textarea-icon {
+
+  top: 18px;
+
+  transform: none;
+
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.ag-contact-submit {
+
+  text-align: left;
+
+}
+
+
+.ag-contact-button {
+
+  width: 100%;
+
+  min-height: 52px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  border: 0;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #13205c,
+      #1684ff
+    );
+
+  color: #fff;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  letter-spacing: .2px;
+
+  box-shadow:
+    0 10px 25px rgba(22,132,255,.20);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+
+}
+
+
+.ag-contact-button:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 30px rgba(22,132,255,.28);
+
+}
+
+
+.ag-button-arrow {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 27px;
+
+  height: 27px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,.18);
+
+  font-size: 16px;
+
+  transition: transform .25s ease;
+
+}
+
+
+.ag-contact-button:hover
+.ag-button-arrow {
+
+  transform: translateX(4px);
+
+}
+
+
+.ag-contact-note {
+
+  margin: 9px 0 0;
+
+  text-align: center;
+
+  color: #aaa49d;
+
+  font-size: 10px;
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media screen and (max-width: 950px) {
+
+  .ag-contact-container {
+
+    padding:
+      65px
+      25px
+      75px;
+
+  }
+
+
+  .ag-contact-card {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+  .ag-contact-info-inner {
+
+    padding: 38px 35px;
+
+  }
+
+
+  .ag-contact-decoration {
+
+    margin-top: 28px;
+
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media screen and (max-width: 749px) {
+
+  .ag-contact-container {
+
+    padding:
+      52px
+      15px
+      60px;
+
+  }
+
+
+  .ag-contact-header {
+
+    margin-bottom: 32px;
+
+  }
+
+
+  .ag-contact-eyebrow {
+
+    font-size: 8px;
+
+    letter-spacing: 1.2px;
+
+  }
+
+
+  .ag-contact-header h1 {
+
+    font-size: 36px;
+
+    letter-spacing: -1.2px;
+
+  }
+
+
+  .ag-contact-header p {
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+  }
+
+
+  .ag-contact-card {
+
+    border-radius: 23px;
+
+  }
+
+
+  .ag-contact-info-inner {
+
+    padding: 32px 25px;
+
+  }
+
+
+  .ag-contact-info h2 {
+
+    font-size: 29px;
+
+  }
+
+
+  .ag-contact-description {
+
+    margin-bottom: 25px;
+
+    font-size: 13px;
+
+  }
+
+
+  .ag-contact-detail-icon {
+
+    width: 39px;
+
+    height: 39px;
+
+    flex-basis: 39px;
+
+  }
+
+
+  .ag-contact-decoration {
+
+    margin-top: 25px;
+
+  }
+
+
+  .ag-contact-form-area {
+
+    padding: 30px 20px;
+
+  }
+
+
+  .ag-contact-form-header h2 {
+
+    font-size: 23px;
+
+  }
+
+
+  .ag-contact-fields {
+
+    grid-template-columns: 1fr;
+
+    gap: 17px;
+
+  }
+
+
+  .ag-contact-field--full {
+
+    grid-column: auto;
+
+  }
+
+
+  .ag-contact-submit {
+
+    margin-top: 3px;
+
+  }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media screen and (max-width: 420px) {
+
+  .ag-contact-container {
+
+    padding-left: 12px;
+
+    padding-right: 12px;
+
+  }
+
+
+  .ag-contact-header h1 {
+
+    font-size: 32px;
+
+  }
+
+
+  .ag-contact-info-inner {
+
+    padding: 28px 20px;
+
+  }
+
+
+  .ag-contact-info h2 {
+
+    font-size: 26px;
+
+  }
+
+
+  .ag-contact-form-area {
+
+    padding:
+      26px
+      16px;
+
+  }
+
+
+  .ag-contact-field input {
+
+    height: 48px;
+
+  }
+
+
+  .ag-contact-field textarea {
+
+    min-height: 125px;
+
+  }
+
+}
+
+{% endstylesheet %}
 
 
 {% schema %}
+
 {
   "name": "Contact Us",
+
   "tag": "section",
+
   "class": "section",
+
   "settings": [],
+
   "presets": [
     {
       "name": "Contact Us"
     }
   ]
+
 }
+
 {% endschema %}

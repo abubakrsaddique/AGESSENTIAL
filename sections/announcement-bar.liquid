@@ -1,27 +1,70 @@
 <div class="announcement-bar">
-  <div class="announcement-bar__marquee">
 
-    <span>
-      🚚 Free Shipping on Orders Over 10,000PKR &nbsp;&nbsp;&nbsp;
-      | &nbsp;&nbsp;&nbsp;
-      Welcome to AGESSENTIALS &nbsp;&nbsp;&nbsp;
-      | &nbsp;&nbsp;&nbsp;
-      🔥 New Collection Available  &nbsp;&nbsp;&nbsp;
-      | &nbsp;&nbsp;&nbsp;
-      Shop Now!
-    </span>
+  <div class="announcement-bar__track">
 
-    <span>
-      🚚 Free Shipping on Orders Over 10,000PKR &nbsp;&nbsp;&nbsp;
-      | &nbsp;&nbsp;&nbsp;
-      Welcome to AGESSENTIALS &nbsp;&nbsp;&nbsp;
-      | &nbsp;&nbsp;&nbsp;
-      🔥 New Collection Available  &nbsp;&nbsp;&nbsp;
-      | &nbsp;&nbsp;&nbsp;
-      Shop Now!
-    </span>
+    <div class="announcement-bar__content">
+
+      <span class="announcement-item">
+        <span class="announcement-icon">✦</span>
+        Free Shipping on Orders Over <strong>10,000 PKR</strong>
+      </span>
+
+      <span class="announcement-divider">•</span>
+
+      <span class="announcement-item">
+        Welcome to <strong>AG ESSENTIALS</strong>
+      </span>
+
+      <span class="announcement-divider">•</span>
+
+      <span class="announcement-item">
+        <span class="announcement-icon">✦</span>
+        New Collection Available
+      </span>
+
+      <span class="announcement-divider">•</span>
+
+      <span class="announcement-item">
+        Shop Now
+        <span class="announcement-arrow">→</span>
+      </span>
+
+    </div>
+
+
+    <!-- DUPLICATE -->
+
+    <div class="announcement-bar__content">
+
+      <span class="announcement-item">
+        <span class="announcement-icon">✦</span>
+        Free Shipping on Orders Over <strong>10,000 PKR</strong>
+      </span>
+
+      <span class="announcement-divider">•</span>
+
+      <span class="announcement-item">
+        Welcome to <strong>AGESSENTIALS</strong>
+      </span>
+
+      <span class="announcement-divider">•</span>
+
+      <span class="announcement-item">
+        <span class="announcement-icon">✦</span>
+        New Collection Available
+      </span>
+
+      <span class="announcement-divider">•</span>
+
+      <span class="announcement-item">
+        Shop Now
+        <span class="announcement-arrow">→</span>
+      </span>
+
+    </div>
 
   </div>
+
 </div>
 
 
@@ -30,67 +73,185 @@
 .announcement-bar {
 
   width: 99.4vw;
+
   position: relative;
+
   left: 50%;
   right: 50%;
+
   margin-left: -50vw;
   margin-right: -50vw;
 
-    background: rgb(36 171 234);
-  color: #000;
-
-  overflow: hidden;
-  white-space: nowrap;
-
-  height: 42px;
+  height: 38px;
 
   display: flex;
   align-items: center;
 
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      90deg,
+      #111111,
+      #1b1b1b,
+      #111111
+    );
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+
 }
 
 
-.announcement-bar__marquee {
+/* GOLD TOP LINE */
+
+.announcement-bar::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background: #d8b56a;
+
+}
+
+
+/* MARQUEE */
+
+.announcement-bar__track {
 
   display: flex;
+
   width: max-content;
+
+  align-items: center;
+
+  /* Same smooth movement style as your original */
 
   animation: marquee 20s linear infinite;
 
 }
 
 
-.announcement-bar__marquee span {
+/* CONTENT */
 
-  display: inline-block;
+.announcement-bar__content {
 
-  padding-right: 80px;
+  display: flex;
 
-  font-size: 14px;
-  font-weight: 600;
+  align-items: center;
 
-  letter-spacing: .3px;
+  flex-shrink: 0;
 
 }
 
+
+/* TEXT */
+
+.announcement-item {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding-right: 80px;
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.5px;
+
+  color: #eeeeee;
+
+}
+
+
+/* GOLD TEXT */
+
+.announcement-item strong {
+
+  color: #e4c477;
+
+  font-weight: 700;
+
+}
+
+
+/* ICON */
+
+.announcement-icon {
+
+  color: #e4c477;
+
+  font-size: 11px;
+
+}
+
+
+/* DIVIDER */
+
+.announcement-divider {
+
+  color: #777777;
+
+  font-size: 9px;
+
+  margin-right: 80px;
+
+}
+
+
+/* ARROW */
+
+.announcement-arrow {
+
+  color: #e4c477;
+
+  font-size: 14px;
+
+  margin-left: 3px;
+
+}
+
+
+/* =========================================
+   ORIGINAL MARQUEE MOVEMENT
+========================================= */
 
 @keyframes marquee {
 
   from {
+
     transform: translateX(0);
+
   }
 
   to {
+
     transform: translateX(-50%);
+
   }
 
 }
 
 
+/* =========================================
+   MOBILE
+========================================= */
 
-/* Mobile Responsive */
-
-@media screen and (max-width:768px){
+@media screen and (max-width: 768px) {
 
   .announcement-bar {
 
@@ -98,27 +259,34 @@
 
   }
 
+  .announcement-bar__track {
 
-  .announcement-bar__marquee span {
+    animation-duration: 15s;
 
-    font-size: 12px;
+  }
+
+  .announcement-item {
+
+    font-size: 11px;
 
     padding-right: 50px;
 
   }
 
+  .announcement-divider {
 
-  .announcement-bar__marquee {
-
-    animation-duration: 15s;
+    margin-right: 50px;
 
   }
 
 }
 
 
+/* =========================================
+   SMALL MOBILE
+========================================= */
 
-@media screen and (max-width:480px){
+@media screen and (max-width: 480px) {
 
   .announcement-bar {
 
@@ -126,10 +294,9 @@
 
   }
 
+  .announcement-item {
 
-  .announcement-bar__marquee span {
-
-    font-size: 11px;
+    font-size: 10px;
 
     font-weight: 500;
 
@@ -137,20 +304,18 @@
 
 }
 
-
 {% endstylesheet %}
-
 
 
 {% schema %}
 {
-  "name": "Announcement Bar",
+  "name": "Premium Announcement Bar",
   "tag": "section",
   "class": "section-announcement",
   "settings": [],
   "presets": [
     {
-      "name": "Announcement Bar"
+      "name": "Premium Announcement Bar"
     }
   ]
 }

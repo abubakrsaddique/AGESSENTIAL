@@ -1,537 +1,1414 @@
-<section class="boys-products">
+<section class="luxury-boys-products">
+  <div class="luxury-boys-container">
 
-<div class="page-width">
+    <!-- BACK -->
+    <a href="/" class="luxury-boys-back-btn" aria-label="Back to home">
+      <span class="boys-back-arrow">←</span>
+      <span>Back</span>
+    </a>
 
+    <!-- HEADER -->
+    <header class="luxury-boys-header">
 
-<a href="/" class="back-btn">
-&#8592;
-</a>
+      <div class="luxury-boys-badge">
+        <span></span>
+        LITTLE GENTLEMEN
+        <span></span>
+      </div>
 
+      <h1 class="luxury-boys-title">
+        {{ page.title | default: 'Boys Collection' }}
+      </h1>
 
-<h1 class="boys-heading">
-{{ page.title }}
-</h1>
+      <p class="luxury-boys-description">
+        Thoughtfully chosen essentials made for stylish little moments.
+      </p>
 
+      <div class="luxury-boys-divider">
+        <i></i>
+        <span>✦</span>
+        <i></i>
+      </div>
 
-
-<div class="product-grid">
-
-
-{% assign boys_collection = collections['boys'] %}
-
-
-
-{% for product in boys_collection.products %}
-
-
-<div class="product-card">
-
-
-<div class="product-image">
-
-
-<img 
-src="{{ product.featured_image | image_url: width:500 }}"
-alt="{{ product.title }}"
-loading="lazy">
+    </header>
 
 
-</div>
+    <!-- COLLECTION -->
+    {% assign boys_collection = collections['boys'] %}
+
+    {% if boys_collection != blank and boys_collection.products_count > 0 %}
+
+      <div class="luxury-boys-grid">
+
+        {% for product in boys_collection.products %}
+
+          {% assign current_variant = product.selected_or_first_available_variant %}
+
+          <article class="luxury-boy-card">
+
+            <!-- IMAGE -->
+            <a
+              href="{{ product.url }}"
+              class="luxury-boy-image-link"
+            >
+
+              <div class="luxury-boy-image">
+
+                <!-- IMAGE SHINE -->
+                <div class="boys-image-shine"></div>
+
+                {% if product.featured_image %}
+
+                  <img
+                    src="{{ product.featured_image | image_url: width: 800 }}"
+                    srcset="
+                      {{ product.featured_image | image_url: width: 400 }} 400w,
+                      {{ product.featured_image | image_url: width: 600 }} 600w,
+                      {{ product.featured_image | image_url: width: 800 }} 800w
+                    "
+                    sizes="
+                      (max-width: 600px) 92vw,
+                      (max-width: 850px) 45vw,
+                      (max-width: 1100px) 30vw,
+                      23vw
+                    "
+                    alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                    loading="lazy"
+                    width="{{ product.featured_image.width }}"
+                    height="{{ product.featured_image.height }}"
+                  >
+
+                {% else %}
+
+                  <div class="luxury-boys-image-placeholder">
+                    <span>♡</span>
+                  </div>
+
+                {% endif %}
 
 
+                <!-- VIEW PILL -->
+                <div class="luxury-boys-view-pill">
+                  <span>VIEW COLLECTION</span>
+                  <b>→</b>
+                </div>
+
+              </div>
+
+            </a>
 
 
-<div class="product-info">
+            <!-- INFO -->
+            <div class="luxury-boy-info">
+
+              {% if current_variant.sku != blank %}
+
+                <div class="luxury-boys-sku">
+                  <span>ITEM</span>
+                  {{ current_variant.sku }}
+                </div>
+
+              {% endif %}
 
 
-<h3>
-{{ product.title }}
-</h3>
+              <!-- TITLE -->
+              <h3 class="luxury-boys-product-title">
+                <a href="{{ product.url }}">
+                  {{ product.title }}
+                </a>
+              </h3>
 
-{% if product.selected_or_first_available_variant.sku != blank %}
-  <div class="product-sku">
-    Item Code: {{ product.selected_or_first_available_variant.sku }}
+
+              <!-- META -->
+              <div class="luxury-boys-product-meta">
+
+                <div class="luxury-boys-price">
+
+                  {% if product.compare_at_price > product.price %}
+
+                    <span class="boys-sale-price">
+                      {{ product.price | money }}
+                    </span>
+
+                    <span class="boys-compare-price">
+                      {{ product.compare_at_price | money }}
+                    </span>
+
+                  {% else %}
+
+                    {{ product.price | money }}
+
+                  {% endif %}
+
+                </div>
+
+
+                {% if current_variant.available %}
+
+                  <div class="luxury-boys-stock">
+                    <span class="boys-stock-dot"></span>
+                    In Stock
+                  </div>
+
+                {% endif %}
+
+              </div>
+
+
+              <!-- ACTIONS -->
+              <div class="luxury-boys-actions">
+
+                <!-- DETAILS -->
+                <a
+                  href="{{ product.url }}"
+                  class="luxury-boys-details-btn"
+                >
+                  <span>Explore Product</span>
+                  <b>↗</b>
+                </a>
+
+
+                <!-- CART -->
+                <form
+                  method="post"
+                  action="{{ routes.cart_add_url }}"
+                  class="luxury-boys-cart-form"
+                >
+
+                  <input
+                    type="hidden"
+                    name="id"
+                    value="{{ current_variant.id }}"
+                  >
+
+                  <input
+                    type="hidden"
+                    name="quantity"
+                    value="1"
+                  >
+
+                  <button
+                    type="submit"
+                    class="luxury-boys-cart-btn"
+                    {% unless current_variant.available %}
+                      disabled
+                    {% endunless %}
+                  >
+
+                    {% if current_variant.available %}
+
+                      <span class="boys-cart-plus">+</span>
+                      <span>Add To Cart</span>
+
+                    {% else %}
+
+                      <span>Sold Out</span>
+
+                    {% endif %}
+
+                  </button>
+
+                </form>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        {% endfor %}
+
+      </div>
+
+
+    {% else %}
+
+      <!-- EMPTY COLLECTION -->
+      <div class="luxury-boys-empty">
+
+        <div class="boys-empty-heart">
+          ♡
+        </div>
+
+        <div class="luxury-boys-badge">
+          <span></span>
+          COMING SOON
+          <span></span>
+        </div>
+
+        <h2>
+          Something Beautiful Is Coming
+        </h2>
+
+        <p>
+          Our new collection for little gentlemen is being prepared with love.
+        </p>
+
+        <a href="/" class="luxury-boys-empty-btn">
+          Return Home
+        </a>
+
+      </div>
+
+    {% endif %}
+
   </div>
-{% endif %}
-
-<div class="price">
-
-{{ product.price | money }}
-
-</div>
-
-
-
-
-<a href="{{ product.url }}" class="details-btn">
-More Details
-</a>
-
-
-
-
-
-<form method="post" action="/cart/add">
-
-
-<input 
-type="hidden"
-name="id"
-value="{{ product.selected_or_first_available_variant.id }}">
-
-
-
-<button class="cart-btn">
-
-Add To Cart
-
-</button>
-
-
-</form>
-
-
-
-</div>
-
-
-</div>
-
-
-
-{% endfor %}
-
-
-
-</div>
-
-
-</div>
-
-
 </section>
-
-
-
 
 
 <style>
 
+/* =====================================================
+   LUXURY BOYS COLLECTION
+===================================================== */
 
-*{
-box-sizing:border-box;
+.luxury-boys-products {
+  width: 100vw;
+
+  position: relative;
+  left: 50%;
+  right: 50%;
+
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  padding: 55px 0 100px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 5% 5%,
+      rgba(205, 164, 116, .13),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 95% 35%,
+      rgba(23, 59, 95, .07),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #fcfaf7 0%,
+      #f7f2eb 48%,
+      #fbf9f6 100%
+    );
+
+  color: #173b5f;
+}
+
+.luxury-boys-products *,
+.luxury-boys-products *::before,
+.luxury-boys-products *::after {
+  box-sizing: border-box;
 }
 
 
+/* =====================================================
+   CONTAINER
+===================================================== */
 
-.boys-products{
+.luxury-boys-container {
+  width: 100%;
+  max-width: 1380px;
 
-width:99.4vw;
-position:relative;
-left:50%;
-right:50%;
-margin-left:-50vw;
-margin-right:-50vw;
+  margin: 0 auto;
 
-padding:40px 0;
-
-background:#eef7ff;
-
-overflow:hidden;
-
+  padding: 0 35px;
 }
 
 
+/* =====================================================
+   BACK BUTTON
+===================================================== */
 
+.luxury-boys-back-btn {
+  display: inline-flex;
 
-.page-width{
+  align-items: center;
+  justify-content: center;
 
-max-width:1200px;
-margin:auto;
-padding:0 20px;
+  gap: 9px;
 
+  height: 44px;
+
+  padding: 0 17px;
+
+  border: 1px solid #ded5ca;
+
+  border-radius: 40px;
+
+  background: rgba(255,255,255,.65);
+
+  color: #173b5f;
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: .5px;
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 5px 20px rgba(40,30,20,.04);
+
+  transition: .35s ease;
+
+  margin-bottom: 48px;
+}
+
+.luxury-boys-back-btn:hover {
+  background: #173b5f;
+
+  border-color: #173b5f;
+
+  color: #fff;
+
+  transform: translateX(-3px);
+
+  box-shadow:
+    0 10px 25px rgba(23,59,95,.18);
+}
+
+.boys-back-arrow {
+  font-size: 20px;
+
+  line-height: 1;
+
+  transition:
+    transform .35s ease;
+}
+
+.luxury-boys-back-btn:hover
+.boys-back-arrow {
+  transform: translateX(-3px);
 }
 
 
+/* =====================================================
+   HEADER
+===================================================== */
 
-.back-btn{
-    display: flex; align-items: center; justify-content: center; padding: 10px 15px 24px 15px; width: 60px; height: 30px; font-size: 50px; background: #1256a0; color: #fff; text-decoration: none; border-radius: 50px; font-weight: 900; transition: .3s; margin-bottom: 10px;
+.luxury-boys-header {
+  max-width: 780px;
 
+  margin: 0 auto 65px;
+
+  text-align: center;
 }
 
 
+/* BADGE */
 
-.back-btn:hover{
-background:#0b3c72;
+.luxury-boys-badge {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-bottom: 17px;
+
+  color: #ad8157;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 3px;
+}
+
+.luxury-boys-badge span {
+  width: 24px;
+
+  height: 1px;
+
+  background: #cba47d;
+
+  opacity: .75;
 }
 
 
+/* TITLE */
 
-.boys-heading{
+.luxury-boys-title {
+  margin: 0;
 
-text-align:center;
+  color: #173b5f;
 
-font-size:42px;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
-font-weight:700;
+  font-size:
+    clamp(42px, 5.5vw, 70px);
 
-color:#1256a0;
+  line-height: 1;
 
-margin-bottom:40px;
+  font-weight: 500;
 
+  letter-spacing: -2px;
 }
 
 
+/* DESCRIPTION */
 
+.luxury-boys-description {
+  max-width: 570px;
 
-.product-grid{
+  margin: 22px auto 0;
 
-display:grid;
+  color: #817a72;
 
-grid-template-columns:repeat(4,1fr);
+  font-size: 14px;
 
-gap:25px;
-
+  line-height: 1.8;
 }
 
 
+/* DIVIDER */
 
+.luxury-boys-divider {
+  display: flex;
 
-.product-card{
+  align-items: center;
+  justify-content: center;
 
-background:#fff;
+  gap: 12px;
 
-border-radius:16px;
+  width: 130px;
 
-overflow:hidden;
+  margin: 25px auto 0;
+}
 
-box-shadow:0 5px 18px rgba(0,0,0,.12);
+.luxury-boys-divider i {
+  display: block;
 
-text-align:center;
+  width: 42px;
 
-transition:.3s;
+  height: 1px;
 
+  background: #d4b28f;
+}
+
+.luxury-boys-divider span {
+  color: #b98555;
+
+  font-size: 12px;
 }
 
 
+/* =====================================================
+   PRODUCT GRID
+===================================================== */
 
+.luxury-boys-grid {
+  display: grid;
 
-.product-card:hover{
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
 
-transform:translateY(-5px);
-
+  gap: 25px;
 }
 
 
+/* =====================================================
+   CARD
+===================================================== */
 
+.luxury-boy-card {
+  position: relative;
 
+  overflow: hidden;
 
-.product-image{
+  background:
+    rgba(255,255,255,.92);
 
-height:260px;
+  border:
+    1px solid #e6ded4;
 
-display:flex;
+  border-radius: 20px;
 
-align-items:center;
+  box-shadow:
+    0 8px 30px
+    rgba(49,37,24,.055);
 
-justify-content:center;
+  transition:
+    transform .45s cubic-bezier(.2,.7,.2,1),
+    box-shadow .45s ease,
+    border-color .45s ease;
+}
 
-padding:20px;
+.luxury-boy-card:hover {
+  transform:
+    translateY(-8px);
 
+  border-color:
+    #d7c5b3;
+
+  box-shadow:
+    0 22px 50px
+    rgba(49,37,24,.13);
 }
 
 
+/* =====================================================
+   IMAGE
+===================================================== */
 
+.luxury-boy-image-link {
+  display: block;
 
+  text-decoration: none;
+}
 
-.product-image img{
+.luxury-boy-image {
+  position: relative;
 
-width:100%;
+  height: 315px;
 
-height:100%;
+  display: flex;
 
-object-fit:contain;
+  align-items: center;
+  justify-content: center;
 
+  padding: 20px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #faf7f2 0%,
+      #f1ebe2 100%
+    );
+}
+
+.luxury-boy-image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  position: relative;
+
+  z-index: 2;
+
+  transition:
+    transform .7s
+    cubic-bezier(.2,.7,.2,1);
+}
+
+.luxury-boy-card:hover
+.luxury-boy-image img {
+  transform:
+    scale(1.065);
 }
 
 
+/* =====================================================
+   IMAGE SHINE
+===================================================== */
 
+.boys-image-shine {
+  position: absolute;
 
+  z-index: 3;
 
-.product-info{
+  top: -120%;
+  left: -80%;
 
-padding:20px;
+  width: 50%;
+  height: 300%;
 
+  transform:
+    rotate(25deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.38),
+      transparent
+    );
+
+  transition:
+    left .8s ease;
+
+  pointer-events: none;
+}
+
+.luxury-boy-card:hover
+.boys-image-shine {
+  left: 130%;
 }
 
 
+/* =====================================================
+   VIEW PILL
+===================================================== */
 
+.luxury-boys-view-pill {
+  position: absolute;
 
+  z-index: 5;
 
-.product-info h3{
+  left: 50%;
+  bottom: 17px;
 
-font-size:20px;
+  transform:
+    translate(-50%, 16px);
 
-margin:0 0 12px;
+  display: flex;
 
-color:#222;
+  align-items: center;
 
+  gap: 12px;
+
+  padding: 10px 15px;
+
+  white-space: nowrap;
+
+  background:
+    rgba(255,255,255,.94);
+
+  border:
+    1px solid rgba(255,255,255,.8);
+
+  border-radius: 50px;
+
+  color: #173b5f;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.8px;
+
+  box-shadow:
+    0 8px 25px
+    rgba(0,0,0,.09);
+
+  opacity: 0;
+
+  backdrop-filter: blur(10px);
+
+  transition:
+    .4s ease;
+}
+
+.luxury-boys-view-pill b {
+  font-size: 14px;
+
+  line-height: 1;
+
+  transition:
+    transform .3s ease;
+}
+
+.luxury-boy-card:hover
+.luxury-boys-view-pill {
+  opacity: 1;
+
+  transform:
+    translate(-50%, 0);
+}
+
+.luxury-boy-card:hover
+.luxury-boys-view-pill b {
+  transform:
+    translateX(3px);
 }
 
 
+/* =====================================================
+   PLACEHOLDER
+===================================================== */
 
+.luxury-boys-image-placeholder {
+  width: 100%;
+  height: 100%;
 
+  display: flex;
 
-.price{
+  align-items: center;
+  justify-content: center;
 
-font-size:24px;
+  background:
+    #eee8df;
 
-font-weight:700;
+  color: #b98555;
 
-color:red;
-
-margin-bottom:20px;
-
+  font-size: 35px;
 }
 
 
+/* =====================================================
+   INFO
+===================================================== */
 
-
-
-.details-btn{
-
-display:block;
-
-background:#1256a0;
-
-color:white;
-
-padding:12px;
-
-border-radius:8px;
-
-text-decoration:none;
-
-font-weight:600;
-
-margin-bottom:12px;
-
+.luxury-boy-info {
+  padding:
+    21px 20px 22px;
 }
 
 
+/* =====================================================
+   SKU
+===================================================== */
 
-.details-btn:hover{
+.luxury-boys-sku {
+  margin-bottom: 9px;
 
-background:#0b3c72;
+  color: #aaa096;
 
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.3px;
+
+  text-transform: uppercase;
+}
+
+.luxury-boys-sku span {
+  color: #c09369;
+
+  margin-right: 4px;
 }
 
 
-.product-sku {
-  font-size: 15px;
-  color: #666;
-  margin: 8px 0 15px;
+/* =====================================================
+   TITLE
+===================================================== */
+
+.luxury-boys-product-title {
+  margin: 0;
+
+  min-height: 47px;
+
+  font-size: 17px;
+
+  line-height: 1.4;
+
+  font-weight: 600;
+
+  color: #202b36;
+}
+
+.luxury-boys-product-title a {
+  color: inherit;
+
+  text-decoration: none;
+
+  transition:
+    color .3s ease;
+}
+
+.luxury-boys-product-title a:hover {
+  color: #b0784d;
+}
+
+
+/* =====================================================
+   META
+===================================================== */
+
+.luxury-boys-product-meta {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin:
+    12px 0 17px;
+}
+
+
+/* PRICE */
+
+.luxury-boys-price {
+  color: #a9683d;
+
+  font-size: 20px;
+
+  font-weight: 800;
+
+  letter-spacing: .2px;
+}
+
+.boys-sale-price {
+  color: #a9683d;
+}
+
+.boys-compare-price {
+  margin-left: 6px;
+
+  color: #aaa096;
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  text-decoration: line-through;
+}
+
+
+/* STOCK */
+
+.luxury-boys-stock {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  color: #719073;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: .7px;
+
+  text-transform: uppercase;
+}
+
+.boys-stock-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background:
+    #7baa7b;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(123,170,123,.12);
+}
+
+
+/* =====================================================
+   ACTIONS
+===================================================== */
+
+.luxury-boys-actions {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 8px;
+}
+
+.luxury-boys-details-btn,
+.luxury-boys-cart-btn {
+  min-height: 45px;
+
+  border-radius: 9px;
+
+  font-family: inherit;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: .4px;
+
+  transition:
+    all .3s ease;
+}
+
+
+/* DETAILS */
+
+.luxury-boys-details-btn {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  background:
+    #173b5f;
+
+  color: #fff;
+
+  text-decoration: none;
+}
+
+.luxury-boys-details-btn b {
+  font-size: 14px;
+
+  font-weight: 400;
+
+  transition:
+    transform .3s ease;
+}
+
+.luxury-boys-details-btn:hover {
+  background:
+    #0e2d49;
+
+  box-shadow:
+    0 7px 18px
+    rgba(23,59,95,.18);
+}
+
+.luxury-boys-details-btn:hover b {
+  transform:
+    translate(2px,-2px);
+}
+
+
+/* CART */
+
+.luxury-boys-cart-form {
+  margin: 0;
+}
+
+.luxury-boys-cart-btn {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  background:
+    #fff;
+
+  color:
+    #9a6946;
+
+  border:
+    1px solid #d9c4af;
+
+  cursor: pointer;
+}
+
+.luxury-boys-cart-btn:hover {
+  background:
+    #f8efe6;
+
+  border-color:
+    #cba987;
+
+  color:
+    #815437;
+}
+
+.boys-cart-plus {
+  width: 17px;
+  height: 17px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid currentColor;
+
+  border-radius: 50%;
+
+  font-size: 13px;
+
+  font-weight: 400;
+}
+
+.luxury-boys-cart-btn:disabled {
+  background:
+    #f2efeb;
+
+  color:
+    #aaa49d;
+
+  border-color:
+    #e3ddd6;
+
+  cursor:
+    not-allowed;
+}
+
+
+/* =====================================================
+   EMPTY COLLECTION
+===================================================== */
+
+.luxury-boys-empty {
+  max-width: 650px;
+
+  margin: 0 auto;
+
+  padding: 55px 30px;
+
+  text-align: center;
+
+  background:
+    rgba(255,255,255,.92);
+
+  border:
+    1px solid #e6ded4;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 8px 30px
+    rgba(49,37,24,.055);
+}
+
+.boys-empty-heart {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 20px;
+
+  border-radius: 50%;
+
+  background:
+    #f4ebe2;
+
+  color:
+    #b98555;
+
+  font-size: 27px;
+}
+
+.luxury-boys-empty h2 {
+  margin:
+    0 0 10px;
+
+  color:
+    #173b5f;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 30px;
+
   font-weight: 500;
 }
 
-.product-sku strong {
-  color: #222;
+.luxury-boys-empty p {
+  max-width: 480px;
+
+  margin:
+    0 auto 25px;
+
+  color:
+    #817a72;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+.luxury-boys-empty-btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 45px;
+
+  padding:
+    0 22px;
+
+  border-radius: 9px;
+
+  background:
+    #173b5f;
+
+  color:
+    #fff;
+
+  text-decoration: none;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: .5px;
+
+  transition:
+    all .3s ease;
+}
+
+.luxury-boys-empty-btn:hover {
+  background:
+    #0e2d49;
+
+  color:
+    #fff;
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 8px 20px
+    rgba(23,59,95,.18);
 }
 
 
-.cart-btn{
+/* =====================================================
+   LARGE TABLET
+===================================================== */
 
-width:100%;
+@media (max-width: 1100px) {
 
-background:#28a745;
-
-color:white;
-
-padding:12px;
-
-border:none;
-
-border-radius:8px;
-
-font-size:16px;
-
-font-weight:600;
-
-cursor:pointer;
-
-}
-
-
-
-.cart-btn:hover{
-
-background:#218838;
-
-}
-
-
-
-
-
-/* Laptop */
-
-
-@media(max-width:1200px){
-
-
-.product-grid{
-
-grid-template-columns:repeat(3,1fr);
-
-}
-
-
-}
-
-
-
-
-
-/* Tablet */
-
-
-@media(max-width:900px){
-
-
-.boys-heading{
-
-font-size:34px;
-
-}
-
-
-
-.product-grid{
-
-grid-template-columns:repeat(2,1fr);
-
-gap:20px;
+  .luxury-boys-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
 
 }
 
 
+/* =====================================================
+   TABLET
+===================================================== */
 
-.product-image{
+@media (max-width: 850px) {
 
-height:230px;
+  .luxury-boys-products {
+    padding:
+      45px 0 75px;
+  }
 
-}
+  .luxury-boys-container {
+    padding:
+      0 25px;
+  }
 
+  .luxury-boys-header {
+    margin-bottom: 50px;
+  }
 
-}
+  .luxury-boys-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
 
+    gap: 20px;
+  }
 
-
-
-
-/* Mobile */
-
-
-@media(max-width:600px){
-
-
-.boys-products{
-
-padding:25px 0;
-
-}
-
-
-
-.page-width{
-
-padding:0 15px;
-
-}
-
-
-
-.back-btn{
-
-width:50px;
-
-height:40px;
-
-font-size:32px;
+  .luxury-boy-image {
+    height: 280px;
+  }
 
 }
 
 
+/* =====================================================
+   MOBILE
+===================================================== */
 
-.boys-heading{
+@media (max-width: 600px) {
 
-font-size:28px;
+  .luxury-boys-products {
+    width: 100vw;
 
-margin-bottom:25px;
+    padding:
+      30px 0 55px;
+  }
+
+  .luxury-boys-container {
+    padding:
+      0 14px;
+  }
+
+
+  /* BACK */
+
+  .luxury-boys-back-btn {
+    height: 40px;
+
+    margin-bottom: 28px;
+
+    padding:
+      0 14px;
+
+    font-size: 11px;
+  }
+
+  .boys-back-arrow {
+    font-size: 18px;
+  }
+
+
+  /* HEADER */
+
+  .luxury-boys-header {
+    margin-bottom: 38px;
+  }
+
+  .luxury-boys-badge {
+    gap: 9px;
+
+    font-size: 8px;
+
+    letter-spacing: 2.3px;
+  }
+
+  .luxury-boys-badge span {
+    width: 19px;
+  }
+
+  .luxury-boys-title {
+    font-size:
+      clamp(38px, 12vw, 52px);
+
+    letter-spacing:
+      -1.5px;
+  }
+
+  .luxury-boys-description {
+    margin-top: 18px;
+
+    padding:
+      0 12px;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+  }
+
+
+  /* GRID */
+
+  .luxury-boys-grid {
+    grid-template-columns:
+      1fr;
+
+    gap: 18px;
+  }
+
+
+  /* CARD */
+
+  .luxury-boy-card {
+    border-radius: 17px;
+  }
+
+
+  /* IMAGE */
+
+  .luxury-boy-image {
+    height: 285px;
+
+    padding: 18px;
+  }
+
+
+  /* INFO */
+
+  .luxury-boy-info {
+    padding:
+      19px 18px 20px;
+  }
+
+  .luxury-boys-product-title {
+    min-height: auto;
+
+    font-size: 17px;
+  }
+
+  .luxury-boys-product-meta {
+    margin:
+      12px 0 16px;
+  }
+
+  .luxury-boys-price {
+    font-size: 19px;
+  }
+
+
+  /* ACTIONS */
+
+  .luxury-boys-actions {
+    gap: 7px;
+  }
+
+  .luxury-boys-details-btn,
+  .luxury-boys-cart-btn {
+    min-height: 44px;
+
+    font-size: 9px;
+  }
+
+
+  /* EMPTY */
+
+  .luxury-boys-empty {
+    padding:
+      45px 20px;
+  }
 
 }
 
 
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
 
-.product-grid{
+@media (max-width: 380px) {
 
-grid-template-columns:1fr;
+  .luxury-boy-image {
+    height: 255px;
+  }
 
-gap:18px;
+  .luxury-boys-title {
+    font-size: 36px;
+  }
 
-}
+  .luxury-boy-info {
+    padding:
+      17px;
+  }
 
+  .luxury-boys-actions {
+    grid-template-columns:
+      1fr;
+  }
 
-
-.product-image{
-
-height:240px;
-
-}
-
-
-
-.product-info{
-
-padding:18px;
-
-}
-
-
-
-.product-info h3{
-
-font-size:18px;
+  .luxury-boys-details-btn,
+  .luxury-boys-cart-btn {
+    min-height: 43px;
+  }
 
 }
-
-
-
-.price{
-
-font-size:20px;
-
-}
-
-
-}
-
-
 
 </style>
 
 
-
-
-
 {% schema %}
 {
-"name":"Boys Products",
-"settings":[],
-"presets":[
-{
-"name":"Boys Products"
-}
-]
+  "name": "Luxury Boys Products",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Luxury Boys Products"
+    }
+  ]
 }
 {% endschema %}
